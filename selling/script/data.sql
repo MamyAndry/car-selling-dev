@@ -40,24 +40,24 @@ INSERT INTO Gear_box (id_gear_box, name) VALUES
 
 -- Inserting data into model_gear_box table
 INSERT INTO model_gear_box (id_model_gear_box, id_model, id_gear_box) VALUES
-('GRB1_MD1', 'MDL0001', 'GRB0001'),
-('GRB2_MD2', 'MDL0002', 'GRB0002'),
-('GRB3_MD3', 'MDL0003', 'GRB0003'),
-('GRB4_MD4', 'MDL0004', 'GRB0004'),
-('GRB5_MD5', 'MDL0005', 'GRB0005');
+(default, 'MDL0001', 'GRB0001'),
+(default, 'MDL0002', 'GRB0002'),
+(default, 'MDL0003', 'GRB0003'),
+(default, 'MDL0004', 'GRB0004'),
+(default, 'MDL0005', 'GRB0005');
 
 -- Inserting data into model_motor table
 INSERT INTO model_motor (id_model_motor, id_model, id_motorisation) VALUES
-('MOT1_MD1', 'MDL0001', 'MOT0001'),
-('MOT2_MD2', 'MDL0002', 'MOT0002'),
-('MOT3_MD3', 'MDL0003', 'MOT0003'),
-('MOT1_MD4', 'MDL0004', 'MOT0001'),
-('MOT2_MD5', 'MDL0005', 'MOT0002');
+(default, 'MDL0001', 'MOT0001'),
+(default, 'MDL0002', 'MOT0002'),
+(default, 'MDL0003', 'MOT0003'),
+(default, 'MDL0004', 'MOT0001'),
+(default, 'MDL0005', 'MOT0002');
 
 -- Inserting data into model_fuel_type table
 INSERT INTO model_fuel_type (id_model_fuel_type, id_model, id_fuel_type) VALUES
-('FUT1_MD1', 'MDL0001', 'FUT0001'),
-('FUT2_MD2', 'MDL0002', 'FUT0002'),
-('FUT3_MD3', 'MDL0003', 'FUT0003'),
-('FUT1_MD4', 'MDL0004', 'FUT0001'),
-('FUT2_MD5', 'MDL0005', 'FUT0002');
+(default, 'MDL0001', 'FUT0001'),
+(default, 'MDL0002', 'FUT0002'),
+(default, 'MDL0003', 'FUT0003'),
+(default, 'MDL0004', 'FUT0001'),
+(default, 'MDL0005', 'FUT0002');

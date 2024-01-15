@@ -1,10 +1,7 @@
 package carselling.selling.entity;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 
 
@@ -12,33 +9,34 @@ import jakarta.persistence.Table;
 @Table(name = "model")
 public class Model {
 
-	@Column(name = "id_brand")
-	String idBrand;
-	@Column(name = "id_category")
-	String idCategory;
-	@ManyToOne
-	@JoinColumn(name = "name")
-	String name;
 	@Id
 	@Column(name = "id_model")
 	String idModel;
+	@Column(name = "name")
+	String name;
+	@ManyToOne
+	@JoinColumn(name = "id_brand")
+	Brand brand;
+	@ManyToOne
+	@JoinColumn(name = "id_category")
+	Category category;
 
 
 
 
 	public Model(){}
 
-	public String getIdBrand(){
-		return this.idBrand;
+	public Brand getBrand(){
+		return this.brand;
 	}
-	public void setIdBrand(String idBrand){
-		this.idBrand = idBrand;
+	public void setBrand(Brand brand){
+		this.brand = brand;
 	}
-	public String getIdCategory(){
-		return this.idCategory;
+	public Category getCategory(){
+		return this.category;
 	}
-	public void setIdCategory(String idCategory){
-		this.idCategory = idCategory;
+	public void setCategory(Category category){
+		this.category = category;
 	}
 	public String getName(){
 		return this.name;

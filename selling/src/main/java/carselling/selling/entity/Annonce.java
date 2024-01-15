@@ -4,10 +4,7 @@ package carselling.selling.entity;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 
 
@@ -27,8 +24,8 @@ public class Annonce {
 	Car car;
 	@Column(name = "status")
 	Integer status;
-
-
+	@Column
+	String description;
 
 
 	public Annonce(){}
@@ -51,11 +48,11 @@ public class Annonce {
 	public void setPrice(BigDecimal price){
 		this.price = price;
 	}
-	public String getIdCar(){
-		return this.idCar;
+	public Car getCar(){
+		return this.car;
 	}
-	public void setIdCar(String idCar){
-		this.idCar = idCar;
+	public void setCar(Car idCar){
+		this.car = idCar;
 	}
 	public Integer getStatus(){
 		return this.status;
@@ -63,6 +60,11 @@ public class Annonce {
 	public void setStatus(Integer status){
 		this.status = status;
 	}
-
+	public String getDexcription(){
+		return this.description;
+	}
+	public void setDescription(String description){
+		this.description = description;
+	}
 
 }
