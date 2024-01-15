@@ -1,10 +1,8 @@
 package carselling.selling.entity;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
 
 
 
@@ -14,34 +12,34 @@ public class ModelFuelType {
 
 	@Id
 	@Column(name = "id_model_fuel_type")
-	String idModelFuelType;
-	@Column(name = "id_fuel_type")
-	String idFuelType;
-	@Column(name = "id_model")
-	String idModel;
+	Integer idModelFuelType;
+	@JoinColumn(name = "id_fuel_type")
+	FuelType fuelType;
+	@JoinColumn(name = "id_model")
+	Model model;
 
 
 
 
 	public ModelFuelType(){}
 
-	public String getIdModelFuelType(){
+	public Integer getIdModelFuelType(){
 		return this.idModelFuelType;
 	}
-	public void setIdModelFuelType(String idModelFuelType){
+	public void setIdModelFuelType(Integer idModelFuelType){
 		this.idModelFuelType = idModelFuelType;
 	}
-	public String getIdFuelType(){
-		return this.idFuelType;
+	public FuelType getFuelType(){
+		return this.fuelType;
 	}
-	public void setIdFuelType(String idFuelType){
-		this.idFuelType = idFuelType;
+	public void setIdFuelType(FuelType fuelType){
+		this.fuelType = fuelType;
 	}
-	public String getIdModel(){
-		return this.idModel;
+	public Model getModel(){
+		return this.model;
 	}
-	public void setIdModel(String idModel){
-		this.idModel = idModel;
+	public void setModel(Model model){
+		this.model = model;
 	}
 
 

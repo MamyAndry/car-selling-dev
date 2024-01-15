@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.jpa.repository.Query;
 
 
-public interface ModelFuelTypeRepository extends CrudRepository<ModelFuelType, String> {
+public interface ModelFuelTypeRepository extends CrudRepository<ModelFuelType, Integer> {
 
 
 
