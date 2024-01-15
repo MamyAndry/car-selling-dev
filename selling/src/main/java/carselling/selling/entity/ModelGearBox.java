@@ -11,6 +11,7 @@ public class ModelGearBox {
 
 	@ManyToOne
 	@JoinColumn(name = "id_gear_box")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	GearBox gearBox;
 	@Id
 	@Column(name = "id_model_gear_box")
