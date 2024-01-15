@@ -11,6 +11,7 @@ public class ModelMotor {
 
 	@Id
 	@Column(name = "id_model_motor")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer idModelMotor;
 	@ManyToOne
 	@JoinColumn(name = "id_motorisation")

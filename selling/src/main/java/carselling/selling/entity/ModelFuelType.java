@@ -12,6 +12,7 @@ public class ModelFuelType {
 
 	@Id
 	@Column(name = "id_model_fuel_type")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer idModelFuelType;
 	@JoinColumn(name = "id_fuel_type")
 	FuelType fuelType;
