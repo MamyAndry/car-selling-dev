@@ -28,6 +28,8 @@ public class User {
     Integer gender;
     @Column(name = "is_admin")
     boolean isAdmin;
+    @Column
+    String username;
 
     public String getId() {
         return id;
@@ -88,6 +90,13 @@ public class User {
     }
     public void setGender(Integer gender) {
         this.gender = gender;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public void checkPassWord(String password2) throws UserException {
