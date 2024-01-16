@@ -17,6 +17,7 @@ public class Car {
 	@ManyToOne
 	@JoinColumn(name = "id_transmission")
 	Transmission transmission;
+	@ManyToOne
 	@JoinColumn(name = "id_model_fuel_type")
 	ModelFuelType modelFuelType;
 	@Column(name = "door_number")
@@ -39,7 +40,7 @@ public class Car {
 	@ManyToOne
 	@JoinColumn(name = "id_model")
 	Model model;
-	@Column 
+	@Column
 	String color;
 
 	public Car(){}
