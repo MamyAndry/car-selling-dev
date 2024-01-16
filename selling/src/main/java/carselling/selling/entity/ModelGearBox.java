@@ -9,13 +9,13 @@ import jakarta.persistence.*;
 @Table(name = "model_gear_box")
 public class ModelGearBox {
 
+	@Id
+	@Column(name = "id_model_gear_box")
+	Integer idModelGearBox;
 	@ManyToOne
 	@JoinColumn(name = "id_gear_box")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	GearBox gearBox;
-	@Id
-	@Column(name = "id_model_gear_box")
-	Integer idModelGearBox;
 	@ManyToOne
 	@JoinColumn(name = "id_model")
 	Model model;
