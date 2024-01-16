@@ -22,8 +22,9 @@ public class Annonce {
 	Timestamp dateAdd;
 	@Column(name = "price")
 	BigDecimal price;
-	@Column(name = "id_car")
-	String idCar;
+	@ManyToOne
+	@JoinColumn(name = "id_car", referencedColumnName="id_car")
+	Car car;
 	@Column(name = "status")
 	Integer status;
 

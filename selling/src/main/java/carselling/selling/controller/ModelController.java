@@ -11,12 +11,10 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "model")
-public class ModelController
- {
+public class ModelController{
 
 	@Autowired
 	private ModelRepository repository;
-
 
 	@PostMapping()
 	public ResponseEntity<Model> save(@RequestBody Model model){
