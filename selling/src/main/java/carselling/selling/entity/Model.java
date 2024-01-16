@@ -16,7 +16,8 @@ public class Model {
 	String idBrand;
 	@Column(name = "id_category")
 	String idCategory;
-	@Column(name = "name")
+	@ManyToOne
+	@JoinColumn(name = "name")
 	String name;
 	@Id
 	@Column(name = "id_model")
