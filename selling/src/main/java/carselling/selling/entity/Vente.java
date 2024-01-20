@@ -22,7 +22,7 @@ public class Vente {
 	@Id
 	@Column(name = "id_vente")
 	String idVente;
-	@Column(name = "date_sell")
+	@Column(name = "date_sell", columnDefinition = "TIMESTAMP")
 	Timestamp dateSell;
 	@Column(name = "id_users")
 	String idUsers;

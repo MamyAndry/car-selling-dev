@@ -15,7 +15,7 @@ public class Annonce {
 	@Id
 	@Column(name = "id_annonce")
 	String idAnnonce;
-	@Column(name = "date_add")
+	@Column(name = "date_add", columnDefinition = "TIMESTAMP")
 	Timestamp dateAdd;
 	@Column(name = "price")
 	BigDecimal price;
