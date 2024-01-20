@@ -102,8 +102,7 @@ CREATE TABLE transmission(
 CREATE TABLE Car(
    id_car VARCHAR(50) ,
    door_number INTEGER,
-   kilometrage NUMERIC(15,2)  ,
-   status INTEGER,
+   kilometrage NUMERIC(15,2),
    color VARCHAR(50),
    id_transmission VARCHAR(50) ,
    id_model_motor INTEGER,
