@@ -39,6 +39,7 @@ $$ LANGUAGE PLPGSQL;
 CREATE OR REPLACE VIEW v_most_sold_car_per_year AS
     SELECT brand_result, model_result, year, month, COALESCE(SUM(vente_count), 0)  
         FROM f_get_sales_count_by_month()
-    GROUP BY brand_result,model_result,year,month; 
+    GROUP BY brand_result,model_result,year,month;
+     
 
 --RECHERCHE AVANCEE
