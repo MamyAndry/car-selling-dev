@@ -10,20 +10,35 @@ CREATE OR REPLACE VIEW v_sold_car AS
         LEFT JOIN Vente v
             ON v.id_annonce = an.id_annonce;
 
-CREATE OR REPLACE VIEW v_most_sold_brand_per_year AS
-    SELECT brand, COALESCE(COUNT(id_vente), 0) count ,EXTRACT('year' FROM date_sell) annee  FROM v_sold_car
-    GROUP BY brand,annee;
+CREATE OR REPLACE FUNCTION f_get_sales_count_by_month()
+RETURNS TABLE(brand_result TEXT, model_result TEXT, year INT, month INT, vente_count INT) AS $$
+BEGIN
+    FOR brand_result, model_result IN SELECT DISTINCT brand, modele FROM v_sold_car
+    LOOP
+        FOR year IN SELECT DISTINCT EXTRACT(YEAR FROM date_sell) FROM v_sold_car WHERE brand = brand_result AND modele = model_result
+        LOOP
+            FOR month IN 1..12
+            LOOP
+                vente_count := COALESCE((
+                    SELECT COUNT(id_vente)
+                    FROM v_sold_car
+                    WHERE EXTRACT(YEAR FROM date_sell) = year
+                    AND EXTRACT(MONTH FROM date_sell) = month
+                    AND brand = brand_result
+                    AND modele = model_result
+                ), 0);
 
-CREATE OR REPLACE VIEW v_most_sold_model_per_year AS
-    SELECT brand, modele, COALESCE(COUNT(id_vente), 0) count ,EXTRACT('year' FROM date_sell) annee  FROM v_sold_car
-    GROUP BY brand,modele,annee; 
+                RETURN NEXT;
+            END LOOP;
+        END LOOP;
+    END LOOP;
+END;
+$$ LANGUAGE PLPGSQL;
 
-CREATE OR REPLACE VIEW v_most_sold_brand_per_month_per_year AS
-    SELECT brand, COALESCE(COUNT(id_vente), 0) count ,EXTRACT('month' FROM date_sell) mois,EXTRACT('year' FROM date_sell) annee  FROM v_sold_car
-    GROUP BY brand,annee,mois;
 
-CREATE OR REPLACE VIEW v_most_sold_model_per_month_per_year AS
-    SELECT brand, modele, COALESCE(COUNT(id_vente), 0) count ,EXTRACT('month' FROM date_sell) mois,EXTRACT('year' FROM date_sell) annee  FROM v_sold_car
-    GROUP BY brand,modele,annee,mois; 
+CREATE OR REPLACE VIEW v_most_sold_car_per_year AS
+    SELECT brand_result, model_result, year, month, COALESCE(SUM(vente_count), 0)  
+        FROM f_get_sales_count_by_month()
+    GROUP BY brand_result,model_result,year,month; 
 
 --RECHERCHE AVANCEE
