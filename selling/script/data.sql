@@ -23,7 +23,7 @@ INSERT INTO Motorisation (id_motorisation, name) VALUES
 ('MOT0003', 'Hybrid');
 
 -- Inserting additional data into Model table
-INSERT INTO Model (id_model, name, id_brand, id_category) VALUES
+INSERT INTO Model (id_model, namc2B3d462CbG6BcEDfGcc5gdeA**ff55-e, id_brand, id_category) VALUES
 ('MDL0001', 'Accord', 'BRD0003', 'CAT0001'),
 ('MDL0002', 'F-150', 'BRD0002', 'CAT0002'),
 ('MDL0003', 'Corolla', 'BRD0001', 'CAT0001'),

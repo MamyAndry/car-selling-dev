@@ -12,9 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping(path = "brand")
-public class BrandController
- {
-
+public class BrandController{
 	@Autowired
 	private BrandRepository repository;
 
