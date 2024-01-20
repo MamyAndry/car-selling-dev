@@ -61,3 +61,13 @@ INSERT INTO model_fuel_type (id_model_fuel_type, id_model, id_fuel_type) VALUES
 (default, 'MDL0003', 'FUT0003'),
 (default, 'MDL0004', 'FUT0001'),
 (default, 'MDL0005', 'FUT0002');
+
+INSERT INTO transmission (id_transmission, name) VALUES
+(default, 'Automatic'),
+(default, 'Manual'),
+(default, 'Semi-automatic');
+
+INSERT INTO Car(id_car, dour_number, kilometrage, status, colorm id_transmission, id_model_motor, id_model_fuel_type, id_users, id_model, id_car_status, id_model_gear_box) VALUES 
+(default, )
+
+
