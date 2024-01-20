@@ -35,8 +35,4 @@ public class BrandController{
 	 	return ResponseEntity.ok(repository.findAll());
 	}
 
-
-
-
-
 }
