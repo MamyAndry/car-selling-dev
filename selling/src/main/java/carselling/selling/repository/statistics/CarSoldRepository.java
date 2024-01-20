@@ -13,7 +13,7 @@ import carselling.selling.entity.Car;
 public interface CarSoldRepository extends CrudRepository<Car, String>{
     @Query(nativeQuery = true,value = "SELECT * FROM v_most_sold_brand_per_year")
     public List<CarSoldPerYear> getMostSoldBrand();
-i
+
     @Query(nativeQuery = true,value = "SELECT * FROM v_most_sold_model_per_year")
     public List<CarSoldPerYear> getMostSoldModel();
 
