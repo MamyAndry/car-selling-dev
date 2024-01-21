@@ -415,7 +415,7 @@ nav.navbar.bootsnav .navbar-toggle i{color: #4e4ffa;}
 .featured-cars-content{
     padding-top:96px;
     display: flex;
-
+    padding: 96px;
 }
 
 /*.single-featured-cars*/
