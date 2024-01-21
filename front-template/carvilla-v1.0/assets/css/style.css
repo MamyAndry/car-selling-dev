@@ -58,7 +58,7 @@ a,a:hover,a:active,a:focus {
     font-weight: 500;
     text-transform: capitalize;
 }
-h1,h2,h3,h4,h5,h6 { 
+h1,h2,h3,h4,h5,h6 {
 	margin: 0;
 	color:#444a57;
     font-size: 20px;
@@ -81,7 +81,7 @@ ul{
 ul li {
 	list-style: none;
     display: inline-block;
-	
+
 }
 select,input,textarea,button,.form-control{box-shadow:none;outline:0!important;}
 button {background: transparent;border: 0;font-size: 16px;text-transform: capitalize;}
@@ -89,11 +89,11 @@ button {background: transparent;border: 0;font-size: 16px;text-transform: capita
 html,body{height: 100%;}
 
 [placeholder]:focus::-webkit-input-placeholder {
-  -webkit-transition: opacity 0.3s 0.3s ease; 
-  -moz-transition: opacity 0.3s 0.3s ease; 
-  -ms-transition: opacity 0.3s 0.3s ease; 
-  -o-transition: opacity 0.3s 0.3s ease; 
-  transition: opacity 0.3s 0.3s ease; 
+  -webkit-transition: opacity 0.3s 0.3s ease;
+  -moz-transition: opacity 0.3s 0.3s ease;
+  -ms-transition: opacity 0.3s 0.3s ease;
+  -o-transition: opacity 0.3s 0.3s ease;
+  transition: opacity 0.3s 0.3s ease;
   opacity: 0;
 }
 .owl-carousel {z-index: 0;}
@@ -157,10 +157,10 @@ nav.navbar.bootsnav ul.nav > li > a {
     font-size: 16px;
     font-weight: 500;
     text-transform:uppercase;
-    -webkit-transition: 0.3s linear; 
-    -moz-transition: 0.3s linear; 
-    -ms-transition: 0.3s linear; 
-    -o-transition: 0.3s linear; 
+    -webkit-transition: 0.3s linear;
+    -moz-transition: 0.3s linear;
+    -ms-transition: 0.3s linear;
+    -o-transition: 0.3s linear;
     transition: 0.3s linear;
 }
 nav.navbar.bootsnav ul.nav > li > a {padding: 48px 21px;}
@@ -247,9 +247,9 @@ nav.navbar.bootsnav .navbar-toggle i{color: #4e4ffa;}
     color: #fff;
     border-radius: 3px;
     margin-top: 55px;
-    -webkit-transition: .3s linear; 
-    -moz-transition:.3s linear; 
-    -ms-transition:.3s linear; 
+    -webkit-transition: .3s linear;
+    -moz-transition:.3s linear;
+    -ms-transition:.3s linear;
     -o-transition:.3s linear;
     transition: .3s linear;
 }
@@ -323,7 +323,7 @@ nav.navbar.bootsnav .navbar-toggle i{color: #4e4ffa;}
 /*.single-model-search*/
 
 /*-------------------------------------
-        5. Service 
+        5. Service
 --------------------------------------*/
 .service { padding: 260px 0 87px;}
 
@@ -333,9 +333,9 @@ nav.navbar.bootsnav .navbar-toggle i{color: #4e4ffa;}
     border-radius: 3px;
     margin-bottom: 30px;
     border: 1px solid #dadfe9;
-    -webkit-transition: .3s linear; 
-    -moz-transition:.3s linear; 
-    -ms-transition:.3s linear; 
+    -webkit-transition: .3s linear;
+    -moz-transition:.3s linear;
+    -ms-transition:.3s linear;
     -o-transition:.3s linear;
     transition: .3s linear;
 }
@@ -412,7 +412,11 @@ nav.navbar.bootsnav .navbar-toggle i{color: #4e4ffa;}
 .featured-cars{
     padding:112px 0 120px;
 }
-.featured-cars-content{padding-top:96px;}
+.featured-cars-content{
+    padding-top:96px;
+    display: flex;
+
+}
 
 /*.single-featured-cars*/
 .featured-img-box {
@@ -441,8 +445,8 @@ nav.navbar.bootsnav .navbar-toggle i{color: #4e4ffa;}
 .featured-cars-txt h3,.featured-cars-txt p{font-size: 13px;}
 /*.single-featured-cars*/
 
-/*-------------------------------------       
-        8. Clients-say 
+/*-------------------------------------
+        8. Clients-say
 --------------------------------------*/
 .clients-say{padding:115px 0 80px;background: #f8f9fb;}
 
@@ -452,9 +456,9 @@ nav.navbar.bootsnav .navbar-toggle i{color: #4e4ffa;}
     text-align: center;
     border: 1px solid #dadfe9;
     overflow-x: hidden;
-    -webkit-transition: .3s; 
-    -moz-transition:.3s; 
-    -ms-transition:.3s; 
+    -webkit-transition: .3s;
+    -moz-transition:.3s;
+    -ms-transition:.3s;
     -o-transition:.3s;
     transition: .3s;
 }
@@ -469,9 +473,9 @@ nav.navbar.bootsnav .navbar-toggle i{color: #4e4ffa;}
 .testimonial-img {
     margin-right: 5px;
     border-radius:50%;
-    -webkit-transition: .3s; 
-    -moz-transition:.3s; 
-    -ms-transition:.3s; 
+    -webkit-transition: .3s;
+    -moz-transition:.3s;
+    -ms-transition:.3s;
     -o-transition:.3s;
     transition: .3s;
 }
@@ -578,9 +582,9 @@ nav.navbar.bootsnav .navbar-toggle i{color: #4e4ffa;}
 }
 .single-footer-widget ul li {
     display:  inherit;
-    -webkit-transition: .5s; 
-    -moz-transition:.5s; 
-    -ms-transition:.5s; 
+    -webkit-transition: .5s;
+    -moz-transition:.5s;
+    -ms-transition:.5s;
     -o-transition:.5s;
     transition: .5s;
 }
@@ -653,9 +657,9 @@ nav.navbar.bootsnav .navbar-toggle i{color: #4e4ffa;}
     opacity: .40;
     font-size: 14px;
     margin-left: 16px;
-    -webkit-transition: .3s; 
-    -moz-transition:.3s; 
-    -ms-transition:.3s; 
+    -webkit-transition: .3s;
+    -moz-transition:.3s;
+    -ms-transition:.3s;
     -o-transition:.3s;
     transition: .3s;
 }
@@ -680,9 +684,9 @@ nav.navbar.bootsnav .navbar-toggle i{color: #4e4ffa;}
     background:#4e4ffa;
 	border:1px solid #4e4ffa;
 	border-radius:50%;
-	-webkit-transition: .5s; 
-	-moz-transition:.5s; 
-	-ms-transition:.5s; 
+	-webkit-transition: .5s;
+	-moz-transition:.5s;
+	-ms-transition:.5s;
 	-o-transition:.5s;
     transition: .5s;
 	z-index: 2;
