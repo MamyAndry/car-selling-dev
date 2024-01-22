@@ -12,9 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping(path = "car")
-public class CarController
- {
-
+public class CarController{
 	@Autowired
 	private CarRepository repository;
 

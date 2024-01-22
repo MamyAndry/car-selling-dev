@@ -4,7 +4,7 @@ public interface CarSoldPerMonthForYear {
     String getBRAND_RESULT();
     String getMODEL_RESULT();
     String getMDEL_ID();
-    String getMONTH();
-    String getYEAR();
+    Integer getMONTH();
+    Integer getYEAR();
     Integer getVENTE_COUNT();
 }

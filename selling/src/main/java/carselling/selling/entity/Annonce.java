@@ -1,11 +1,12 @@
 package carselling.selling.entity;
 
 
-import java.math.BigDecimal;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 import java.sql.Timestamp;
-
-import jakarta.persistence.*;
-
 
 
 @Entity
@@ -17,15 +18,18 @@ public class Annonce {
 	String idAnnonce;
 	@Column(name = "date_add")
 	Timestamp dateAdd;
+	@Column(name = "date_validation")
+	Timestamp dateValidation;
 	@Column(name = "price")
-	BigDecimal price;
-	@ManyToOne
-	@JoinColumn(name = "id_car", referencedColumnName="id_car")
-	Car car;
+	Double price;
+	@Column(name = "description")
+	String description;
+	@Column(name = "id_car")
+	String idCar;
 	@Column(name = "status")
 	Integer status;
-	@Column
-	String description;
+
+
 
 
 	public Annonce(){}
@@ -42,17 +46,32 @@ public class Annonce {
 	public void setDateAdd(Timestamp dateAdd){
 		this.dateAdd = dateAdd;
 	}
-	public BigDecimal getPrice(){
+	public Timestamp getDateValidation(){
+		return this.dateValidation;
+	}
+	public void setDateValidation(Timestamp dateValidation){
+		this.dateValidation = dateValidation;
+	}
+	public Double getPrice(){
 		return this.price;
 	}
-	public void setPrice(BigDecimal price){
+	public void setPrice(Double price) throws Exception{
+		if (price < 0) {
+			throw new Exception("Price should not be negative");
+		}
 		this.price = price;
 	}
-	public Car getCar(){
-		return this.car;
+	public String getDescription(){
+		return this.description;
 	}
-	public void setCar(Car idCar){
-		this.car = idCar;
+	public void setDescription(String description){
+		this.description = description;
+	}
+	public String getIdCar(){
+		return this.idCar;
+	}
+	public void setIdCar(String idCar){
+		this.idCar = idCar;
 	}
 	public Integer getStatus(){
 		return this.status;
@@ -60,11 +79,6 @@ public class Annonce {
 	public void setStatus(Integer status){
 		this.status = status;
 	}
-	public String getDexcription(){
-		return this.description;
-	}
-	public void setDescription(String description){
-		this.description = description;
-	}
+
 
 }

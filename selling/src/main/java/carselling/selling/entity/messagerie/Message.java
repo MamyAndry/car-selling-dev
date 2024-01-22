@@ -5,16 +5,16 @@ import java.util.Date;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "messages")
+@Document(collection = "message")
 public class Message {
     @Id
-    private String id;
-    private String sender;
-    private String idSender;
-    private String receiver;
-    private String idReceiver;
-    private String content;
-    private Date dateTimeSend;
+    String id;
+    String sender;
+    String idSender;
+    String receiver;
+    String idReceiver;
+    String content;
+    Date dateTimeSend;
 
 
     public String getId() {
@@ -63,13 +63,14 @@ public class Message {
     public Message() {
     }
 
-    public Message(String sender, String idSender, String receiver, String idReceiver, String content, Date dateTimeSend) {
+    public Message(String _id, String sender, String id_sender, String receiver, String id_receiver, String content, Date date_time_send) {
+        this.setId(_id);
         this.setSender(sender);
-        this.setIdSender(idSender);
+        this.setIdSender(id_sender);
         this.setReceiver(receiver);
-        this.setIdReceiver(idReceiver);
+        this.setIdReceiver(id_receiver);
         this.setContent(content);
-        this.setDateTimeSend(dateTimeSend);
+        this.setDateTimeSend(date_time_send);
     }
 
 }

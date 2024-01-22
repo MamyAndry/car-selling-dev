@@ -1,6 +1,7 @@
 package carselling.selling.controller.messagerie;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,6 +22,8 @@ import carselling.selling.repository.messagerie.MessageRepository;
 public class MessageController {
     @Autowired
 	private MessageRepository repository;
+    @Autowired
+    MongoTemplate mongoTemplate;
 
 
 	@PostMapping()
@@ -36,8 +39,14 @@ public class MessageController {
 	 	repository.delete(message);
 	}
 	@GetMapping()
-	public ResponseEntity<Iterable<Message>> findAll(){
-	 	return ResponseEntity.ok(repository.findAll());
+	public ResponseEntity<?> findAll(){
+        try {
+            return ResponseEntity.ok(mongoTemplate.findAll(Message.class));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(404).body(e.getMessage());
+           
+        }
 	}
 
 }
