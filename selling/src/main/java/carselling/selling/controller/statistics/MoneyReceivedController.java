@@ -28,7 +28,7 @@ public class MoneyReceivedController {
 	}
 	@GetMapping("profit/{id}/{year}")
 	public ResponseEntity<?> getProfitOfYear(@PathVariable String id, @PathVariable int year){
-	 	return ResponseEntity.ok(repository.getProfitOfYear(id, year));
+	 	return ResponseEntity.	ok(repository.getProfitOfYear(id, year));
 	}
 
     @GetMapping("funds")
