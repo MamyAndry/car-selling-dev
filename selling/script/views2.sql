@@ -4,9 +4,9 @@ DECLARE
     id_users_loop VARCHAR(50);
     month_loop INT;
 BEGIN
-    FOR id_users_loop IN SELECT DISTINCT id_users FROM profit
+    FOR id_users_loop IN SELECT DISTINCT id_users FROM users
     LOOP
-        FOR year IN SELECT DISTINCT EXTRACT(YEAR FROM date_add) FROM profit WHERE id_users = id_users_loop
+        FOR year IN SELECT DISTINCT EXTRACT(YEAR FROM date_add) FROM profit
         LOOP
             FOR month_loop IN 1..12
             LOOP
