@@ -3,3 +3,44 @@ Host : viaduct.proxy.rlwy.net
 port : 42056
 user_name : postgres
 password :  c2B3d462CbG6BcEDfGcc5gdeA**ff55-
+
+--insert
+    ApiResponse response = new ApiResponse();
+    try{
+        
+        response.addData("data", "Inserted successfully");
+        return ResponseEntity.ok(response);
+    }catch(Exception e){
+        response.addError("error", e.getCause().getMessage());
+        return ResponseEntity.ok(response);
+    }
+--update
+    ApiResponse response = new ApiResponse();
+    try{
+        repository.save(temp);
+        response.addData("data", "Updated successfully");
+        return ResponseEntity.ok(response);
+    }catch(Exception e){
+        response.addError("error", e.getCause().getMessage());
+        return ResponseEntity.ok(response);
+    }
+
+--delete
+    ApiResponse response = new ApiResponse();
+    try{
+        repository.delete(temp);
+        response.addData("data", "Deleted successfully");
+        return ResponseEntity.ok(response);
+    }catch(Exception e){
+        response.addError("error", e.getCause().getMessage());
+        return ResponseEntity.ok(response);
+    }
+--findAll
+    ApiResponse response = new ApiResponse();
+    try{
+        response.addData("data", repository.findAll());
+        return ResponseEntity.ok(response);
+    }catch(Exception e){
+        response.addError("error", e.getCause().getMessage());
+        return ResponseEntity.ok(response);
+    }
