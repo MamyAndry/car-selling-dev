@@ -11,10 +11,10 @@ public class ModelGearBox {
 
 	@Id
 	@Column(name = "id_model_gear_box")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer idModelGearBox;
 	@ManyToOne
 	@JoinColumn(name = "id_gear_box")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	GearBox gearBox;
 	@ManyToOne
 	@JoinColumn(name = "id_model")

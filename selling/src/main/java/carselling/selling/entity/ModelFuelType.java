@@ -16,9 +16,11 @@ public class ModelFuelType {
 	Integer idModelFuelType;
 	@ManyToOne
 	@JoinColumn(name = "id_fuel_type")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	FuelType fuelType;
 	@ManyToOne
 	@JoinColumn(name = "id_model")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Model model;
 
 
