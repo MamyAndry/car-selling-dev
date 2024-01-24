@@ -23,27 +23,35 @@ public class CarSoldController {
 	private CarSoldRepository repository;
 
 	@GetMapping("sold")
-	public ResponseEntity<List<CarSoldPerYear>> getMostSoldCarPerYear(){
+	public ResponseEntity<?> getMostSoldCarPerYear(){
 	 	return ResponseEntity.ok(repository.getMostSoldCar());
 	}
 
 	@GetMapping("sold/{year}")
-	public ResponseEntity<List<CarSoldPerMonthForYear>> getMostSoldCarForYear(@PathVariable int year){
+	public ResponseEntity<?> getMostSoldCarForYear(@PathVariable int year){
 	 	return ResponseEntity.ok(repository.getSaleStatsForYear(year));
 	}
 
     @GetMapping("brand")
-	public ResponseEntity<List<BrandSoldPerYear>> getMostSoldBrandPerYear(){
+	public ResponseEntity<?> getMostSoldBrandPerYear(){
 	 	return ResponseEntity.ok(repository.getMostSoldBrand());
 	}
 
     @GetMapping("brand/{year}")
-	public ResponseEntity<List<BrandSoldPerYear>> getMostSoldBrandForYear(@PathVariable int year){
+	public ResponseEntity<?> getMostSoldBrandForYear(@PathVariable int year){
 		return ResponseEntity.ok(repository.getMostSoldBrandForYear(year));
    }
 
 	@GetMapping("model/{year}/{id}")
-	public ResponseEntity<List<CarSoldPerMonthForYear>> getMostSoldModelPerMonthForYear(@PathVariable int year, @PathVariable String id){
+	public ResponseEntity<?
+	
+	
+	
+	
+	
+	
+	
+	> getMostSoldModelPerMonthForYear(@PathVariable int year, @PathVariable String id){
 	 	return ResponseEntity.ok(repository.getSaleStatsOfModelForYear(year, id));
 	}	
 }

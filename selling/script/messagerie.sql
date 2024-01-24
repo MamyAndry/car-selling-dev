@@ -48,3 +48,12 @@ db.messages.insertOne({
   date_time_send: new Date(),
 });
 
+db.createUser(
+  {
+    user: "admin",
+    pwd:  "admin",   // or cleartext password
+    roles: [ { role: "readWrite", db: "messagerie" },
+             { role: "read", db: "reporting" } ]
+  }
+)
+

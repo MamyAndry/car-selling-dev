@@ -2,6 +2,7 @@ package carselling.selling.controller;
 
 
 import carselling.selling.repository.CarRepository;
+import carselling.selling.response.ApiResponse;
 import carselling.selling.service.Service;
 import carselling.selling.entity.Car;
 import org.springframework.http.*;
@@ -18,22 +19,55 @@ public class CarController{
 
 
 	@PostMapping()
-	public ResponseEntity<Car> save(@RequestBody Car car){
-		car.setIdCar(Service.getPK("CAR", repository.getNextSequenceValue(), 8));
-	 	return ResponseEntity.ok(repository.save(car));
+	public ResponseEntity<?> save(@RequestBody Car car){	
+		ApiResponse response = new ApiResponse();
+		try{
+			car.setIdCar(Service.getPK("CAR", repository.getNextSequenceValue(), 8));
+			repository.save(car);
+			response.addData("data", car);
+			return  ResponseEntity.ok(response);
+		}catch(Exception e){
+			response.addError("error", e.getCause().getMessage());
+			return ResponseEntity.ok(response);
+		}
 	}
 	@PutMapping()
-	public ResponseEntity<Car> update(@RequestBody Car car){
-	 	return ResponseEntity.ok(repository.save(car));
+	public ResponseEntity<?> update(@RequestBody Car car){		
+		ApiResponse response = new ApiResponse();
+		try{
+			repository.save(car);
+			response.addData("data", car);
+			return ResponseEntity.ok(response);
+		}catch(Exception e){
+			response.addError("error", e.getCause().getMessage());
+			return ResponseEntity.ok(response);
+		}
 	}
 	@DeleteMapping()
-	public void delete(@RequestBody Car car){
-	 	repository.delete(car);
+	public ResponseEntity<?> delete(@RequestBody Car car){
+		ApiResponse response = new ApiResponse();
+		try{
+			repository.delete(car);
+			response.addData("data", "Car Deleted successfully");
+			return ResponseEntity.ok(response);
+		}catch(Exception e){
+			response.addError("error", e.getCause().getMessage());
+			return ResponseEntity.ok(response);
+		}
 	}
 	@GetMapping()
-	public ResponseEntity<Iterable<Car>> findAll(){
-	 	return ResponseEntity.ok(repository.findAll());
+	public ResponseEntity<?> findAll(){
+		ApiResponse response = new ApiResponse();
+		try{
+			response.addData("data", repository.findAll());
+			return ResponseEntity.ok(response);
+		}catch(Exception e){
+			response.addError("error", e.getCause().getMessage());
+			return ResponseEntity.ok(response);
+		}
 	}
+
+
 
 
 
