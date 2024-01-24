@@ -38,7 +38,7 @@ public class WebSecurity {
             .cors().and()
                 .authorizeRequests()
                 .requestMatchers(
-                    AntPathRequestMatcher.antMatcher(HttpMethod.POST,"/login")
+                    AntPathRequestMatcher.antMatcher(HttpMethod.POST,"/login/*/**")
                     , AntPathRequestMatcher.antMatcher(HttpMethod.PUT,"/signin")
                     ,AntPathRequestMatcher.antMatcher(HttpMethod.GET,"/annonce")
                     ).permitAll()
