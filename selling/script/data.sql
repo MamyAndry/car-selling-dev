@@ -106,6 +106,61 @@ INSERT INTO Favoris (id_favoris, id_annonce, id_users) VALUES
 (default, 'ANN0004', 'USR0002'),
 (default, 'ANN0005', 'USR0001');
 
+
+CREATE SEQUENCE seq_category
+   START WITH 1
+   INCREMENT BY 1;
+
+CREATE SEQUENCE seq_brand
+   START WITH 1
+   INCREMENT BY 1;
+
+CREATE SEQUENCE seq_fuelType
+   START WITH 1
+   INCREMENT BY 1;
+
+CREATE SEQUENCE seq_motorisation
+   START WITH 1
+   INCREMENT BY 1;
+
+CREATE SEQUENCE seq_model
+   START WITH 1
+   INCREMENT BY 1;
+
+CREATE SEQUENCE seq_gear
+   START WITH 1
+   INCREMENT BY 1;
+
+CREATE SEQUENCE seq_users
+   START WITH 1
+   INCREMENT BY 1;
+
+CREATE SEQUENCE seq_model_gear
+   START WITH 1
+   INCREMENT BY 1;
+
+CREATE SEQUENCE seq_model_motor
+   START WITH 1
+   INCREMENT BY 1;
+
+CREATE SEQUENCE seq_model_fuel
+   START WITH 1
+   INCREMENT BY 1;
+
+CREATE SEQUENCE seq_car
+   START WITH 1
+   INCREMENT BY 1;
+
+CREATE SEQUENCE seq_annonce
+   START WITH 1
+   INCREMENT BY 1;
+
+CREATE SEQUENCE seq_vente
+   START WITH 1
+   INCREMENT BY 1;
+
+
+
 INSERT INTO commission(id_commission, boundary_inferior, boundary_superior, percentage) VALUES
     (default, 0, 15000.00, 15),
     (default, 15000.00, 30000.00, 20),

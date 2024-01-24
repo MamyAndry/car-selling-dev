@@ -50,11 +50,7 @@ CREATE TABLE users(
    username VARCHAR(50) ,
    name VARCHAR(50) ,
    first_name VARCHAR(50) ,
-<<<<<<< Updated upstream
    birthdate date,
-=======
-   birthdate DATE,
->>>>>>> Stashed changes
    email VARCHAR(50) ,
    password VARCHAR(50) ,
    is_admin BOOLEAN,
