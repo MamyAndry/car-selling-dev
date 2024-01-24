@@ -19,6 +19,8 @@ public class Brand {
 	String name;
 
 
+
+
 	public Brand(){}
 
 	public String getIdBrand(){

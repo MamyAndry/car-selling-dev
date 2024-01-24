@@ -43,9 +43,9 @@ public class WebSecurity {
                     ,AntPathRequestMatcher.antMatcher(HttpMethod.PUT,"/signin")
                     ,AntPathRequestMatcher.antMatcher(HttpMethod.GET,"/annonce")
                     ,AntPathRequestMatcher.antMatcher("/brand")
-
                     ,AntPathRequestMatcher.antMatcher(HttpMethod.GET,"/category")
                     ,AntPathRequestMatcher.antMatcher(HttpMethod.GET,"/model")
+                    ,AntPathRequestMatcher.antMatcher(HttpMethod.GET,"/message")
                     ).permitAll()
                 .anyRequest().authenticated()
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
