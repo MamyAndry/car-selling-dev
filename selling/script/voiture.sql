@@ -50,11 +50,20 @@ CREATE TABLE users(
    username VARCHAR(50) ,
    name VARCHAR(50) ,
    first_name VARCHAR(50) ,
-   birthdate INTEGER,
+   birthdate date,
    email VARCHAR(50) ,
    password VARCHAR(50) ,
    is_admin BOOLEAN,
    PRIMARY KEY(id_users)
+);
+
+CREATE TABLE Message(
+   id_message VARCHAR(50) ,
+   sender VARCHAR(50) ,
+   recipient VARCHAR(50) ,
+   content VARCHAR(255) ,
+   date_send TIMESTAMP,
+   PRIMARY KEY(id_message)
 );
 
 CREATE TABLE model_gear_box(
@@ -93,8 +102,7 @@ CREATE TABLE transmission(
 CREATE TABLE Car(
    id_car VARCHAR(50) ,
    door_number INTEGER,
-   kilometrage NUMERIC(15,2)  ,
-   status INTEGER,
+   kilometrage NUMERIC(15,2),
    color VARCHAR(50),
    id_transmission VARCHAR(50) ,
    id_model_motor INTEGER,

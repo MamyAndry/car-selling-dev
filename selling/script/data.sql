@@ -71,7 +71,7 @@ INSERT INTO users (id_users, gender, username, name, first_name, birthdate, emai
 ('USR0001', 0, 'mhr_di', 'Diana', 'Rakotomaharo', '2004-12-16', 'dianarakoto9@gmail.com', '1234567huit', true),
 ('USR0002', 1, 'mmms', 'Mamisoa', 'Ratsimbazafy', '2002-04-24', 'rmams@gmail.com', 'mamisoa', false);
 
-INSERT INTO Car_status(id_car_status, name) VALUES 
+INSERT INTO Car_status(id_car_status, name) VALUES
 (0, 'In working condition'),
 (1, 'Non-operational');
 
@@ -109,11 +109,65 @@ INSERT INTO Favoris (id_favoris, id_annonce, id_users) VALUES
 (default, 'Manual'),
 (default, 'Semi-automatic');
 
-INSERT INTO Car(id_car, dour_number, kilometrage, status, colorm id_transmission, id_model_motor, id_model_fuel_type, id_users, id_model, id_car_status, id_model_gear_box) VALUES
-(default, )
+CREATE SEQUENCE seq_category
+   START WITH 1
+   INCREMENT BY 1;
+
+CREATE SEQUENCE seq_brand
+   START WITH 1
+   INCREMENT BY 1;
+
+CREATE SEQUENCE seq_fuelType
+   START WITH 1
+   INCREMENT BY 1;
+
+CREATE SEQUENCE seq_motorisation
+   START WITH 1
+   INCREMENT BY 1;
+
+CREATE SEQUENCE seq_model
+   START WITH 1
+   INCREMENT BY 1;
+
+CREATE SEQUENCE seq_gear
+   START WITH 1
+   INCREMENT BY 1;
+
+CREATE SEQUENCE seq_users
+   START WITH 1
+   INCREMENT BY 1;
+
+CREATE SEQUENCE seq_model_gear
+   START WITH 1
+   INCREMENT BY 1;
+
+CREATE SEQUENCE seq_model_motor
+   START WITH 1
+   INCREMENT BY 1;
+
+CREATE SEQUENCE seq_model_fuel
+   START WITH 1
+   INCREMENT BY 1;
+
+CREATE SEQUENCE seq_car
+   START WITH 1
+   INCREMENT BY 1;
+
+CREATE SEQUENCE seq_annonce
+   START WITH 1
+   INCREMENT BY 1;
+
+CREATE SEQUENCE seq_vente
+   START WITH 1
+   INCREMENT BY 1;
 
 
-INSERT INTO commission(id_commission, boundary_inferior, boundary_superior, percentage) VALUES
-(default, 0, 15000.00, 15),
-(default, 15000.00, 30000.00, 20),
-(default, 30000.00, 50000.00, 30);
+
+
+
+
+
+
+
+
+
