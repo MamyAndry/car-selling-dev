@@ -1,16 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Brand } from '../../../mapping/Brand';
 import { Observable } from 'rxjs';
-import { Category } from '../mapping/Category';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ModelService {
-  private url : string = "";
+export class BrandService {
+
+  private url : string = "http://localhost:8080/brand";
   constructor(private http : HttpClient) { }
 
-  getCategories():Observable<Category[]>{
-    return this.http.get<Category[]>(this.url+"/category");
+  findAll():Observable<Brand[]>{
+    return this.http.get<Brand[]>(this.url);
   }
 }

@@ -1,7 +1,7 @@
 
       <div class="row mt-3">
         <div class="col-lg-5">
-           <div class="card">
+          <div class="card">
                 <div class="card-body">
                   <div class="card-title">Model</div>
                   <hr>
@@ -16,18 +16,20 @@
                          <div class="form-group col-lg-6">
                           <label for="input-2">Brand</label>
                           <select name="" id="input-2" class="form-control">
-                            <option value="">Audi</option>
-                            <option value="">BMW</option>
-                            <option value="">Dodge</option>
-                            <option value="">Karenjy</option>
+                            @for (item of this.brands; track $index)
+                            {
+                              <option value="">{{item.name}}</option>
+                            }
+
                           </select>
                          </div>
                          <div class="form-group col-lg-6">
                           <label for="input-3">Categorie</label>
                           <select name="" id="input-3" class="form-control">
-                            <option value="">SUV</option>
-                            <option value="">Sedan</option>
-                            <option value="">Sportscar</option>
+                            @for (item of this.categories; track $index) {
+                              <option value="">{{ item.name}}</option>
+                            }
+
                           </select>
                          </div>
                        </div>
@@ -36,34 +38,40 @@
                         <button type="submit" class="btn btn-light btn-block">Add</button>
                       </div>
                       </form>
-                      <div class="table-responsive">
-                        <table class="table table-bordered">
-                          <thead>
-                            <tr>
-                              <th>#</th>
-                              <th>Name</th>
-                              <th>Categorie</th>
-                              <th>Brand</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>id</td>
-                              <td>Jean</td>
-                              <td>SUV</td>
-                              <td>Mercedes</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
                     </div>
                   </div>
                 </div>
 
-           </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <div class="card-title">Model list</div>
+              <div class="table-responsive">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Name</th>
+                      <th>Categorie</th>
+                      <th>Brand</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>id</td>
+                      <td>Jean</td>
+                      <td>SUV</td>
+                      <td>Mercedes</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+      </div>
         </div>
 
-        <div class="col-lg-3">
+        <div class="col-lg-2">
           <div class="row">
             <div class="card col-lg-12">
               <div class="card-body">
@@ -78,23 +86,6 @@
                     <button type="submit" class="btn btn-light btn-block">Add</button>
                   </div>
                 </form>
-
-                <div class="table-responsive">
-                  <table class="table table-bordered">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>ID</td>
-                        <td>Audi</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
               </div>
             </div>
           </div>
@@ -112,77 +103,57 @@
                     <button type="submit" class="btn btn-light btn-block">Add</button>
                   </div>
                 </form>
-
-                <div class="table-responsive">
-                  <table class="table table-bordered">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>ID</td>
-                        <td>Audi</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-12 col-lg-4 col-xl-4">
+        <div class="col-lg-5">
           <div class="card">
-             <div class="card-header">Weekly sales
-               <div class="card-action">
-               <div class="dropdown">
-               <a class="dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown">
-                <i class="icon-options"></i>
-               </a>
-                <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item">Action</a>
-                <a class="dropdown-item">Another action</a>
-                <a class="dropdown-item">Something else here</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item">Separated link</a>
-                 </div>
-                </div>
-               </div>
-             </div>
-             <div class="card-body">
-           <div class="chart-container-2">
-                 <canvas id="chart2"></canvas>
+            <div class="card-body">
+              <div class="card-title">Brand list</div>
+              <div class="table-responsive">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Name</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (item of this.brands; track $index) {
+                      <tr>
+                        <td>{{item.idBrand}}</td>
+                        <td>{{item.name}}</td>
+                      </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
-             </div>
-             <div class="table-responsive">
-               <table class="table align-items-center">
-                 <tbody>
-                   <tr>
-                     <td><i class="fa fa-circle text-white mr-2"></i> Direct</td>
-                     <td>$5856</td>
-                     <td>+55%</td>
-                   </tr>
-                   <tr>
-                     <td><i class="fa fa-circle text-light-1 mr-2"></i>Affiliate</td>
-                     <td>$2602</td>
-                     <td>+25%</td>
-                   </tr>
-                   <tr>
-                     <td><i class="fa fa-circle text-light-2 mr-2"></i>E-mail</td>
-                     <td>$1802</td>
-                     <td>+15%</td>
-                   </tr>
-                   <tr>
-                     <td><i class="fa fa-circle text-light-3 mr-2"></i>Other</td>
-                     <td>$1105</td>
-                     <td>+5%</td>
-                   </tr>
-                 </tbody>
-               </table>
-             </div>
-           </div>
-       </div>
+          <div class="card">
+            <div class="card-body">
+              <div class="card-title">Category list</div>
+              <div class="table-responsive">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Name</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (item of this.categories; track $index) {
+                      <tr>
+                        <td>{{item.idCategory}}</td>
+                        <td>{{item.name}}</td>
+                      </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
       </div><!--End Row-->
 
