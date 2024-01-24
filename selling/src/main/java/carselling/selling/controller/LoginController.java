@@ -31,6 +31,12 @@ public class LoginController {
         return ResponseEntity.status(response.getStatus()).body(response);
     }
 
+    @PostMapping("/admin")
+    public @ResponseBody  ResponseEntity<ApiResponse> loginAdmin(@RequestBody User user) {
+        ApiResponse response = loginService.loginAdmin(user);
+        return ResponseEntity.status(response.getStatus()).body(response);
+    }
+
     @GetMapping
     public @ResponseBody ResponseEntity<ApiResponse> test(@RequestHeader String authorization) {
         ApiResponse response = new ApiResponse();
