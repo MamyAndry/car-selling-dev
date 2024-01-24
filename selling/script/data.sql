@@ -67,7 +67,7 @@ INSERT INTO transmission (id_transmission, name) VALUES
 ('TRA0002', 'Manual'),
 ('TRA0003', 'Semi-automatic');
 
-INSERT INTO users (id_users, gender, username, name, first_name, birthdate, email, password, is_admin) VALUES 
+INSERT INTO users (id_users, gender, username, name, first_name, birthdate, email, password, is_admin) VALUES
 ('USR0001', 0, 'mhr_di', 'Diana', 'Rakotomaharo', '2004-12-16', 'dianarakoto9@gmail.com', '1234567huit', true),
 ('USR0002', 1, 'mmms', 'Mamisoa', 'Ratsimbazafy', '2002-04-24', 'rmams@gmail.com', 'mamisoa', false);
 
@@ -101,4 +101,11 @@ INSERT INTO Favoris (id_favoris, id_annonce, id_users) VALUES
 (default, 'ANN0003', 'USR0001'),
 (default, 'ANN0004', 'USR0002'),
 (default, 'ANN0005', 'USR0001');
+(default, 'Automatic'),
+(default, 'Manual'),
+(default, 'Semi-automatic');
+
+INSERT INTO Car(id_car, dour_number, kilometrage, status, colorm id_transmission, id_model_motor, id_model_fuel_type, id_users, id_model, id_car_status, id_model_gear_box) VALUES
+(default, )
+
 
