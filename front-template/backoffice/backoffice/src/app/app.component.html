@@ -1,5 +1,7 @@
 
-<!DOCTYPE html>
+
+@if(!isLoginPage){
+  <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -158,15 +160,7 @@
 </body>
 
   </html>
-    <!-- Bootstrap core JavaScript-->
-    <script src="http://localhost:4200/assets/js/jquery.min.js"></script>
-    <script src="http://localhost:4200/assets/js/popper.min.js"></script>
-    <script src="http://localhost:4200/assets/js/bootstrap.min.js"></script>
-
-   <!-- simplebar js -->
-    <script src="http://localhost:4200/assets/plugins/simplebar/js/simplebar.js"></script>
-    <!-- sidebar-menu js -->
-    <script src="http://localhost:4200/assets/js/sidebar-menu.js"></script>
-
-    <!-- Custom scripts -->
-    <script src="http://localhost:4200/assets/js/app-script.js"></script>
+}
+@else {
+  <router-outlet></router-outlet>
+}
