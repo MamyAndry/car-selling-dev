@@ -2,6 +2,7 @@ package carselling.selling.controller;
 
 
 import carselling.selling.repository.FuelTypeRepository;
+import carselling.selling.response.ApiResponse;
 import carselling.selling.service.Service;
 import carselling.selling.entity.FuelType;
 import org.springframework.http.*;
@@ -21,16 +22,40 @@ public class FuelTypeController
 
 	@PostMapping()
 	public ResponseEntity<?> save(@RequestBody FuelType fuelType){
-		fuelType.setIdFuelType(Service.getPK("FUT", repository.getNextSequenceValue(), 7));
-	 	return ResponseEntity.ok(repository.save(fuelType));
+		ApiResponse response = new ApiResponse();
+		try{
+			fuelType.setIdFuelType(Service.getPK("FUT", repository.getNextSequenceValue(), 7));
+			repository.save(fuelType);
+			response.addData("data", "Inserted successfully");
+			return ResponseEntity.ok(response);
+		}catch(Exception e){
+			response.addError("error", e.getCause().getMessage());
+			return ResponseEntity.ok(response);
+		}
 	}
 	@PutMapping()
 	public ResponseEntity<?> update(@RequestBody FuelType fuelType){
-	 	return ResponseEntity.ok(repository.save(fuelType));
+		ApiResponse response = new ApiResponse();
+		try{
+			repository.save(fuelType);
+			response.addData("data", "Updated successfully");
+			return ResponseEntity.ok(response);
+		}catch(Exception e){
+			response.addError("error", e.getCause().getMessage());
+			return ResponseEntity.ok(response);
+		}
 	}
 	@DeleteMapping()
-	public void delete(@RequestBody FuelType fuelType){
-	 	repository.delete(fuelType);
+	public ResponseEntity<?> delete(@RequestBody FuelType fuelType){
+		ApiResponse response = new ApiResponse();
+		try{
+			repository.delete(fuelType);
+			response.addData("data", "Deleted successfully");
+			return ResponseEntity.ok(response);
+		}catch(Exception e){
+			response.addError("error", e.getCause().getMessage());
+			return ResponseEntity.ok(response);
+		}
 	}
 	@GetMapping()
 	public ResponseEntity<?> findAll(){

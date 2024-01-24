@@ -2,6 +2,7 @@ package carselling.selling.controller;
 
 
 import carselling.selling.repository.CommissionRepository;
+import carselling.selling.response.ApiResponse;
 import carselling.selling.entity.Commission;
 import org.springframework.http.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,16 +19,40 @@ public class CommissionController
 
 
 	@PostMapping()
-	public ResponseEntity<Commission> save(@RequestBody Commission commission){
-	 	return ResponseEntity.ok(repository.save(commission));
+	public ResponseEntity<?> save(@RequestBody Commission commission){
+		ApiResponse response = new ApiResponse();
+		try{
+			repository.save(commission);
+			response.addData("data", "Inserted successfully");
+			return ResponseEntity.ok(response);
+		}catch(Exception e){
+			response.addError("error", e.getCause().getMessage());
+			return ResponseEntity.ok(response);
+		}
 	}
 	@PutMapping()
-	public ResponseEntity<Commission> update(@RequestBody Commission commission){
-	 	return ResponseEntity.ok(repository.save(commission));
+	public ResponseEntity<?> update(@RequestBody Commission commission){
+		ApiResponse response = new ApiResponse();
+		try{
+			repository.save(commission);
+			response.addData("data", "Updated successfully");
+			return ResponseEntity.ok(response);
+		}catch(Exception e){
+			response.addError("error", e.getCause().getMessage());
+			return ResponseEntity.ok(response);
+		}
 	}
 	@DeleteMapping()
-	public void delete(@RequestBody Commission commission){
-	 	repository.delete(commission);
+		public ResponseEntity<?> delete(@RequestBody Commission commission){
+		ApiResponse response = new ApiResponse();
+		try{
+			repository.delete(commission);
+			response.addData("data", "Deleted successfully");
+			return ResponseEntity.ok(response);
+		}catch(Exception e){
+			response.addError("error", e.getCause().getMessage());
+			return ResponseEntity.ok(response);
+		}
 	}
 	@GetMapping()
 	public ResponseEntity<Iterable<Commission>> findAll(){
