@@ -32,6 +32,8 @@ public class User {
     Integer gender;
     @Column(name = "is_admin")
     boolean isAdmin;
+    @Column(name = "date_registration")
+    Date dateRegistration;
 
     public String getId() {
         return id;
@@ -99,5 +101,12 @@ public class User {
             throw new UserException("Please check your password");
         }
     }
+    public Date getDateRegistration() {
+        return dateRegistration;
+    }
+    public void setDateRegistration(Date dateRegistration) {
+        this.dateRegistration = dateRegistration;
+    }
+    
 
 }

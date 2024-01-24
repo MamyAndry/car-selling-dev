@@ -1,61 +1,57 @@
 package carselling.selling.entity;
 
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
-import java.math.BigDecimal;
 
 
 @Entity
 @Table(name = "car")
 public class Car {
 
-
+	@Column(name = "id_transmission")
+	String idTransmission;
+	@Column(name = "id_model_fuel_type")
+	Integer idModelFuelType;
+	@Column(name = "door_number")
+	Integer doorNumber;
+	@Column(name = "color")
+	String color;
+	@Column(name = "id_model_motor")
+	Integer idModelMotor;
+	@Column(name = "kilometrage")
+	Double kilometrage;
+	@Column(name = "id_car_status")
+	Integer idCarStatus;
+	@Column(name = "id_users")
+	String idUsers;
 	@Id
 	@Column(name = "id_car")
 	String idCar;
-	@ManyToOne
-	@JoinColumn(name = "id_transmission")
-	Transmission transmission;
-	@ManyToOne
-	@JoinColumn(name = "id_model_fuel_type")
-	ModelFuelType modelFuelType;
-	@Column(name = "door_number")
-	Integer doorNumber;
-	@ManyToOne
-	@JoinColumn(name = "id_model_motor")
-	ModelMotor modelMotor;
-	@Column(name = "kilometrage")
-	BigDecimal kilometrage;
-	@Column(name = "id_car_status")
-	Integer idCarStatus;
-	@ManyToOne
-	@JoinColumn(name = "id_users")
-	User user;
-	@ManyToOne
-	@JoinColumn(name = "id_model_gear_box")
-	ModelGearBox modelGearBox;
-	@Column(name = "status")
-	Integer status;
-	@ManyToOne
-	@JoinColumn(name = "id_model")
-	Model model;
-	@Column
-	String color;
+	@Column(name = "id_model_gear_box")
+	Integer idModelGearBox;
+	@Column(name = "id_model")
+	String idModel;
+
+
+
 
 	public Car(){}
 
-	public Transmission getTransmission(){
-		return this.transmission;
+	public String getIdTransmission(){
+		return this.idTransmission;
 	}
-	public void setTransmission(Transmission transmission){
-		this.transmission = transmission;
+	public void setIdTransmission(String idTransmission){
+		this.idTransmission = idTransmission;
 	}
-	public ModelFuelType getModelFuelType(){
-		return this.modelFuelType;
+	public Integer getIdModelFuelType(){
+		return this.idModelFuelType;
 	}
-	public void setModelFuelType(ModelFuelType modelFuelType){
-		this.modelFuelType = modelFuelType;
+	public void setIdModelFuelType(Integer idModelFuelType){
+		this.idModelFuelType = idModelFuelType;
 	}
 	public Integer getDoorNumber(){
 		return this.doorNumber;
@@ -63,16 +59,22 @@ public class Car {
 	public void setDoorNumber(Integer doorNumber){
 		this.doorNumber = doorNumber;
 	}
-	public ModelMotor getModelMotor(){
-		return this.modelMotor;
+	public String getColor(){
+		return this.color;
 	}
-	public void setModelMotor(ModelMotor modelMotor){
-		this.modelMotor = modelMotor;
+	public void setColor(String color){
+		this.color = color;
 	}
-	public BigDecimal getKilometrage(){
+	public Integer getIdModelMotor(){
+		return this.idModelMotor;
+	}
+	public void setIdModelMotor(Integer idModelMotor){
+		this.idModelMotor = idModelMotor;
+	}
+	public Double getKilometrage(){
 		return this.kilometrage;
 	}
-	public void setKilometrage(BigDecimal kilometrage){
+	public void setKilometrage(Double kilometrage){
 		this.kilometrage = kilometrage;
 	}
 	public Integer getIdCarStatus(){
@@ -81,11 +83,11 @@ public class Car {
 	public void setIdCarStatus(Integer idCarStatus){
 		this.idCarStatus = idCarStatus;
 	}
-	public User getUser(){
-		return this.user;
+	public String getIdUsers(){
+		return this.idUsers;
 	}
-	public void setIdUsers(User users){
-		this.user = users;
+	public void setIdUsers(String idUsers){
+		this.idUsers = idUsers;
 	}
 	public String getIdCar(){
 		return this.idCar;
@@ -93,29 +95,18 @@ public class Car {
 	public void setIdCar(String idCar){
 		this.idCar = idCar;
 	}
-	public ModelGearBox getModelGearBox(){
-		return this.modelGearBox;
+	public Integer getIdModelGearBox(){
+		return this.idModelGearBox;
 	}
-	public void setIdModelGearBox(ModelGearBox modelGearBox){
-		this.modelGearBox = modelGearBox;
+	public void setIdModelGearBox(Integer idModelGearBox){
+		this.idModelGearBox = idModelGearBox;
 	}
-	public Integer getStatus(){
-		return this.status;
+	public String getIdModel(){
+		return this.idModel;
 	}
-	public void setStatus(Integer status){
-		this.status = status;
+	public void setIdModel(String idModel){
+		this.idModel = idModel;
 	}
-	public Model getModel(){
-		return this.model;
-	}
-	public void setModel(Model model){
-		this.model = model;
-	}
-	public String getColor(){
-		return this.color;
-	}
-	public void setColor(String color){
-		this.color = color;
-	}
+
 
 }

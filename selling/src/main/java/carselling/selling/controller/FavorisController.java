@@ -19,11 +19,11 @@ public class FavorisController
 
 
 	@PostMapping()
-	public ResponseEntity<Favoris> save(@RequestBody Favoris favoris){
+	public ResponseEntity<?> save(@RequestBody Favoris favoris){
 	 	return ResponseEntity.ok(repository.save(favoris));
 	}
 	@PutMapping()
-	public ResponseEntity<Favoris> update(@RequestBody Favoris favoris){
+	public ResponseEntity<?> update(@RequestBody Favoris favoris){
 	 	return ResponseEntity.ok(repository.save(favoris));
 	}
 	@DeleteMapping()
@@ -31,7 +31,7 @@ public class FavorisController
 	 	repository.delete(favoris);
 	}
 	@GetMapping()
-	public ResponseEntity<Iterable<Favoris>> findAll(){
+	public ResponseEntity<?> findAll(){
 	 	return ResponseEntity.ok(repository.findAll());
 	}
 
