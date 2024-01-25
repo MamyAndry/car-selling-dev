@@ -57,15 +57,6 @@ CREATE TABLE users(
    PRIMARY KEY(id_users)
 );
 
-CREATE TABLE Message(
-   id_message VARCHAR(50) ,
-   sender VARCHAR(50) ,
-   recipient VARCHAR(50) ,
-   content VARCHAR(255) ,
-   date_send TIMESTAMP,
-   PRIMARY KEY(id_message)
-);
-
 CREATE TABLE model_gear_box(
    id_model_gear_box SERIAL,
    id_model VARCHAR(50) ,
