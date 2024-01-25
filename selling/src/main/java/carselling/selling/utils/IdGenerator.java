@@ -20,7 +20,7 @@ import org.springframework.beans.factory.annotation.Configurable;
  * @author sarobidy
  */
 public class IdGenerator implements IdentifierGenerator, Configurable {
-          
+
           String prefix;
           String sequence;
           Integer max_length;
@@ -32,7 +32,7 @@ public class IdGenerator implements IdentifierGenerator, Configurable {
           public void setMax_length(Integer max_length) {
                     this.max_length = max_length;
           }
-      
+
           public String getSequence() {
                     return sequence;
           }
@@ -40,7 +40,7 @@ public class IdGenerator implements IdentifierGenerator, Configurable {
           public void setSequence(String sequence) {
                     this.sequence = sequence;
           }
-          
+
           public String getPrefix() {
                     return prefix;
           }
@@ -62,7 +62,7 @@ public class IdGenerator implements IdentifierGenerator, Configurable {
                               throw new HibernateException(e);
                     }
           }
-          
+
           String fillZero( Integer id ){
                     String id_string = String.valueOf(id);
                     int required = max_length - id_string.length() - this.getPrefix().length();
@@ -70,7 +70,7 @@ public class IdGenerator implements IdentifierGenerator, Configurable {
                              id_string = "0" + id_string;
                    }
                    return id_string;
-                  
+
           }
 
           @Override
@@ -104,7 +104,7 @@ public class IdGenerator implements IdentifierGenerator, Configurable {
           public Class<? extends Annotation> annotationType() {
                     throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
           }
-          
-          
-          
+
+
+
 }
