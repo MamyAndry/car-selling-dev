@@ -7,7 +7,5 @@ import org.springframework.data.jpa.repository.Query;
 
 
 public interface ModelRepository extends CrudRepository<Model, String> {
-    @Query("SELECT nextval('seq_model')")
-    int getNextSequenceValue();
 
 }

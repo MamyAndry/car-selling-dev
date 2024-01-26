@@ -1,10 +1,9 @@
 package carselling.selling.controller;
 
 
-import carselling.selling.repository.CategoryRepository;
+import carselling.selling.repository.OriginRepository;
 import carselling.selling.response.ApiResponse;
-import carselling.selling.service.Service;
-import carselling.selling.entity.Category;
+import carselling.selling.entity.Origin;
 import org.springframework.http.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,50 +11,49 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-@RequestMapping(path = "category")
-public class CategoryController
+@RequestMapping(path = "origin")
+public class OriginController
  {
 
 	@Autowired
-	private CategoryRepository repository;
+	private OriginRepository repository;
 
 
 	@PostMapping()
-	public ResponseEntity<?> save(@RequestBody Category category){
+	public ResponseEntity<?> save(@RequestBody Origin origin){
 		ApiResponse response = new ApiResponse();
 		try{
-			category.setIdCategory(Service.getPK("CAT", repository.getNextSequenceValue(), 7));
-			repository.save(category);
+			repository.delete(origin);
 			response.addData("data", "Inserted successfully");
 			return ResponseEntity.ok(response);
 		}catch(Exception e){
 			response.addError("error", e.getCause().getMessage());
 			return ResponseEntity.ok(response);
-		}
+		}	
 	}
 	@PutMapping()
-	public ResponseEntity<?> update(@RequestBody Category category){    
+	public ResponseEntity<?> update(@RequestBody Origin origin){
 		ApiResponse response = new ApiResponse();
 		try{
-			repository.save(category);
+			repository.delete(origin);
 			response.addData("data", "Updated successfully");
 			return ResponseEntity.ok(response);
 		}catch(Exception e){
 			response.addError("error", e.getCause().getMessage());
 			return ResponseEntity.ok(response);
-		}
+		}	
 	}
 	@DeleteMapping()
-	public ResponseEntity<?> delete(@RequestBody Category category){
+	public ResponseEntity<?> delete(@RequestBody Origin origin){
 		ApiResponse response = new ApiResponse();
 		try{
-			repository.delete(category);
+			repository.delete(origin);
 			response.addData("data", "Deleted successfully");
 			return ResponseEntity.ok(response);
 		}catch(Exception e){
 			response.addError("error", e.getCause().getMessage());
 			return ResponseEntity.ok(response);
-		}
+		}	
 	}
 	@GetMapping()
 	public ResponseEntity<?> findAll(){
@@ -80,6 +78,8 @@ public class CategoryController
 			return ResponseEntity.ok(response);
 		}
 	}
+
+
 
 
 

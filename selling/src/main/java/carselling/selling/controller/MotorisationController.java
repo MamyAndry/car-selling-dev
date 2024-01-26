@@ -24,7 +24,6 @@ public class MotorisationController
 	public ResponseEntity<?> save(@RequestBody Motorisation motorisation){
 		ApiResponse response = new ApiResponse();
 		try{
-			motorisation.setIdMotorisation(Service.getPK("MOT", repository.getNextSequenceValue(), 7));
 			repository.save(motorisation);
 			response.addData("data", "Inserted successfully");
 			return ResponseEntity.ok(response);
@@ -65,9 +64,20 @@ public class MotorisationController
 		}catch(Exception e){
 			response.addError("error", e.getCause().getMessage());
 			return ResponseEntity.ok(response);
-		}	}
+		}	
+	}
 
-
+	@GetMapping("{id}")
+	public ResponseEntity<?> findById(@PathVariable String id){
+		ApiResponse response = new ApiResponse();
+		try{
+			response.addData("data", repository.findById(id));
+			return ResponseEntity.ok(response);
+		}catch(Exception e){
+			response.addError("error", e.getCause().getMessage());
+			return ResponseEntity.ok(response);
+		}
+	}
 
 
 

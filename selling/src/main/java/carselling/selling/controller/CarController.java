@@ -22,7 +22,6 @@ public class CarController{
 	public ResponseEntity<?> save(@RequestBody Car car){	
 		ApiResponse response = new ApiResponse();
 		try{
-			car.setIdCar(Service.getPK("CAR", repository.getNextSequenceValue(), 8));
 			repository.save(car);
 			response.addData("data", car);
 			return  ResponseEntity.ok(response);
@@ -60,6 +59,18 @@ public class CarController{
 		ApiResponse response = new ApiResponse();
 		try{
 			response.addData("data", repository.findAll());
+			return ResponseEntity.ok(response);
+		}catch(Exception e){
+			response.addError("error", e.getCause().getMessage());
+			return ResponseEntity.ok(response);
+		}
+	}
+	
+	@GetMapping("{id}")
+	public ResponseEntity<?> findById(@PathVariable String id){
+		ApiResponse response = new ApiResponse();
+		try{
+			response.addData("data", repository.findById(id));
 			return ResponseEntity.ok(response);
 		}catch(Exception e){
 			response.addError("error", e.getCause().getMessage());

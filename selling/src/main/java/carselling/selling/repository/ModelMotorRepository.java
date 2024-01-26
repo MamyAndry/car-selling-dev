@@ -7,13 +7,4 @@ import org.springframework.data.jpa.repository.Query;
 
 
 public interface ModelMotorRepository extends CrudRepository<ModelMotor, Integer> {
-
-
-
-
-
-
-
-
-
 }

@@ -7,7 +7,4 @@ import org.springframework.data.jpa.repository.Query;
 
 
 public interface MotorisationRepository extends CrudRepository<Motorisation, String> {
-    @Query("SELECT nextval('seq_gear')")
-    int getNextSequenceValue();
-
 }

@@ -3,11 +3,18 @@ package carselling.selling.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
+import carselling.selling.utils.IdGenerator;
 
 
 @Entity
@@ -19,6 +26,13 @@ public class Vente {
 	@Column(name = "price_payed")
 	Double pricePayed;
 	@Id
+		@GenericGenerator(name = "custom-id", type = IdGenerator.class,
+	parameters = {
+		@Parameter(name = "prefix", value = "SAL"),
+		@Parameter(name = "sequence", value = "seq_vente"),
+		@Parameter(name = "max_length", value = "7")
+	})
+	@GeneratedValue(generator = "custom-id", strategy = GenerationType.IDENTITY)
 	@Column(name = "id_vente")
 	String idVente;
 	@Column(name = "date_sell")

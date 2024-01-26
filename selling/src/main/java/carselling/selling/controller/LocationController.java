@@ -1,10 +1,9 @@
 package carselling.selling.controller;
 
 
-import carselling.selling.repository.CategoryRepository;
+import carselling.selling.repository.LocationRepository;
 import carselling.selling.response.ApiResponse;
-import carselling.selling.service.Service;
-import carselling.selling.entity.Category;
+import carselling.selling.entity.Location;
 import org.springframework.http.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,50 +11,49 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-@RequestMapping(path = "category")
-public class CategoryController
+@RequestMapping(path = "location")
+public class LocationController
  {
 
 	@Autowired
-	private CategoryRepository repository;
+	private LocationRepository repository;
 
 
 	@PostMapping()
-	public ResponseEntity<?> save(@RequestBody Category category){
+	public ResponseEntity<?> save(@RequestBody Location location){
 		ApiResponse response = new ApiResponse();
 		try{
-			category.setIdCategory(Service.getPK("CAT", repository.getNextSequenceValue(), 7));
-			repository.save(category);
+			repository.delete(location);
 			response.addData("data", "Inserted successfully");
 			return ResponseEntity.ok(response);
 		}catch(Exception e){
 			response.addError("error", e.getCause().getMessage());
 			return ResponseEntity.ok(response);
-		}
+		}	
 	}
 	@PutMapping()
-	public ResponseEntity<?> update(@RequestBody Category category){    
+	public ResponseEntity<?> update(@RequestBody Location location){
 		ApiResponse response = new ApiResponse();
 		try{
-			repository.save(category);
+			repository.delete(location);
 			response.addData("data", "Updated successfully");
 			return ResponseEntity.ok(response);
 		}catch(Exception e){
 			response.addError("error", e.getCause().getMessage());
 			return ResponseEntity.ok(response);
-		}
+		}	
 	}
 	@DeleteMapping()
-	public ResponseEntity<?> delete(@RequestBody Category category){
+	public ResponseEntity<?>  delete(@RequestBody Location location){
 		ApiResponse response = new ApiResponse();
 		try{
-			repository.delete(category);
+			repository.delete(location);
 			response.addData("data", "Deleted successfully");
 			return ResponseEntity.ok(response);
 		}catch(Exception e){
 			response.addError("error", e.getCause().getMessage());
 			return ResponseEntity.ok(response);
-		}
+		}	
 	}
 	@GetMapping()
 	public ResponseEntity<?> findAll(){
@@ -80,7 +78,5 @@ public class CategoryController
 			return ResponseEntity.ok(response);
 		}
 	}
-
-
 
 }

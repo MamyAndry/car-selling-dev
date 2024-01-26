@@ -24,8 +24,6 @@ public class GearBoxController
 	public ResponseEntity<?> save(@RequestBody GearBox gearBox){
 		ApiResponse response = new ApiResponse();
 		try{
-			
-			gearBox.setIdGearBox(Service.getPK("GEAR", repository.getNextSequenceValue(), 8));
 			repository.save(gearBox);
 			response.addData("data", "Inserted successfully");
 			return ResponseEntity.ok(response);
@@ -63,6 +61,18 @@ public class GearBoxController
 		ApiResponse response = new ApiResponse();
 		try{
 			response.addData("data", repository.findAll());
+			return ResponseEntity.ok(response);
+		}catch(Exception e){
+			response.addError("error", e.getCause().getMessage());
+			return ResponseEntity.ok(response);
+		}
+	}
+
+	@GetMapping("{id}")
+	public ResponseEntity<?> findById(@PathVariable String id){
+		ApiResponse response = new ApiResponse();
+		try{
+			response.addData("data", repository.findById(id));
 			return ResponseEntity.ok(response);
 		}catch(Exception e){
 			response.addError("error", e.getCause().getMessage());

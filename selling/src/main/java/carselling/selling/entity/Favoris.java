@@ -1,6 +1,9 @@
 package carselling.selling.entity;
 
 
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+import carselling.selling.utils.IdGenerator;
 
 
 @Entity
@@ -19,9 +23,15 @@ public class Favoris {
 	@Column(name = "id_users")
 	String idUsers;
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GenericGenerator(name = "custom-id", type = IdGenerator.class,
+	parameters = {
+		@Parameter(name = "prefix", value = "FAV"),
+		@Parameter(name = "sequence", value = "seq_favoris"),
+		@Parameter(name = "max_length", value = "7")
+	})
+	@GeneratedValue(generator = "custom-id", strategy = GenerationType.IDENTITY)
 	@Column(name = "id_favoris")
-	Integer idFavoris;
+	String idFavoris;
 
 
 
@@ -40,10 +50,10 @@ public class Favoris {
 	public void setIdUsers(String idUsers){
 		this.idUsers = idUsers;
 	}
-	public Integer getIdFavoris(){
+	public String getIdFavoris(){
 		return this.idFavoris;
 	}
-	public void setIdFavoris(Integer idFavoris){
+	public void setIdFavoris(String idFavoris){
 		this.idFavoris = idFavoris;
 	}
 

@@ -6,6 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.jpa.repository.Query;
 
 
-public interface FundRepository extends CrudRepository<Fund, Integer> {
+public interface FundRepository extends CrudRepository<Fund, String> {
 
 }
