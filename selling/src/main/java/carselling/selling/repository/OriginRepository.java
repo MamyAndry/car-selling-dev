@@ -1,11 +1,19 @@
 package carselling.selling.repository;
 
 
-import carselling.selling.entity.GearBox;
+import carselling.selling.entity.Origin;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.jpa.repository.Query;
 
 
-public interface GearBoxRepository extends CrudRepository<GearBox, String> {
+public interface OriginRepository extends CrudRepository<Origin, String> {
+
+
+
+
+
+
+
+
 
 }

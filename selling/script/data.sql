@@ -107,6 +107,6 @@ INSERT INTO Favoris (id_favoris, id_annonce, id_users) VALUES
 (default, 'ANN0005', 'USR0001');
 
 INSERT INTO commission(id_commission, boundary_inferior, boundary_superior, percentage) VALUES
-    (default, 0, 15000.00, 15),
-    (default, 15000.00, 30000.00, 20),
-    (default, 30000.00, 50000.00, 30);
+(default, 0, 15000.00, 15),
+(default, 15000.00, 30000.00, 20),
+(default, 30000.00, 50000.00, 30);

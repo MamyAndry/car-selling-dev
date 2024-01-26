@@ -8,12 +8,4 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface ModelFuelTypeRepository extends CrudRepository<ModelFuelType, Integer> {
 
-
-
-
-
-
-
-
-
 }

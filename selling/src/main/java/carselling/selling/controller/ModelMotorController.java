@@ -66,7 +66,17 @@ public class ModelMotorController
 		}
 	}
 
-
+	@GetMapping("{id}")
+	public ResponseEntity<?> findById(@PathVariable int id){
+		ApiResponse response = new ApiResponse();
+		try{
+			response.addData("data", repository.findById(id));
+			return ResponseEntity.ok(response);
+		}catch(Exception e){
+			response.addError("error", e.getCause().getMessage());
+			return ResponseEntity.ok(response);
+		}
+	}
 
 
 

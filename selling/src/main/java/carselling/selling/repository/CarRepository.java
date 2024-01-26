@@ -7,6 +7,4 @@ import org.springframework.data.jpa.repository.Query;
 
 
 public interface CarRepository extends CrudRepository<Car, String> {
-    @Query("SELECT nextval('seq_car')")
-    int getNextSequenceValue();
 }

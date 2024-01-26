@@ -1,11 +1,17 @@
 package carselling.selling.entity;
 
 
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+import carselling.selling.utils.IdGenerator;
 
 
 @Entity
@@ -29,6 +35,13 @@ public class Car {
 	@Column(name = "id_users")
 	String idUsers;
 	@Id
+	@GenericGenerator(name = "custom-id", type = IdGenerator.class,
+	parameters = {
+		@Parameter(name = "prefix", value = "CAR"),
+		@Parameter(name = "sequence", value = "seq_car"),
+		@Parameter(name = "max_length", value = "7")
+	})
+	@GeneratedValue(generator = "custom-id", strategy = GenerationType.IDENTITY)
 	@Column(name = "id_car")
 	String idCar;
 	@Column(name = "id_model_gear_box")

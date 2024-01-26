@@ -3,17 +3,30 @@ package carselling.selling.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 import java.sql.Timestamp;
 
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
+import carselling.selling.utils.IdGenerator;
 
 @Entity
 @Table(name = "annonce")
 public class Annonce {
 
 	@Id
+	@GenericGenerator(name = "custom-id", type = IdGenerator.class,
+	parameters = {
+		@Parameter(name = "prefix", value = "ANN"),
+		@Parameter(name = "sequence", value = "seq_annonce"),
+		@Parameter(name = "max_length", value = "7")
+	})
+	@GeneratedValue(generator = "custom-id", strategy = GenerationType.IDENTITY)
 	@Column(name = "id_annonce")
 	String idAnnonce;
 	@Column(name = "date_add", columnDefinition = "TIMESTAMP")

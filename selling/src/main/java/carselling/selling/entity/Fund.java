@@ -10,6 +10,10 @@ import jakarta.persistence.Table;
 
 import java.sql.Date;
 
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+import carselling.selling.utils.IdGenerator;
+
 
 @Entity
 @Table(name = "fund")
@@ -19,10 +23,16 @@ public class Fund {
 	Date dateAdd;
 	@Column(name = "rising")
 	Double rising;
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id	
+	@GenericGenerator(name = "custom-id", type = IdGenerator.class,
+	parameters = {
+		@Parameter(name = "prefix", value = "FND"),
+		@Parameter(name = "sequence", value = "seq_fund"),
+		@Parameter(name = "max_length", value = "7")
+	})
+	@GeneratedValue(generator = "custom-id", strategy = GenerationType.IDENTITY)
 	@Column(name = "id_fund")
-	Integer idFund;
+	String idFund;
 	@Column(name = "id_vente")
 	String idVente;
 
@@ -46,10 +56,10 @@ public class Fund {
 		}
 		this.rising = rising;
 	}
-	public Integer getIdFund(){
+	public String getIdFund(){
 		return this.idFund;
 	}
-	public void setIdFund(Integer idFund){
+	public void setIdFund(String idFund){
 		this.idFund = idFund;
 	}
 	public String getIdVente(){

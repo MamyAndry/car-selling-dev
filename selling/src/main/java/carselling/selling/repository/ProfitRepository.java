@@ -6,14 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.jpa.repository.Query;
 
 
-public interface ProfitRepository extends CrudRepository<Profit, Integer> {
-
-
-
-
-
-
-
-
+public interface ProfitRepository extends CrudRepository<Profit, String> {
 
 }

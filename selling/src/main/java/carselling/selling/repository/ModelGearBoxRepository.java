@@ -8,12 +8,4 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface ModelGearBoxRepository extends CrudRepository<ModelGearBox, Integer> {
 
-
-
-
-
-
-
-
-
 }

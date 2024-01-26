@@ -22,7 +22,6 @@ public class ModelController{
 	public ResponseEntity<?> save(@RequestBody Model model){
 		ApiResponse response = new ApiResponse();
 		try{
-			model.setIdModel(Service.getPK("MDL", repository.getNextSequenceValue(), 7));
 			repository.save(model);
 			response.addData("data", "Inserted successfully");
 			return ResponseEntity.ok(response);
@@ -66,7 +65,17 @@ public class ModelController{
 		}
 	}
 
-
+	@GetMapping("{id}")
+	public ResponseEntity<?> findById(@PathVariable String id){
+		ApiResponse response = new ApiResponse();
+		try{
+			response.addData("data", repository.findById(id));
+			return ResponseEntity.ok(response);
+		}catch(Exception e){
+			response.addError("error", e.getCause().getMessage());
+			return ResponseEntity.ok(response);
+		}
+	}
 
 
 

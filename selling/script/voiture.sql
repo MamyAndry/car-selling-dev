@@ -4,12 +4,6 @@ CREATE TABLE Category(
    PRIMARY KEY(id_category)
 );
 
-CREATE TABLE Brand(
-   id_brand VARCHAR(50) ,
-   name VARCHAR(50) ,
-   PRIMARY KEY(id_brand)
-);
-
 CREATE TABLE Fuel_type(
    id_fuel_type VARCHAR(50) ,
    name VARCHAR(50) ,
@@ -20,16 +14,6 @@ CREATE TABLE Motorisation(
    id_motorisation VARCHAR(50) ,
    name VARCHAR(50) ,
    PRIMARY KEY(id_motorisation)
-);
-
-CREATE TABLE Model(
-   id_model VARCHAR(50) ,
-   name VARCHAR(50) ,
-   id_brand VARCHAR(50)  NOT NULL,
-   id_category VARCHAR(50)  NOT NULL,
-   PRIMARY KEY(id_model),
-   FOREIGN KEY(id_brand) REFERENCES Brand(id_brand),
-   FOREIGN KEY(id_category) REFERENCES Category(id_category)
 );
 
 CREATE TABLE Car_status(
@@ -44,34 +28,67 @@ CREATE TABLE Gear_box(
    PRIMARY KEY(id_gear_box)
 );
 
-CREATE TABLE users(
+CREATE TABLE Users(
    id_users VARCHAR(50) ,
-   gender INTEGER,
-   username VARCHAR(50) ,
    name VARCHAR(50) ,
    first_name VARCHAR(50) ,
-<<<<<<< Updated upstream
-   birthdate date,
-=======
-   birthdate DATE,
->>>>>>> Stashed changes
+   birth_date DATE,
    email VARCHAR(50) ,
    password VARCHAR(50) ,
    is_admin BOOLEAN,
+   date_registration DATE,
    PRIMARY KEY(id_users)
 );
 
--- CREATE TABLE Message(
---    id_message VARCHAR(50) ,
---    sender VARCHAR(50) ,
---    recipient VARCHAR(50) ,
---    content VARCHAR(255) ,
---    date_send TIMESTAMP,
---    PRIMARY KEY(id_message)
--- );
+CREATE TABLE Commission(
+   id_commission SERIAL,
+   boundary_inferior DOUBLE PRECISION,
+   boundary_superior DOUBLE PRECISION,
+   percentage_ INTEGER,
+   PRIMARY KEY(id_commission)
+);
+
+CREATE TABLE profit(
+   id_profit SERIAL,
+   rising DOUBLE PRECISION,
+   date_add DATE,
+   id_users VARCHAR(50)  NOT NULL,
+   PRIMARY KEY(id_profit),
+   FOREIGN KEY(id_users) REFERENCES Users(id_users)
+);
+
+CREATE TABLE Origin(
+   id_origin VARCHAR(10) ,
+   name VARCHAR(50) ,
+   PRIMARY KEY(id_origin)
+);
+
+CREATE TABLE Location(
+   id_location VARCHAR(50) ,
+   name VARCHAR(50) ,
+   PRIMARY KEY(id_location)
+);
+
+CREATE TABLE Brand(
+   id_brand VARCHAR(50) ,
+   name VARCHAR(50) ,
+   id_origin VARCHAR(10)  NOT NULL,
+   PRIMARY KEY(id_brand),
+   FOREIGN KEY(id_origin) REFERENCES Origin(id_origin)
+);
+
+CREATE TABLE Model(
+   id_model VARCHAR(50) ,
+   name VARCHAR(50) ,
+   id_brand VARCHAR(50)  NOT NULL,
+   id_category VARCHAR(50)  NOT NULL,
+   PRIMARY KEY(id_model),
+   FOREIGN KEY(id_brand) REFERENCES Brand(id_brand),
+   FOREIGN KEY(id_category) REFERENCES Category(id_category)
+);
 
 CREATE TABLE model_gear_box(
-   id_model_gear_box SERIAL,
+   id_model_gear_box VARCHAR(50) ,
    id_model VARCHAR(50) ,
    id_gear_box VARCHAR(50) ,
    PRIMARY KEY(id_model_gear_box),
@@ -80,7 +97,7 @@ CREATE TABLE model_gear_box(
 );
 
 CREATE TABLE model_motor(
-   id_model_motor SERIAL,
+   id_model_motor VARCHAR(50) ,
    id_model VARCHAR(50) ,
    id_motorisation VARCHAR(50) ,
    PRIMARY KEY(id_model_motor),
@@ -89,7 +106,7 @@ CREATE TABLE model_motor(
 );
 
 CREATE TABLE model_fuel_type(
-   id_model_fuel_type SERIAL,
+   id_model_fuel_type VARCHAR(50) ,
    id_model VARCHAR(50)  NOT NULL,
    id_fuel_type VARCHAR(50) ,
    PRIMARY KEY(id_model_fuel_type),
@@ -97,97 +114,81 @@ CREATE TABLE model_fuel_type(
    FOREIGN KEY(id_fuel_type) REFERENCES Fuel_type(id_fuel_type)
 );
 
-CREATE TABLE transmission(
-   id_transmission VARCHAR(50) ,
-   name VARCHAR(50) ,
-   PRIMARY KEY(id_transmission)
-);
-
 CREATE TABLE Car(
    id_car VARCHAR(50) ,
    door_number INTEGER,
-   kilometrage DOUBLE PRECISION,
-   color VARCHAR(50),
-   id_transmission VARCHAR(50) ,
-   id_model_motor INTEGER,
-   id_model_fuel_type INTEGER,
+   kilometrage NUMERIC(15,2)  ,
+   id_model_motor VARCHAR(50) ,
+   id_model_fuel_type VARCHAR(50) ,
    id_users VARCHAR(50)  NOT NULL,
    id_model VARCHAR(50) ,
    id_car_status INTEGER,
-   id_model_gear_box INTEGER,
+   id_model_gear_box VARCHAR(50) ,
    PRIMARY KEY(id_car),
-   FOREIGN KEY(id_transmission) REFERENCES transmission(id_transmission),
    FOREIGN KEY(id_model_motor) REFERENCES model_motor(id_model_motor),
    FOREIGN KEY(id_model_fuel_type) REFERENCES model_fuel_type(id_model_fuel_type),
-   FOREIGN KEY(id_users) REFERENCES users(id_users),
+   FOREIGN KEY(id_users) REFERENCES Users(id_users),
    FOREIGN KEY(id_model) REFERENCES Model(id_model),
    FOREIGN KEY(id_car_status) REFERENCES Car_status(id_car_status),
    FOREIGN KEY(id_model_gear_box) REFERENCES model_gear_box(id_model_gear_box)
 );
 
-CREATE TABLE photo(
-   id VARCHAR(50) ,
-   picture VARCHAR(255) ,
-   id_car VARCHAR(50) ,
+CREATE TABLE Photo(
+   id SERIAL,
+   picture TEXT,
+   id_car VARCHAR(50)  NOT NULL,
    PRIMARY KEY(id),
+   FOREIGN KEY(id_car) REFERENCES Car(id_car)
+);
+
+CREATE TABLE Transmission(
+   id_transmission VARCHAR(50) ,
+   name VARCHAR(50) ,
+   id_car VARCHAR(50) ,
+   PRIMARY KEY(id_transmission),
    FOREIGN KEY(id_car) REFERENCES Car(id_car)
 );
 
 CREATE TABLE Annonce(
    id_annonce VARCHAR(50) ,
-   status INTEGER,
-   price DOUBLE PRECISION  ,
-   description VARCHAR(255),  
    date_add TIMESTAMP,
-   date_validation TIMESTAMP,
+   status INTEGER,
+   price NUMERIC(15,2)  ,
+   id_location VARCHAR(50)  NOT NULL,
    id_car VARCHAR(50) ,
    PRIMARY KEY(id_annonce),
+   UNIQUE(id_car),
+   FOREIGN KEY(id_location) REFERENCES Location(id_location),
    FOREIGN KEY(id_car) REFERENCES Car(id_car)
 );
 
 CREATE TABLE Vente(
    id_vente VARCHAR(50) ,
-   date_sell DATE,
-   price_payed DOUBLE PRECISION,
+   date_sell TIMESTAMP,
+   price_payed NUMERIC(15,2)  ,
+   status INTEGER,
+   date_validation DATE,
    id_annonce VARCHAR(50) ,
    id_users VARCHAR(50) ,
    PRIMARY KEY(id_vente),
    FOREIGN KEY(id_annonce) REFERENCES Annonce(id_annonce),
-   FOREIGN KEY(id_users) REFERENCES users(id_users)
+   FOREIGN KEY(id_users) REFERENCES Users(id_users)
 );
 
 CREATE TABLE Favoris(
    id_favoris SERIAL,
+   id_users VARCHAR(50)  NOT NULL,
    id_annonce VARCHAR(50) ,
-   id_users VARCHAR(50) ,
    PRIMARY KEY(id_favoris),
-   FOREIGN KEY(id_annonce) REFERENCES Annonce(id_annonce),
-   FOREIGN KEY(id_users) REFERENCES users(id_users)
-);
-
-CREATE TABLE commission(
-   id_commission SERIAL PRIMARY KEY,
-   boundary_inferior  DOUBLE PRECISION,
-   boundary_superior  DOUBLE PRECISION,
-   percentage INT
+   FOREIGN KEY(id_users) REFERENCES Users(id_users),
+   FOREIGN KEY(id_annonce) REFERENCES Annonce(id_annonce)
 );
 
 CREATE TABLE fund(
-   id_fund SERIAL PRIMARY KEY,
-   id_vente VARCHAR(50) REFERENCES vente(id_vente),
+   id_fund SERIAL,
    rising DOUBLE PRECISION,
-   date_add DATE
+   date_add DATE,
+   id_vente VARCHAR(50)  NOT NULL,
+   PRIMARY KEY(id_fund),
+   FOREIGN KEY(id_vente) REFERENCES Vente(id_vente)
 );
-
-CREATE TABLE profit(
-   id_profit SERIAL PRIMARY KEY,
-   id_users VARCHAR(50) REFERENCES users(id_users),
-   rising DOUBLE PRECISION,
-   date_add DATE
-);
-
-ALTER TABLE users ADD COLUMN date_registration DATE DEFAULT NOW(); 
-
-ALTER TABLE vente ADD COLUMN status INTEGER DEFAULT 0;
-ALTER TABLE vente ADD COLUMN date_validation DATE DEFAULT NULL;
-ALTER TABLE vente RENAME COLUMN id_users TO id_seller;
