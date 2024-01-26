@@ -1,7 +1,5 @@
 package carselling.selling.service.vente;
 
-import java.sql.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -30,14 +28,15 @@ public class VenteService {
         Double percentage = commissionRepository.getCommissionPercentage(vente.getPricePayed());
         Double commission = (vente.getPricePayed() * percentage) / 100;
         Double risingObtained = vente.getPricePayed() - commission;
+
         Profit profit = new Profit();
         profit.setDateAdd(vente.getDateValidation());
-        profit.setIdUsers(vente.getIdSeller());
+        profit.setUser(vente.getSeller());
         profit.setRising(risingObtained);
 
         Fund fund = new Fund();
         fund.setDateAdd(vente.getDateValidation());
-        fund.setIdVente(vente.getIdVente());
+        fund.setVente(vente);
         fund.setRising(commission);
 
         profitRepository.save(profit);

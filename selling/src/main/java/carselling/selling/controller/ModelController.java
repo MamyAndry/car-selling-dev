@@ -3,7 +3,6 @@ package carselling.selling.controller;
 
 import carselling.selling.repository.ModelRepository;
 import carselling.selling.response.ApiResponse;
-import carselling.selling.service.Service;
 import carselling.selling.entity.Model;
 import org.springframework.http.*;
 import org.springframework.beans.factory.annotation.Autowired;

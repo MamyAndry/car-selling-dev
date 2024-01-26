@@ -1,9 +1,6 @@
 package carselling.selling.repository.statistics;
 
 import carselling.selling.entity.Vente;
-import carselling.selling.entity.statistics.BrandSoldPerYear;
-import carselling.selling.entity.statistics.CarSoldPerMonthForYear;
-import carselling.selling.entity.statistics.CarSoldPerYear;
 import carselling.selling.entity.statistics.FundPerMonthPerYear;
 import carselling.selling.entity.statistics.FundPerYear;
 import carselling.selling.entity.statistics.ProfitPerMonthPerYear;

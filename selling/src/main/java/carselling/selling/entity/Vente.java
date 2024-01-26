@@ -11,7 +11,6 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 import java.sql.Date;
-import java.sql.Timestamp;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
@@ -41,7 +40,7 @@ public class Vente {
 	Date dateSell;
 	@ManyToOne
 	@JoinColumn(name = "id_Users")
-	User user;
+	User seller;
 	@Column
 	Integer status;
 	@Column(name = "date_validation")
@@ -95,12 +94,12 @@ public class Vente {
 		this.dateValidation = dateValidation;
 	}
 
-	public User getUser() {
-		return user;
+	public User getSeller() {
+		return seller;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setSeller(User seller) {
+		this.seller = seller;
 	}
 	
 

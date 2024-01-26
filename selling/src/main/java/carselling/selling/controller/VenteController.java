@@ -3,12 +3,9 @@ package carselling.selling.controller;
 
 import carselling.selling.repository.VenteRepository;
 import carselling.selling.response.ApiResponse;
-import carselling.selling.service.Service;
 import carselling.selling.service.vente.VenteService;
 import carselling.selling.entity.Vente;
 import org.springframework.http.*;
-
-import java.sql.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

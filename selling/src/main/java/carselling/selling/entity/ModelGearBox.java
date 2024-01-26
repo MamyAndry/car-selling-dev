@@ -16,13 +16,13 @@ import jakarta.persistence.Table;
 @Table(name = "model_gear_box")
 public class ModelGearBox {
 
-	@Column(name = "id_gear_box")
-	String idGearBox;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "id_model_gear_box")
+	Integer idModelGearBox;
 	@ManyToOne
-	@JoinColumn(name = "id_model_gear_box")
-	ModelGearBox modelGearBox;
+	@JoinColumn(name = "id_gear_box")
+	GearBox gearBox;
 	@ManyToOne
 	@JoinColumn(name = "id_model")
 	Model model;
@@ -32,12 +32,7 @@ public class ModelGearBox {
 
 	public ModelGearBox(){}
 
-	public String getIdGearBox(){
-		return this.idGearBox;
-	}
-	public void setIdGearBox(String idGearBox){
-		this.idGearBox = idGearBox;
-	}
+	
 
 	public Model getModel() {
 		return model;
@@ -45,6 +40,28 @@ public class ModelGearBox {
 
 	public void setModel(Model model) {
 		this.model = model;
+	}
+
+	public GearBox getGearBox() {
+		return gearBox;
+	}
+
+
+
+	public void setGearBox(GearBox gearBox) {
+		this.gearBox = gearBox;
+	}
+
+
+
+	public Integer getIdModelGearBox() {
+		return idModelGearBox;
+	}
+
+
+
+	public void setIdModelGearBox(Integer idModelGearBox) {
+		this.idModelGearBox = idModelGearBox;
 	}
 
 
