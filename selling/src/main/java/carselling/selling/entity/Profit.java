@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 import java.sql.Date;
@@ -34,8 +36,9 @@ public class Profit {
 	@GeneratedValue(generator = "custom-id", strategy = GenerationType.IDENTITY)
 	@Column(name = "id_profit")
 	String idProfit;
-	@Column(name = "id_users")
-	String idUsers;
+	@ManyToOne
+	@JoinColumn(name = "id_users")
+	User user;
 
 
 
@@ -60,11 +63,13 @@ public class Profit {
 	public void setIdProfit(String idProfit){
 		this.idProfit = idProfit;
 	}
-	public String getIdUsers(){
-		return this.idUsers;
+
+	public User getUser() {
+		return user;
 	}
-	public void setIdUsers(String idUsers){
-		this.idUsers = idUsers;
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 
