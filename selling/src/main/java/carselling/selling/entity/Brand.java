@@ -9,6 +9,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import carselling.selling.utils.IdGenerator;
 
@@ -30,6 +33,9 @@ public class Brand {
 	String idBrand;
 	@Column(name = "name")
 	String name;
+	@ManyToOne
+	@JoinColumn(name = "id_origin")
+	Origin origin;
 
 
 
@@ -49,5 +55,13 @@ public class Brand {
 		this.name = name;
 	}
 
+	public Origin getOrigin() {
+		return origin;
+	}
+
+	public void setOrigin(Origin origin) {
+		this.origin = origin;
+	}
+	
 
 }

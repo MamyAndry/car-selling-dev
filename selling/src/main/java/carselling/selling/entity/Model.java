@@ -10,6 +10,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 
@@ -18,10 +20,12 @@ import jakarta.persistence.Table;
 @Table(name = "model")
 public class Model {
 
-	@Column(name = "id_brand")
-	String idBrand;
-	@Column(name = "id_category")
-	String idCategory;
+	@ManyToOne
+	@JoinColumn(name = "id_brand")
+	Brand brand;
+	@ManyToOne
+	@JoinColumn(name = "id_category")
+	Category category;
 	@Column(name = "name")
 	String name;
 	@Id
@@ -40,18 +44,6 @@ public class Model {
 
 	public Model(){}
 
-	public String getIdBrand(){
-		return this.idBrand;
-	}
-	public void setIdBrand(String idBrand){
-		this.idBrand = idBrand;
-	}
-	public String getIdCategory(){
-		return this.idCategory;
-	}
-	public void setIdCategory(String idCategory){
-		this.idCategory = idCategory;
-	}
 	public String getName(){
 		return this.name;
 	}
@@ -63,6 +55,22 @@ public class Model {
 	}
 	public void setIdModel(String idModel){
 		this.idModel = idModel;
+	}
+
+	public Brand getBrand() {
+		return brand;
+	}
+
+	public void setBrand(Brand brand) {
+		this.brand = brand;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 

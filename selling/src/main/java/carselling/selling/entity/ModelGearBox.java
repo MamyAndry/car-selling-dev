@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 
@@ -18,10 +20,12 @@ public class ModelGearBox {
 	String idGearBox;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "id_model_gear_box")
-	Integer idModelGearBox;
-	@Column(name = "id_model")
-	String idModel;
+	@ManyToOne
+	@JoinColumn(name = "id_model_gear_box")
+	ModelGearBox modelGearBox;
+	@ManyToOne
+	@JoinColumn(name = "id_model")
+	Model model;
 
 
 
@@ -34,17 +38,13 @@ public class ModelGearBox {
 	public void setIdGearBox(String idGearBox){
 		this.idGearBox = idGearBox;
 	}
-	public Integer getIdModelGearBox(){
-		return this.idModelGearBox;
+
+	public Model getModel() {
+		return model;
 	}
-	public void setIdModelGearBox(Integer idModelGearBox){
-		this.idModelGearBox = idModelGearBox;
-	}
-	public String getIdModel(){
-		return this.idModel;
-	}
-	public void setIdModel(String idModel){
-		this.idModel = idModel;
+
+	public void setModel(Model model) {
+		this.model = model;
 	}
 
 

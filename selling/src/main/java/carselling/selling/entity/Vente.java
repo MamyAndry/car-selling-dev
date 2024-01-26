@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 import java.sql.Date;
@@ -37,8 +39,9 @@ public class Vente {
 	String idVente;
 	@Column(name = "date_sell")
 	Date dateSell;
-	@Column(name = "id_seller")
-	String idSeller;
+	@ManyToOne
+	@JoinColumn(name = "id_Users")
+	User user;
 	@Column
 	Integer status;
 	@Column(name = "date_validation")
@@ -75,12 +78,6 @@ public class Vente {
 	public void setDateSell(Date dateSell){
 		this.dateSell = dateSell;
 	}
-	public String getIdSeller(){
-		return this.idSeller;
-	}
-	public void setIdSeller(String idSeller){
-		this.idSeller = idSeller;
-	}
 
     public Integer getStatus() {
         return status;
@@ -96,6 +93,14 @@ public class Vente {
 
 	public void setDateValidation(Date dateValidation) {
 		this.dateValidation = dateValidation;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 

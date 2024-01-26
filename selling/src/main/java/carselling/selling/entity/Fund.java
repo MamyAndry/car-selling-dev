@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 import java.sql.Date;
@@ -33,8 +35,9 @@ public class Fund {
 	@GeneratedValue(generator = "custom-id", strategy = GenerationType.IDENTITY)
 	@Column(name = "id_fund")
 	String idFund;
-	@Column(name = "id_vente")
-	String idVente;
+	@ManyToOne
+	@JoinColumn(name = "id_vente")
+	Vente vente;
 
 
 
@@ -62,12 +65,13 @@ public class Fund {
 	public void setIdFund(String idFund){
 		this.idFund = idFund;
 	}
-	public String getIdVente(){
-		return this.idVente;
-	}
-	public void setIdVente(String idVente){
-		this.idVente = idVente;
+
+	public Vente getVente() {
+		return vente;
 	}
 
+	public void setVente(Vente vente) {
+		this.vente = vente;
+	}
 
 }
