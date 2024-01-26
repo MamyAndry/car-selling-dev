@@ -8,6 +8,9 @@ import carselling.selling.entity.Annonce;
 import org.springframework.http.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @RestController
@@ -24,7 +27,6 @@ public class AnnonceController
 	public ResponseEntity<?> save(@RequestBody Annonce annonce){
 		ApiResponse response = new ApiResponse();
 		try{
-			annonce.setIdAnnonce(Service.getPK("ANN", repository.getNextSequenceValue(), 7));
 			repository.save(annonce);
 			response.addData("data", "Inserted successfully");
 			return ResponseEntity.ok(response);
@@ -82,8 +84,16 @@ public class AnnonceController
 		}
 	}
 
-
-
-
-
+	@GetMapping("{debut}/{fin}")
+	public ResponseEntity<?>  getMethodName(@PathVariable int debut, @PathVariable int fin) {
+		ApiResponse response = new ApiResponse();
+		try{
+			response.addData("data", repository.paginer(debut, fin));
+			return ResponseEntity.ok(response);
+		}catch(Exception e){
+			response.addError("error", e.getCause().getMessage());
+			return ResponseEntity.ok(response);
+		}
+	}
+	
 }
