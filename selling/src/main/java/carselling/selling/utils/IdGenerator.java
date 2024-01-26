@@ -101,7 +101,7 @@ public class IdGenerator implements IdentifierGenerator, Configurable {
 
     @Override
     public Class<? extends Annotation> annotationType() {
-        t   hrow new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
           
           
