@@ -3,7 +3,6 @@ package carselling.selling.controller;
 
 import carselling.selling.repository.CarRepository;
 import carselling.selling.response.ApiResponse;
-import carselling.selling.service.Service;
 import carselling.selling.entity.Car;
 import org.springframework.http.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,7 +64,7 @@ public class CarController{
 			return ResponseEntity.ok(response);
 		}
 	}
-	
+
 	@GetMapping("{id}")
 	public ResponseEntity<?> findById(@PathVariable String id){
 		ApiResponse response = new ApiResponse();

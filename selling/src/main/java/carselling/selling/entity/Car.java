@@ -49,9 +49,8 @@ public class Car {
 		@Parameter(name = "max_length", value = "7")
 	})
 	@GeneratedValue(generator = "custom-id", strategy = GenerationType.IDENTITY)
-	@ManyToOne
-	@JoinColumn(name = "id_car")
-	Car car;
+	@Column(name = "id_car")
+	String idCar;
 	@ManyToOne
 	@JoinColumn(name = "id_model_gear_box")
 	ModelGearBox modelGearBox;
@@ -135,16 +134,7 @@ public class Car {
 		this.user = user;
 	}
 
-
-	public Car getCar() {
-		return car;
-	}
-
-
-	public void setCar(Car car) {
-		this.car = car;
-	}
-
+	
 
 	public ModelGearBox getModelGearBox() {
 		return modelGearBox;
@@ -164,6 +154,16 @@ public class Car {
 	public void setModel(Model model) {
 		this.model = model;
 	}
+
+
+    public String getIdCar() {
+        return idCar;
+    }
+
+
+    public void setIdCar(String idCar) {
+        this.idCar = idCar;
+    }
 
 
 }
