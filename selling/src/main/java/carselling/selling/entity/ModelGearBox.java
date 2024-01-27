@@ -36,23 +36,23 @@ public class ModelGearBox {
 
 	public ModelGearBox(){}
 
-	public String getIdGearBox(){
-		return this.idGearBox;
-	}
-	public void setIdGearBox(String idGearBox){
-		this.idGearBox = idGearBox;
-	}
 	public Integer getIdModelGearBox(){
 		return this.idModelGearBox;
 	}
 	public void setIdModelGearBox(Integer idModelGearBox){
 		this.idModelGearBox = idModelGearBox;
 	}
-	public String getIdModel(){
-		return this.idModel;
+	public GearBox getGearBox() {
+		return gearBox;
 	}
-	public void setIdModel(String idModel){
-		this.idModel = idModel;
+	public Model getModel() {
+		return model;
+	}
+	public void setGearBox(GearBox gearBox) {
+		this.gearBox = gearBox;
+	}
+	public void setModel(Model model) {
+		this.model = model;
 	}
 
 
