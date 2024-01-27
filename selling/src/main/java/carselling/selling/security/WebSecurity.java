@@ -39,6 +39,7 @@ public class WebSecurity {
                 .authorizeRequests()
                 .requestMatchers(
                     AntPathRequestMatcher.antMatcher(HttpMethod.POST,"/login")
+                    ,AntPathRequestMatcher.antMatcher(HttpMethod.POST,"/login/admin")
                     ,AntPathRequestMatcher.antMatcher(HttpMethod.POST,"/category")
                     ,AntPathRequestMatcher.antMatcher(HttpMethod.PUT,"/signin")
                     ,AntPathRequestMatcher.antMatcher(HttpMethod.GET,"/annonce")

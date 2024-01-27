@@ -36,6 +36,8 @@ public class User {
     String name;
     @Column(name = "first_name")
     String firstName;
+    @Column(name = "username")
+    String username;
     @Column(name = "birthdate")
     @Temporal(TemporalType.DATE)
     Date birthdate;
@@ -50,7 +52,7 @@ public class User {
     @ManyToOne
     @JoinColumn(name = "id_gender")
     Gender gender;
-    
+
     public String getId() {
         return id;
     }
