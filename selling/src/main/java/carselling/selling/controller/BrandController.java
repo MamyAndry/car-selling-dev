@@ -24,6 +24,7 @@ public class BrandController
 		brand.setIdBrand(Service.getPK("BRD", repository.getNextSequenceValue(), 7));
 	 	return ResponseEntity.ok(repository.save(brand));
 	}
+	
 	@PutMapping()
 	public ResponseEntity<Brand> update(@RequestBody Brand brand){
 	 	return ResponseEntity.ok(repository.save(brand));

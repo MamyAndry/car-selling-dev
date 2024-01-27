@@ -1,6 +1,8 @@
 package carselling.selling.entity;
 
 
+import java.util.*;
+
 import jakarta.persistence.*;
 
 
@@ -20,6 +22,8 @@ public class Model {
 	@ManyToOne
 	@JoinColumn(name = "id_category")
 	Category category;
+	@OneToMany(mappedBy = "model")
+	List<ModelGearBox> modelGearBoxes;
 
 
 

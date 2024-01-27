@@ -1,14 +1,23 @@
 package carselling.selling.entity;
 
 
+import org.bson.types.ObjectId;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerator;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import jakarta.persistence.*;
 
 
 
 @Entity
 @Table(name = "model_gear_box")
+@JsonIdentityInfo(
+	generator = ObjectIdGenerators.PropertyGenerator.class,
+	property = "id"
+)
 public class ModelGearBox {
-
 	@Id
 	@Column(name = "id_model_gear_box")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,6 +25,7 @@ public class ModelGearBox {
 	@ManyToOne
 	@JoinColumn(name = "id_gear_box")
 	GearBox gearBox;
+
 	@ManyToOne
 	@JoinColumn(name = "id_model")
 	Model model;
