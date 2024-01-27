@@ -23,7 +23,7 @@ public class GenderController
 	public ResponseEntity<?> save(@RequestBody Gender gender){
 		ApiResponse response = new ApiResponse();
 		try{
-			repository.delete(gender);
+			repository.save(gender);
 			response.addData("data", "Inserted successfully");
 			return ResponseEntity.ok(response);
 		}catch(Exception e){
@@ -35,7 +35,7 @@ public class GenderController
 	public ResponseEntity<?> update(@RequestBody Gender gender){
 		ApiResponse response = new ApiResponse();
 		try{
-			repository.delete(gender);
+			repository.save(gender);
 			response.addData("data", "Updated successfully");
 			return ResponseEntity.ok(response);
 		}catch(Exception e){

@@ -14,10 +14,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "model_gear_box")
-@JsonIdentityInfo(
-	generator = ObjectIdGenerators.PropertyGenerator.class,
-	property = "id"
-)
+
 public class ModelGearBox {
 
 	@Id
