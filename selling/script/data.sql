@@ -4,6 +4,11 @@ INSERT INTO Category (id_category, name) VALUES
 ('CAT0002', 'SUV'),
 ('CAT0003', 'Hatchback');
 
+INSERT INTO origin(id_origin, name) VALUES
+('ORG0001', 'German'),
+('ORG0002', 'French'),
+('ORG0003', 'Spanish'),
+('ORG0004', 'Italian');
 -- Inserting data into Brand table
 INSERT INTO Brand (id_brand, name) VALUES
 ('BRD0001', 'Toyota'),
@@ -67,6 +72,7 @@ INSERT INTO transmission (id_transmission, name) VALUES
 ('TRA0002', 'Manual'),
 ('TRA0003', 'Semi-automatic');
 
+INSERT INTO 
 INSERT INTO users (id_users, gender, username, name, first_name, birthdate, email, password, is_admin) VALUES 
 ('USR0001', 0, 'mhr_di', 'Diana', 'Rakotomaharo', '2004-12-16', 'dianarakoto9@gmail.com', '1234567huit', true),
 ('USR0002', 1, 'mmms', 'Mamisoa', 'Ratsimbazafy', '2002-04-24', 'rmams@gmail.com', 'mamisoa', false);

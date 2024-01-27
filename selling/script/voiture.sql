@@ -29,7 +29,7 @@ CREATE TABLE Gear_box(
 );
 
 CREATE TABLE Users(
-   id_users VARCHAR(50) ,
+   id_users VARCHAR(50)
    name VARCHAR(50) ,
    first_name VARCHAR(50) ,
    birth_date DATE,
@@ -62,6 +62,10 @@ CREATE TABLE Origin(
    name VARCHAR(50) ,
    PRIMARY KEY(id_origin)
 );
+
+CREATE TABLE SEXE(
+   id_sexe 
+)
 
 CREATE TABLE Location(
    id_location VARCHAR(50) ,
