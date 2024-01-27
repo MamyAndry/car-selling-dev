@@ -98,24 +98,24 @@ INSERT INTO Car (id_car, door_number, kilometrage, color, id_transmission, id_mo
 ('CAR0004', 2, 60000.25, 'Black', 'TRA0001', 1, 1, 'USR0002', 'MDL0004', 0, 4),
 ('CAR0005', 4, 40000.00, 'White', 'TRA0002', 2, 2, 'USR0001', 'MDL0005', 1, 5);
 
--- Inserting data into Annonce table
-INSERT INTO Annonce (id_annonce, status, price, description, id_location, date_add, date_validation, id_car) VALUES
+-- Inserting data into Announcement table
+INSERT INTO Announcement (id_announcement, status, price, description, id_location, date_addition, date_validation, id_car) VALUES
 ('ANN0001', 1, 15000.00, 'Well-maintained Honda Accord for sale', 'LOC0001', CURRENT_TIMESTAMP, NULL, 'CAR0001'),
 ('ANN0002', 1, 25000.00, 'Ford F-150 in excellent condition', 'LOC0003', CURRENT_TIMESTAMP, NULL, 'CAR0002'),
 ('ANN0003', 1, 18000.50, 'Sporty red Honda Civic Type R', 'LOC0001', CURRENT_TIMESTAMP, NULL, 'CAR0003'),
 ('ANN0004', 1, 20000.75, 'Powerful Civic Type R with low mileage', 'LOC0002', CURRENT_TIMESTAMP, NULL, 'CAR0004'),
 ('ANN0005', 1, 22000.00, 'White Ford Escape, great fuel efficiency', 'LOC0002', CURRENT_TIMESTAMP, NULL, 'CAR0005');
 
--- Inserting data into Vente table
-INSERT INTO Vente (id_vente, date_sell, price_payed, id_annonce, id_seller) VALUES
+-- Inserting data into sale table
+INSERT INTO sale (id_sale, date_sale, price_payed, id_announcement, id_seller) VALUES
 ('VEN0001', CURRENT_TIMESTAMP, 14500.00, 'ANN0001', 'USR0002'),
 ('VEN0002', CURRENT_TIMESTAMP, 24000.00, 'ANN0002', 'USR0001'),
 ('VEN0003', CURRENT_TIMESTAMP, 17500.50, 'ANN0003', 'USR0002'),
 ('VEN0004', CURRENT_TIMESTAMP, 19500.75, 'ANN0004', 'USR0001'),
 ('VEN0005', CURRENT_TIMESTAMP, 21500.00, 'ANN0005', 'USR0002');
 
--- Inserting data into Favoris table
-INSERT INTO Favoris (id_favoris, id_annonce, id_users) VALUES
+-- Inserting data into Favorite table
+INSERT INTO Favorite (id_favorite, id_announcement, id_users) VALUES
 ('FAV0001', 'ANN0001', 'USR0001'),
 ('FAV0002', 'ANN0002', 'USR0002'),
 ('FAV0003', 'ANN0003', 'USR0001'),

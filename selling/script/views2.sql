@@ -6,15 +6,15 @@ DECLARE
 BEGIN
     FOR id_users_loop IN SELECT DISTINCT id_users FROM users
     LOOP
-        FOR year IN SELECT DISTINCT EXTRACT(YEAR FROM date_add) FROM profit
+        FOR year IN SELECT DISTINCT EXTRACT(YEAR FROM date_addition) FROM profit
         LOOP
             FOR month_loop IN 1..12
             LOOP
                 sum := COALESCE((
                     SELECT SUM(rising)
                     FROM profit
-                    WHERE EXTRACT(YEAR FROM date_add) = year
-                    AND EXTRACT(MONTH FROM date_add) = month_loop
+                    WHERE EXTRACT(YEAR FROM date_addition) = year
+                    AND EXTRACT(MONTH FROM date_addition) = month_loop
                     AND id_users = id_users_loop
                 ), 0);
                 month := month_loop;
@@ -32,7 +32,7 @@ $$ LANGUAGE PLPGSQL;
 
 
 CREATE OR REPLACE VIEW v_profit_user_per_month AS
-    SELECT f.id_users_result, f.sum, f.year, m.month from f_get_profit_user_per_month() as f
+    SELECT f.id_users_result id_users, f.sum, f.year, m.month from f_get_profit_user_per_month() as f
     JOIN month m ON f.month = m.id_month;
 
 CREATE OR REPLACE VIEW v_profit_variation_per_year AS
@@ -46,15 +46,15 @@ DECLARE
     id_users_loop VARCHAR(50);
     month_loop INT;
 BEGIN
-    FOR year IN SELECT DISTINCT EXTRACT(YEAR FROM date_add) FROM profit
+    FOR year IN SELECT DISTINCT EXTRACT(YEAR FROM date_addition) FROM profit
     LOOP
         FOR month_loop IN 1..12
         LOOP
             sum := COALESCE((
                 SELECT SUM(rising)
                 FROM profit
-                WHERE EXTRACT(YEAR FROM date_add) = year
-                AND EXTRACT(MONTH FROM date_add) = month_loop
+                WHERE EXTRACT(YEAR FROM date_addition) = year
+                AND EXTRACT(MONTH FROM date_addition) = month_loop
             ), 0);
             month := month_loop;
 

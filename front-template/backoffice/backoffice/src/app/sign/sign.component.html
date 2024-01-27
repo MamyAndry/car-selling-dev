@@ -47,11 +47,11 @@
 		 		<img src="http://localhost:4200/assets/images/logo-icon.png" alt="logo icon">
 		 	</div>
 		  <div class="card-title text-uppercase text-center py-3">Sign In</div>
-		    <form>
+		    <div>
 			  <div class="form-group">
-			  <label for="exampleInputUsername" class="sr-only">Username</label>
+			  <label for="exampleInputUsername" class="sr-only">Email</label>
 			   <div class="position-relative has-icon-right">
-				  <input type="text" id="exampleInputUsername" class="form-control input-shadow" placeholder="Enter Username">
+				  <input type="text" id="exampleInputUsername" [(ngModel)]="this.user.email" class="form-control input-shadow" placeholder="Enter Email">
 				  <div class="form-control-position">
 					  <i class="icon-user"></i>
 				  </div>
@@ -60,15 +60,15 @@
 			  <div class="form-group">
 			  <label for="exampleInputPassword" class="sr-only">Password</label>
 			   <div class="position-relative has-icon-right">
-				  <input type="password" id="exampleInputPassword" class="form-control input-shadow" placeholder="Enter Password">
+				  <input type="password" id="exampleInputPassword" [(ngModel)]="this.user.password" class="form-control input-shadow" placeholder="Enter Password">
 				  <div class="form-control-position">
 					  <i class="icon-lock"></i>
 				  </div>
 			   </div>
 			  </div>
-			 <button type="button" class="btn btn-light btn-block">Sign In</button>
+			 <button type="button" class="btn btn-light btn-block" (click)="login()">Sign In</button>
 
-			 </form>
+      </div>
 		   </div>
 		  </div>
 	     </div>
@@ -76,45 +76,6 @@
      <!--Start Back To Top Button-->
     <a class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
     <!--End Back To Top Button-->
-
-	<!--start color switcher-->
-   <div class="right-sidebar">
-    <div class="switcher-icon">
-      <i class="zmdi zmdi-settings zmdi-hc-spin"></i>
-    </div>
-    <div class="right-sidebar-content">
-
-      <p class="mb-0">Gaussion Texture</p>
-      <hr>
-
-      <ul class="switcher">
-        <li id="theme1"></li>
-        <li id="theme2"></li>
-        <li id="theme3"></li>
-        <li id="theme4"></li>
-        <li id="theme5"></li>
-        <li id="theme6"></li>
-      </ul>
-
-      <p class="mb-0">Gradient Background</p>
-      <hr>
-
-      <ul class="switcher">
-        <li id="theme7"></li>
-        <li id="theme8"></li>
-        <li id="theme9"></li>
-        <li id="theme10"></li>
-        <li id="theme11"></li>
-        <li id="theme12"></li>
-		<li id="theme13"></li>
-        <li id="theme14"></li>
-        <li id="theme15"></li>
-      </ul>
-
-     </div>
-   </div>
-  <!--end color switcher-->
-
 	</div><!--wrapper-->
 
 </body>

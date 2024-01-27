@@ -1,6 +1,6 @@
 package carselling.selling.controller.advancedResearch;
 
-import carselling.selling.entity.Annonce;
+import carselling.selling.entity.Announcement;
 import carselling.selling.entity.advancedResearch.CarDetails;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.criteria.CriteriaBuilder;
@@ -35,11 +35,11 @@ public class CarDetailsController {
     public ResponseEntity<Object> advancedResearch(@RequestBody CarDetails carDetails){
         try{
             CriteriaBuilder builder = entityManager.getCriteriaBuilder();
-            CriteriaQuery<Annonce> query = builder.createQuery(Annonce.class);
-            Root<Annonce> root =query.from(Annonce.class);
+            CriteriaQuery<Announcement> query = builder.createQuery(Announcement.class);
+            Root<Announcement> root =query.from(Announcement.class);
             List<Predicate> predicates = new ArrayList<>();
 
-            Annonce annonce = new Annonce();
+            Announcement annonce = new Announcement();
 
             annonce.searchByGearBox(carDetails.getIdGearBox(), predicates, builder, root);
             annonce.searchByColor(carDetails.getColor(), predicates, builder, root);
@@ -57,7 +57,7 @@ public class CarDetailsController {
 
             query.where(predicates.toArray(new Predicate[0]));
 
-            List<Annonce> results = entityManager.createQuery(query).getResultList();
+            List<Announcement> results = entityManager.createQuery(query).getResultList();
 
             Map<String, Object> responseMap = new HashMap<>();
             responseMap.put("message", "success");

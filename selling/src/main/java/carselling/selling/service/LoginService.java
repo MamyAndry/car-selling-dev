@@ -62,7 +62,7 @@ public class LoginService implements UserDetailsService {
             }
             user.checkPassWord(password);
             user.setPassword(jwtUtils.generateJwt(user));
-            response.addData("token", user);
+            response.addData("data", user);
         }catch(UserException e){
             response.addError("error", e.getMessage());
             return response;

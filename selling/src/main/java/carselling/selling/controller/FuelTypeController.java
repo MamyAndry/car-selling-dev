@@ -57,8 +57,14 @@ public class FuelTypeController
 	}
 	@GetMapping()
 	public ResponseEntity<?> findAll(){
-	 	return ResponseEntity.ok(repository.findAll());
-	}
+		ApiResponse response = new ApiResponse();
+		try{
+			response.addData("data", repository.findAll());
+			return ResponseEntity.ok(response);
+		}catch(Exception e){
+			response.addError("error", e.getCause().getMessage());
+			return ResponseEntity.ok(response);
+		}	}
 
 
 	@GetMapping("{id}")
