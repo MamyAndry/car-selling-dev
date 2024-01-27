@@ -41,6 +41,7 @@ public class WebSecurity {
                     AntPathRequestMatcher.antMatcher(HttpMethod.POST,"/login/*/**")
                     , AntPathRequestMatcher.antMatcher(HttpMethod.PUT,"/signin")
                     ,AntPathRequestMatcher.antMatcher(HttpMethod.GET,"/annonce")
+                    ,AntPathRequestMatcher.antMatcher(HttpMethod.GET,"/saleStatistics/*/**")
                     ).permitAll()
                 .anyRequest().authenticated()
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
