@@ -11,6 +11,10 @@ import jakarta.persistence.*;
 @Table(name = "model")
 public class Model {
 
+	@Column(name = "id_brand")
+	String idBrand;
+	@Column(name = "id_category")
+	String idCategory;
 	@Id
 	@Column(name = "id_model")
 	String idModel;
@@ -30,17 +34,17 @@ public class Model {
 
 	public Model(){}
 
-	public Brand getBrand(){
-		return this.brand;
+	public String getIdBrand(){
+		return this.idBrand;
 	}
-	public void setBrand(Brand brand){
-		this.brand = brand;
+	public void setIdBrand(String idBrand){
+		this.idBrand = idBrand;
 	}
-	public Category getCategory(){
-		return this.category;
+	public String getIdCategory(){
+		return this.idCategory;
 	}
-	public void setCategory(Category category){
-		this.category = category;
+	public void setIdCategory(String idCategory){
+		this.idCategory = idCategory;
 	}
 	public String getName(){
 		return this.name;

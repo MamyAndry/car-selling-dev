@@ -57,14 +57,14 @@ CREATE TABLE users(
    PRIMARY KEY(id_users)
 );
 
-CREATE TABLE Message(
-   id_message VARCHAR(50) ,
-   sender VARCHAR(50) ,
-   recipient VARCHAR(50) ,
-   content VARCHAR(255) ,
-   date_send TIMESTAMP,
-   PRIMARY KEY(id_message)
-);
+-- CREATE TABLE Message(
+--    id_message VARCHAR(50) ,
+--    sender VARCHAR(50) ,
+--    recipient VARCHAR(50) ,
+--    content VARCHAR(255) ,
+--    date_send TIMESTAMP,
+--    PRIMARY KEY(id_message)
+-- );
 
 CREATE TABLE model_gear_box(
    id_model_gear_box SERIAL,
@@ -102,7 +102,7 @@ CREATE TABLE transmission(
 CREATE TABLE Car(
    id_car VARCHAR(50) ,
    door_number INTEGER,
-   kilometrage NUMERIC(15,2),
+   kilometrage DOUBLE PRECISION,
    color VARCHAR(50),
    id_transmission VARCHAR(50) ,
    id_model_motor INTEGER,
@@ -132,7 +132,7 @@ CREATE TABLE photo(
 CREATE TABLE Annonce(
    id_annonce VARCHAR(50) ,
    status INTEGER,
-   price NUMERIC(15,2)  ,
+   price DOUBLE PRECISION  ,
    description VARCHAR(255),  
    date_add TIMESTAMP,
    date_validation TIMESTAMP,
@@ -143,8 +143,8 @@ CREATE TABLE Annonce(
 
 CREATE TABLE Vente(
    id_vente VARCHAR(50) ,
-   date_sell TIMESTAMP,
-   price_payed NUMERIC(15,2)  ,
+   date_sell DATE,
+   price_payed DOUBLE PRECISION,
    id_annonce VARCHAR(50) ,
    id_users VARCHAR(50) ,
    PRIMARY KEY(id_vente),
@@ -160,3 +160,30 @@ CREATE TABLE Favoris(
    FOREIGN KEY(id_annonce) REFERENCES Annonce(id_annonce),
    FOREIGN KEY(id_users) REFERENCES users(id_users)
 );
+
+CREATE TABLE commission(
+   id_commission SERIAL PRIMARY KEY,
+   boundary_inferior  DOUBLE PRECISION,
+   boundary_superior  DOUBLE PRECISION,
+   percentage INT
+);
+
+CREATE TABLE fund(
+   id_fund SERIAL PRIMARY KEY,
+   id_vente VARCHAR(50) REFERENCES vente(id_vente),
+   rising DOUBLE PRECISION,
+   date_add DATE
+);
+
+CREATE TABLE profit(
+   id_profit SERIAL PRIMARY KEY,
+   id_users VARCHAR(50) REFERENCES users(id_users),
+   rising DOUBLE PRECISION,
+   date_add DATE
+);
+
+ALTER TABLE users ADD COLUMN date_registration DATE DEFAULT NOW(); 
+
+ALTER TABLE vente ADD COLUMN status INTEGER DEFAULT 0;
+ALTER TABLE vente ADD COLUMN date_validation DATE DEFAULT NULL;
+ALTER TABLE vente RENAME COLUMN id_users TO id_seller;

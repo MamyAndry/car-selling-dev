@@ -19,8 +19,6 @@ public class Transmission {
 	String name;
 
 
-
-
 	public Transmission(){}
 
 	public String getIdTransmission(){

@@ -71,11 +71,15 @@ INSERT INTO users (id_users, gender, username, name, first_name, birthdate, emai
 ('USR0001', 0, 'mhr_di', 'Diana', 'Rakotomaharo', '2004-12-16', 'dianarakoto9@gmail.com', '1234567huit', true),
 ('USR0002', 1, 'mmms', 'Mamisoa', 'Ratsimbazafy', '2002-04-24', 'rmams@gmail.com', 'mamisoa', false);
 
+INSERT INTO Car_status(id_car_status, name) VALUES 
+(0, 'In working condition'),
+(1, 'Non-operational');
+
 INSERT INTO Car (id_car, door_number, kilometrage, color, id_transmission, id_model_motor, id_model_fuel_type, id_users, id_model, id_car_status, id_model_gear_box) VALUES
 ('CAR0001', 4, 50000.00, 'Blue', 'TRA0001', 1, 1, 'USR0001', 'MDL0001', 1, 1),
-('CAR0002', 2, 70000.50, 'Silver', 'TRA0002', 2, 2, 'USR0002', 'MDL0002', 2, 2),
+('CAR0002', 2, 70000.50, 'Silver', 'TRA0002', 2, 2, 'USR0002', 'MDL0002', 0, 2),
 ('CAR0003', 4, 30000.75, 'Red', 'TRA0003', 3, 3, 'USR0001', 'MDL0003', 1, 3),
-('CAR0004', 2, 60000.25, 'Black', 'TRA0001', 1, 1, 'USR0002', 'MDL0004', 2, 4),
+('CAR0004', 2, 60000.25, 'Black', 'TRA0001', 1, 1, 'USR0002', 'MDL0004', 0, 4),
 ('CAR0005', 4, 40000.00, 'White', 'TRA0002', 2, 2, 'USR0001', 'MDL0005', 1, 5);
 
 -- Inserting data into Annonce table
@@ -87,7 +91,7 @@ INSERT INTO Annonce (id_annonce, status, price, description, date_add, date_vali
 ('ANN0005', 1, 22000.00, 'White Ford Escape, great fuel efficiency', CURRENT_TIMESTAMP, NULL, 'CAR0005');
 
 -- Inserting data into Vente table
-INSERT INTO Vente (id_vente, date_sell, price_payed, id_annonce, id_users) VALUES
+INSERT INTO Vente (id_vente, date_sell, price_payed, id_annonce, id_seller) VALUES
 ('VEN0001', CURRENT_TIMESTAMP, 14500.00, 'ANN0001', 'USR0002'),
 ('VEN0002', CURRENT_TIMESTAMP, 24000.00, 'ANN0002', 'USR0001'),
 ('VEN0003', CURRENT_TIMESTAMP, 17500.50, 'ANN0003', 'USR0002'),
@@ -101,6 +105,7 @@ INSERT INTO Favoris (id_favoris, id_annonce, id_users) VALUES
 (default, 'ANN0003', 'USR0001'),
 (default, 'ANN0004', 'USR0002'),
 (default, 'ANN0005', 'USR0001');
+
 
 CREATE SEQUENCE seq_category
    START WITH 1
@@ -156,11 +161,7 @@ CREATE SEQUENCE seq_vente
 
 
 
-
-
-
-
-
-
-
-
+INSERT INTO commission(id_commission, boundary_inferior, boundary_superior, percentage) VALUES
+    (default, 0, 15000.00, 15),
+    (default, 15000.00, 30000.00, 20),
+    (default, 30000.00, 50000.00, 30);

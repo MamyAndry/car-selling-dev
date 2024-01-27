@@ -1,14 +1,13 @@
 package carselling.selling.entity;
 
 
-import java.math.BigDecimal;
-import java.sql.Timestamp;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+import java.sql.Date;
+import java.sql.Timestamp;
 
 
 @Entity
@@ -18,16 +17,18 @@ public class Vente {
 	@Column(name = "id_annonce")
 	String idAnnonce;
 	@Column(name = "price_payed")
-	BigDecimal pricePayed;
+	Double pricePayed;
 	@Id
 	@Column(name = "id_vente")
 	String idVente;
 	@Column(name = "date_sell")
-	Timestamp dateSell;
-	@Column(name = "id_users")
-	String idUsers;
-
-
+	Date dateSell;
+	@Column(name = "id_seller")
+	String idSeller;
+	@Column
+	Integer status;
+	@Column(name = "date_validation")
+	Date dateValidation;
 
 
 	public Vente(){}
@@ -38,10 +39,14 @@ public class Vente {
 	public void setIdAnnonce(String idAnnonce){
 		this.idAnnonce = idAnnonce;
 	}
-	public BigDecimal getPricePayed(){
+	public Double getPricePayed(){
 		return this.pricePayed;
 	}
-	public void setPricePayed(BigDecimal pricePayed){
+	public void setPricePayed(Double pricePayed) throws Exception{
+		if (pricePayed < 0) {
+			throw new Exception("Price should not be negative");
+		}
+
 		this.pricePayed = pricePayed;
 	}
 	public String getIdVente(){
@@ -50,18 +55,34 @@ public class Vente {
 	public void setIdVente(String idVente){
 		this.idVente = idVente;
 	}
-	public Timestamp getDateSell(){
+	public Date getDateSell(){
 		return this.dateSell;
 	}
-	public void setDateSell(Timestamp dateSell){
+	public void setDateSell(Date dateSell){
 		this.dateSell = dateSell;
 	}
-	public String getIdUsers(){
-		return this.idUsers;
+	public String getIdSeller(){
+		return this.idSeller;
 	}
-	public void setIdUsers(String idUsers){
-		this.idUsers = idUsers;
+	public void setIdSeller(String idSeller){
+		this.idSeller = idSeller;
 	}
 
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+	public Date getDateValidation() {
+		return dateValidation;
+	}
+
+	public void setDateValidation(Date dateValidation) {
+		this.dateValidation = dateValidation;
+	}
+	
 
 }
