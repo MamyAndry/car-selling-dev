@@ -1,5 +1,5 @@
-import { Brand } from "./Brand"
-import { Category } from "./Category"
+import { Brand } from "./brand/Brand"
+import { Category } from "./category/Category"
 
 export class Model{
   idModel : string = "";
