@@ -9,7 +9,7 @@ import { Apiresponse } from '../../../../mapping/response/Apiresponse';
 })
 export class FuelTypeService {
 
-  url : string = "localhost:8080/fuelType"
+  url : string = "http://localhost:8080/fuelType"
   constructor(private http : HttpClient) { }
 
   findAll():Observable<Apiresponse>{

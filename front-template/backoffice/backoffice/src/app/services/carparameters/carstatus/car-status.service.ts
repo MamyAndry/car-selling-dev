@@ -9,7 +9,7 @@ import { Apiresponse } from '../../../../mapping/response/Apiresponse';
 })
 export class CarStatusService {
 
-  url : string = "localhost:8080/carStatus"
+  url : string = "http://localhost:8080/carStatus"
   constructor(private http : HttpClient) { }
 
   findAll():Observable<Apiresponse>{
