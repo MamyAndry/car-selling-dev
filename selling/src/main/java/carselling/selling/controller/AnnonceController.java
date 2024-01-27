@@ -6,10 +6,9 @@ import carselling.selling.response.ApiResponse;
 import carselling.selling.service.Service;
 import carselling.selling.entity.Annonce;
 import org.springframework.http.*;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 
@@ -77,6 +76,19 @@ public class AnnonceController
 		ApiResponse response = new ApiResponse();
 		try{
 			response.addData("data", repository.findById(id));
+			return ResponseEntity.ok(response);
+		}catch(Exception e){
+			response.addError("error", e.getCause().getMessage());
+			return ResponseEntity.ok(response);
+		}
+	}
+
+
+	@GetMapping("{status}")
+	public ResponseEntity<?> findNotValidated(@PathVariable int status){
+		ApiResponse response = new ApiResponse();
+		try{
+			response.addData("data", repository.findByStatus(status));
 			return ResponseEntity.ok(response);
 		}catch(Exception e){
 			response.addError("error", e.getCause().getMessage());

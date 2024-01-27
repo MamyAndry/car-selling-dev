@@ -13,6 +13,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -41,13 +43,13 @@ public class User {
     String email;
     @Column
     String password;
-    @Column
-    Integer gender;
     @Column(name = "is_admin")
     boolean isAdmin;
     @Column(name = "date_registration")
     Date dateRegistration;
-
+    @ManyToOne
+    @JoinColumn(name = "id_gender")
+    Gender gender;
     public String getId() {
         return id;
     }
@@ -101,12 +103,6 @@ public class User {
     }
     public void setAdmin(boolean isAdmin) {
         this.isAdmin = isAdmin;
-    }
-    public Integer getGender() {
-        return gender;
-    }
-    public void setGender(Integer gender) {
-        this.gender = gender;
     }
 
     public void checkPassWord(String password2) throws UserException {

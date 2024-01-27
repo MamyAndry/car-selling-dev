@@ -18,14 +18,15 @@
                       </tr>
                     </thead>
                     <tbody>
+
                       <tr>
                         <td>id</td>
                         <td>Jean</td>
                         <td>SUV</td>
                         <td>Mercedes</td>
-                        <td><button class="btn btn-primary">Details</button></td>
-                        <td><button class="btn btn-success">Validate</button></td>
-                        <td><button class="btn btn-warning">Delete</button></td>
+                        <td><button class="btn btn-primary" (click)="getDetails">Details</button></td>
+                        <td><button class="btn btn-success" (click)="validate">Validate</button></td>
+                        <td><button class="btn btn-warning" (click)="delete">Delete</button></td>
                       </tr>
                     </tbody>
                   </table>

@@ -23,10 +23,10 @@ public interface CarSoldRepository extends CrudRepository<Car, String>{
     @Query(nativeQuery = true,value = "SELECT * FROM v_most_sold_car_per_year")
     public List<CarSoldPerYear> getMostSoldCar();
 
-    @Query(nativeQuery = true,value = "SELECT * FROM f_get_sales_count_by_month() WHERE year = :year AND model_id LIKE :id")
+    @Query(nativeQuery = true,value = "SELECT * FROM v_sales_count_by_month() WHERE year = :year AND model_id LIKE :id")
     public List<CarSoldPerMonthForYear> getSaleStatsOfModelForYear(@Param(value = "year") int year, @Param(value = "id") String id);
 
-    @Query(nativeQuery = true,value = "SELECT * FROM f_get_sales_count_by_month() WHERE year = :year")
+    @Query(nativeQuery = true,value = "SELECT * FROM v_sales_count_by_month() WHERE year = :year")
     public List<CarSoldPerMonthForYear> getSaleStatsForYear(@Param(value = "year") int year);
 }
 

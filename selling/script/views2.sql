@@ -1,22 +1,3 @@
-CREATE TABLE month (
-    id_month INTEGER,
-    month VARCHAR(50)
-);
-
-INSERT INTO month VALUES 
-    (1, "January"),    
-    (2, "February"),
-    (3, "March"),
-    (4, "April"),
-    (5, "May"),
-    (6, "June"),
-    (7, "July"),
-    (8, "August"),
-    (9, "September"),
-    (10, "October"),
-    (11, "November"),
-    (12, "December");
-
 CREATE OR REPLACE FUNCTION f_get_profit_user_per_month()
 RETURNS TABLE(id_users_result VARCHAR(50), sum DOUBLE PRECISION, year INT, month INT) AS $$
 DECLARE
@@ -49,7 +30,9 @@ BEGIN
 END;
 $$ LANGUAGE PLPGSQL;
 
-SELECT * from f_get_profit_user_per_month as f
+
+CREATE OR REPLACE VIEW v_profit_user_per_month AS
+    SELECT f.id_users_result, f.sum, f.year, m.month from f_get_profit_user_per_month() as f
     JOIN month m ON f.month = m.id_month;
 
 CREATE OR REPLACE VIEW v_profit_variation_per_year AS
@@ -84,6 +67,9 @@ BEGIN
 END;
 $$ LANGUAGE PLPGSQL;
 
+CREATE OR REPLACE VIEW v_fund_user_per_month AS
+    SELECT f.sum, f.year, m.month from f_get_fund_user_per_month() as f
+    JOIN month m ON f.month = m.id_month;
 
 CREATE OR REPLACE VIEW v_fund_variation_per_year AS
     SELECT SUM(sum), year FROM f_get_fund_user_per_month()
