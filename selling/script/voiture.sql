@@ -29,7 +29,7 @@ CREATE TABLE Gear_box(
 );
 
 CREATE TABLE Users(
-   id_users VARCHAR(50)
+   id_users VARCHAR(50) ,
    name VARCHAR(50) ,
    first_name VARCHAR(50) ,
    birth_date DATE,
@@ -41,7 +41,7 @@ CREATE TABLE Users(
 );
 
 CREATE TABLE Commission(
-   id_commission SERIAL,
+   id_commission VARCHAR(50) ,
    boundary_inferior DOUBLE PRECISION,
    boundary_superior DOUBLE PRECISION,
    percentage_ INTEGER,
@@ -49,7 +49,7 @@ CREATE TABLE Commission(
 );
 
 CREATE TABLE profit(
-   id_profit SERIAL,
+   id_profit VARCHAR(50) ,
    rising DOUBLE PRECISION,
    date_add DATE,
    id_users VARCHAR(50)  NOT NULL,
@@ -62,10 +62,6 @@ CREATE TABLE Origin(
    name VARCHAR(50) ,
    PRIMARY KEY(id_origin)
 );
-
-CREATE TABLE SEXE(
-   id_sexe 
-)
 
 CREATE TABLE Location(
    id_location VARCHAR(50) ,
@@ -92,7 +88,7 @@ CREATE TABLE Model(
 );
 
 CREATE TABLE model_gear_box(
-   id_model_gear_box VARCHAR(50) ,
+   id_model_gear_box SERIAL,
    id_model VARCHAR(50) ,
    id_gear_box VARCHAR(50) ,
    PRIMARY KEY(id_model_gear_box),
@@ -101,7 +97,7 @@ CREATE TABLE model_gear_box(
 );
 
 CREATE TABLE model_motor(
-   id_model_motor VARCHAR(50) ,
+   id_model_motor SERIAL,
    id_model VARCHAR(50) ,
    id_motorisation VARCHAR(50) ,
    PRIMARY KEY(id_model_motor),
@@ -110,7 +106,7 @@ CREATE TABLE model_motor(
 );
 
 CREATE TABLE model_fuel_type(
-   id_model_fuel_type VARCHAR(50) ,
+   id_model_fuel_type SERIAL,
    id_model VARCHAR(50)  NOT NULL,
    id_fuel_type VARCHAR(50) ,
    PRIMARY KEY(id_model_fuel_type),
@@ -122,12 +118,12 @@ CREATE TABLE Car(
    id_car VARCHAR(50) ,
    door_number INTEGER,
    kilometrage NUMERIC(15,2)  ,
-   id_model_motor VARCHAR(50) ,
-   id_model_fuel_type VARCHAR(50) ,
+   id_model_motor INTEGER,
+   id_model_fuel_type INTEGER,
    id_users VARCHAR(50)  NOT NULL,
    id_model VARCHAR(50) ,
    id_car_status INTEGER,
-   id_model_gear_box VARCHAR(50) ,
+   id_model_gear_box INTEGER,
    PRIMARY KEY(id_car),
    FOREIGN KEY(id_model_motor) REFERENCES model_motor(id_model_motor),
    FOREIGN KEY(id_model_fuel_type) REFERENCES model_fuel_type(id_model_fuel_type),
@@ -180,7 +176,7 @@ CREATE TABLE Vente(
 );
 
 CREATE TABLE Favoris(
-   id_favoris SERIAL,
+   id_favoris VARCHAR(50) ,
    id_users VARCHAR(50)  NOT NULL,
    id_annonce VARCHAR(50) ,
    PRIMARY KEY(id_favoris),
@@ -189,7 +185,7 @@ CREATE TABLE Favoris(
 );
 
 CREATE TABLE fund(
-   id_fund SERIAL,
+   id_fund VARCHAR(50) ,
    rising DOUBLE PRECISION,
    date_add DATE,
    id_vente VARCHAR(50)  NOT NULL,

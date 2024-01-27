@@ -2,7 +2,6 @@ package carselling.selling.controller.advancedResearch;
 
 import carselling.selling.entity.Annonce;
 import carselling.selling.entity.advancedResearch.CarDetails;
-import carselling.selling.repository.advancedResearch.CarDetailsRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
@@ -23,18 +22,7 @@ import java.util.Map;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping(path = "advancedReseach")
 public class CarDetailsController {
-    @Autowired
-    private CarDetailsRepository repository;
     private EntityManager entityManager;
-
-    public CarDetailsRepository getRepository() {
-        return repository;
-    }
-
-    public void setRepository(CarDetailsRepository repository) {
-        this.repository = repository;
-    }
-
     public EntityManager getEntityManager() {
         return entityManager;
     }

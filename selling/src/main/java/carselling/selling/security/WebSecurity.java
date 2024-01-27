@@ -46,6 +46,7 @@ public class WebSecurity {
                     ,AntPathRequestMatcher.antMatcher(HttpMethod.GET,"/category")
                     ,AntPathRequestMatcher.antMatcher(HttpMethod.GET,"/model")
                     ,AntPathRequestMatcher.antMatcher(HttpMethod.GET,"/message")
+                    ,AntPathRequestMatcher.antMatcher(HttpMethod.GET,"/advancedReseach/search")
                     ).permitAll()
                 .anyRequest().authenticated()
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
