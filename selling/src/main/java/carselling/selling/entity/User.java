@@ -2,10 +2,16 @@ package carselling.selling.entity;
 
 import java.util.Date;
 
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
 import carselling.selling.exception.UserException;
+import carselling.selling.utils.IdGenerator;
 import carselling.selling.utils.Service;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
@@ -15,6 +21,13 @@ import jakarta.persistence.TemporalType;
 @Table(name = "users")
 public class User {
     @Id
+    @GenericGenerator(name = "custom-id", type = IdGenerator.class,
+	parameters = {
+		@Parameter(name = "prefix", value = "CAT"),
+		@Parameter(name = "sequence", value = "seq_users"),
+		@Parameter(name = "max_length", value = "7")
+	})
+	@GeneratedValue(generator = "custom-id", strategy = GenerationType.IDENTITY)
     @Column(name = "id_users")
     String id;
     @Column

@@ -6,9 +6,16 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 import java.sql.Date;
+
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
+import carselling.selling.utils.IdGenerator;
 
 
 @Entity
@@ -20,11 +27,18 @@ public class Profit {
 	@Column(name = "rising")
 	Double rising;
 	@Id 
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GenericGenerator(name = "custom-id", type = IdGenerator.class,
+	parameters = {
+		@Parameter(name = "prefix", value = "PRF"),
+		@Parameter(name = "sequence", value = "seq_profit"),
+		@Parameter(name = "max_length", value = "7")
+	})
+	@GeneratedValue(generator = "custom-id", strategy = GenerationType.IDENTITY)
 	@Column(name = "id_profit")
-	Integer idProfit;
-	@Column(name = "id_users")
-	String idUsers;
+	String idProfit;
+	@ManyToOne
+	@JoinColumn(name = "id_users")
+	User user;
 
 
 
@@ -43,17 +57,19 @@ public class Profit {
 	public void setRising(Double rising){
 		this.rising = rising;
 	}
-	public Integer getIdProfit(){
+	public String getIdProfit(){
 		return this.idProfit;
 	}
-	public void setIdProfit(Integer idProfit){
+	public void setIdProfit(String idProfit){
 		this.idProfit = idProfit;
 	}
-	public String getIdUsers(){
-		return this.idUsers;
+
+	public User getUser() {
+		return user;
 	}
-	public void setIdUsers(String idUsers){
-		this.idUsers = idUsers;
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 

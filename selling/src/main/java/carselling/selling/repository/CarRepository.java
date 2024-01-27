@@ -2,11 +2,15 @@ package carselling.selling.repository;
 
 
 import carselling.selling.entity.Car;
-import org.springframework.data.repository.CrudRepository;
+
+import java.util.List;
+
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 
 public interface CarRepository extends CrudRepository<Car, String> {
-    @Query("SELECT nextval('seq_car')")
-    int getNextSequenceValue();
+    @Query(nativeQuery = true, value = "SELECT * FROM Car LIMIT :start,:end")
+    List<Car> paginer(@Param("start") int start, @Param("end") int end);
 }

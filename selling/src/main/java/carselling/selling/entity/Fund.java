@@ -6,9 +6,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 import java.sql.Date;
+
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+import carselling.selling.utils.IdGenerator;
 
 
 @Entity
@@ -19,12 +25,19 @@ public class Fund {
 	Date dateAdd;
 	@Column(name = "rising")
 	Double rising;
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id	
+	@GenericGenerator(name = "custom-id", type = IdGenerator.class,
+	parameters = {
+		@Parameter(name = "prefix", value = "FND"),
+		@Parameter(name = "sequence", value = "seq_fund"),
+		@Parameter(name = "max_length", value = "7")
+	})
+	@GeneratedValue(generator = "custom-id", strategy = GenerationType.IDENTITY)
 	@Column(name = "id_fund")
-	Integer idFund;
-	@Column(name = "id_vente")
-	String idVente;
+	String idFund;
+	@ManyToOne
+	@JoinColumn(name = "id_vente")
+	Vente vente;
 
 
 
@@ -46,18 +59,19 @@ public class Fund {
 		}
 		this.rising = rising;
 	}
-	public Integer getIdFund(){
+	public String getIdFund(){
 		return this.idFund;
 	}
-	public void setIdFund(Integer idFund){
+	public void setIdFund(String idFund){
 		this.idFund = idFund;
 	}
-	public String getIdVente(){
-		return this.idVente;
-	}
-	public void setIdVente(String idVente){
-		this.idVente = idVente;
+
+	public Vente getVente() {
+		return vente;
 	}
 
+	public void setVente(Vente vente) {
+		this.vente = vente;
+	}
 
 }

@@ -1,9 +1,9 @@
 package carselling.selling.controller;
 
 
-import carselling.selling.repository.CarRepository;
+import carselling.selling.repository.LocationRepository;
 import carselling.selling.response.ApiResponse;
-import carselling.selling.entity.Car;
+import carselling.selling.entity.Location;
 import org.springframework.http.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,47 +11,49 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-@RequestMapping(path = "car")
-public class CarController{
+@RequestMapping(path = "location")
+public class LocationController
+ {
+
 	@Autowired
-	private CarRepository repository;
+	private LocationRepository repository;
 
 
 	@PostMapping()
-	public ResponseEntity<?> save(@RequestBody Car car){	
+	public ResponseEntity<?> save(@RequestBody Location location){
 		ApiResponse response = new ApiResponse();
 		try{
-			repository.save(car);
-			response.addData("data", car);
-			return  ResponseEntity.ok(response);
+			repository.delete(location);
+			response.addData("data", "Inserted successfully");
+			return ResponseEntity.ok(response);
 		}catch(Exception e){
 			response.addError("error", e.getCause().getMessage());
 			return ResponseEntity.ok(response);
-		}
+		}	
 	}
 	@PutMapping()
-	public ResponseEntity<?> update(@RequestBody Car car){		
+	public ResponseEntity<?> update(@RequestBody Location location){
 		ApiResponse response = new ApiResponse();
 		try{
-			repository.save(car);
-			response.addData("data", car);
+			repository.delete(location);
+			response.addData("data", "Updated successfully");
 			return ResponseEntity.ok(response);
 		}catch(Exception e){
 			response.addError("error", e.getCause().getMessage());
 			return ResponseEntity.ok(response);
-		}
+		}	
 	}
 	@DeleteMapping()
-	public ResponseEntity<?> delete(@RequestBody Car car){
+	public ResponseEntity<?>  delete(@RequestBody Location location){
 		ApiResponse response = new ApiResponse();
 		try{
-			repository.delete(car);
-			response.addData("data", "Car Deleted successfully");
+			repository.delete(location);
+			response.addData("data", "Deleted successfully");
 			return ResponseEntity.ok(response);
 		}catch(Exception e){
 			response.addError("error", e.getCause().getMessage());
 			return ResponseEntity.ok(response);
-		}
+		}	
 	}
 	@GetMapping()
 	public ResponseEntity<?> findAll(){
@@ -76,7 +78,7 @@ public class CarController{
 			return ResponseEntity.ok(response);
 		}
 	}
-	
+
 	@GetMapping("{debut}/{fin}")
 	public ResponseEntity<?>  getMethodName(@PathVariable int debut, @PathVariable int fin) {
 		ApiResponse response = new ApiResponse();
@@ -88,7 +90,5 @@ public class CarController{
 			return ResponseEntity.ok(response);
 		}
 	}
-
-
 
 }

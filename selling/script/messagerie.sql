@@ -21,7 +21,7 @@ db.createCollection("messages", {
         },
         id_receiver: {
           bsonType: "string",
-          description: "Receiver's ID",
+              : "Receiver's ID",
         },
         content: {
           bsonType: "string",
@@ -56,4 +56,30 @@ db.createUser(
              { role: "read", db: "reporting" } ]
   }
 )
+
+db.message.find(
+    {
+        $or: [
+            { idSender: "USR0002" },
+            { idReceiver: "USR0002" }
+        ]
+    },
+    {
+        _id: 0,
+        idSender: 1,
+        idReceiver: 1,
+        sender: 1,
+        receiver: 1
+    }
+).sort({ idSender: 1, idReceiver: 1 });
+
+db.message.find(
+    {
+        $or: [
+            { idSender: "USR0002" },
+            { idReceiver: "USR0002" },
+            { idSender: "USR0003" },
+            { idReceiver: "USR0003" }
+        ]
+    });
 

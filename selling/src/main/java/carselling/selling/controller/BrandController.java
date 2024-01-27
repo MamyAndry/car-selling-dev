@@ -3,7 +3,6 @@ package carselling.selling.controller;
 
 import carselling.selling.repository.BrandRepository;
 import carselling.selling.response.ApiResponse;
-import carselling.selling.service.Service;
 import carselling.selling.entity.Brand;
 import org.springframework.http.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +21,6 @@ public class BrandController{
 	public ResponseEntity<?> save(@RequestBody Brand brand){
 		ApiResponse response = new ApiResponse();
 		try{
-			brand.setIdBrand(Service.getPK("BRD", repository.getNextSequenceValue(), 7));
 			repository.save(brand);
 			response.addData("data", "Inserted successfully");
 			return ResponseEntity.ok(response);
@@ -68,5 +66,29 @@ public class BrandController{
 			return ResponseEntity.ok(response);
 		}
 	}
+	
+	@GetMapping("{id}")
+	public ResponseEntity<?> findById(@PathVariable String id){
+		ApiResponse response = new ApiResponse();
+		try{
+			response.addData("data", repository.findById(id));
+			return ResponseEntity.ok(response);
+		}catch(Exception e){
+			response.addError("error", e.getCause().getMessage());
+			return ResponseEntity.ok(response);
+		}
+	}
 
+
+	@GetMapping("{debut}/{fin}")
+	public ResponseEntity<?>  getMethodName(@PathVariable int debut, @PathVariable int fin) {
+		ApiResponse response = new ApiResponse();
+		try{
+			response.addData("data", repository.paginer(debut, fin));
+			return ResponseEntity.ok(response);
+		}catch(Exception e){
+			response.addError("error", e.getCause().getMessage());
+			return ResponseEntity.ok(response);
+		}
+	}
 }

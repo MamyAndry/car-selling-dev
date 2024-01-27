@@ -4,6 +4,7 @@ package carselling.selling.entity;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
+import carselling.selling.utils.IdGenerator;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,36 +12,35 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-import carselling.selling.utils.IdGenerator;
 
 
 @Entity
-@Table(name = "gear_box")
-public class GearBox {
+@Table(name = "origin")
+public class Origin {
 
 	@Id
 	@GenericGenerator(name = "custom-id", type = IdGenerator.class,
 	parameters = {
-		@Parameter(name = "prefix", value = "GRB"),
-		@Parameter(name = "sequence", value = "seq_gear"),
+		@Parameter(name = "prefix", value = "ORG"),
+		@Parameter(name = "sequence", value = "seq_origin"),
 		@Parameter(name = "max_length", value = "7")
 	})
 	@GeneratedValue(generator = "custom-id", strategy = GenerationType.IDENTITY)
-	@Column(name = "id_gear_box")
-	String idGearBox;
+	@Column(name = "id_origin")
+	String idOrigin;
 	@Column(name = "name")
 	String name;
 
 
 
 
-	public GearBox(){}
+	public Origin(){}
 
-	public String getIdGearBox(){
-		return this.idGearBox;
+	public String getIdOrigin(){
+		return this.idOrigin;
 	}
-	public void setIdGearBox(String idGearBox){
-		this.idGearBox = idGearBox;
+	public void setIdOrigin(String idOrigin){
+		this.idOrigin = idOrigin;
 	}
 	public String getName(){
 		return this.name;

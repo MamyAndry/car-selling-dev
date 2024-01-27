@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 
@@ -18,10 +20,12 @@ public class ModelMotor {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "id_model_motor")
 	Integer idModelMotor;
-	@Column(name = "id_motorisation")
-	String idMotorisation;
-	@Column(name = "id_model")
-	String idModel;
+	@ManyToOne
+	@JoinColumn(name = "id_motorisation")
+	Motorisation motorisation;
+	@ManyToOne
+	@JoinColumn(name = "id_model")
+	Model model;
 
 
 
@@ -34,18 +38,15 @@ public class ModelMotor {
 	public void setIdModelMotor(Integer idModelMotor){
 		this.idModelMotor = idModelMotor;
 	}
-	public String getIdMotorisation(){
-		return this.idMotorisation;
+
+	public Model getModel() {
+		return model;
 	}
-	public void setIdMotorisation(String idMotorisation){
-		this.idMotorisation = idMotorisation;
+
+	public void setModel(Model model) {
+		this.model = model;
 	}
-	public String getIdModel(){
-		return this.idModel;
-	}
-	public void setIdModel(String idModel){
-		this.idModel = idModel;
-	}
+	
 
 
 }

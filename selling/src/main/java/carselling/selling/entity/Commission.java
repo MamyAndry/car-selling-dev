@@ -1,6 +1,9 @@
 package carselling.selling.entity;
 
 
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+import carselling.selling.utils.IdGenerator;
 
 
 @Entity
@@ -20,10 +24,15 @@ public class Commission {
 	Integer percentage;
 	@Column(name = "boundary_superior")
 	Double boundarySuperior;
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id	@GenericGenerator(name = "custom-id", type = IdGenerator.class,
+	parameters = {
+		@Parameter(name = "prefix", value = "COM"),
+		@Parameter(name = "sequence", value = "seq_commission"),
+		@Parameter(name = "max_length", value = "7")
+	})
+	@GeneratedValue(generator = "custom-id", strategy = GenerationType.IDENTITY)
 	@Column(name = "id_commission")
-	Integer idCommission;
+	String idCommission;
 
 
 
@@ -59,10 +68,10 @@ public class Commission {
 
 		this.boundarySuperior = boundarySuperior;
 	}
-	public Integer getIdCommission(){
+	public String getIdCommission(){
 		return this.idCommission;
 	}
-	public void setIdCommission(Integer idCommission){
+	public void setIdCommission(String idCommission){
 		this.idCommission = idCommission;
 	}
 

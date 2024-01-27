@@ -1,58 +1,70 @@
 package carselling.selling.entity;
 
 
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
+import carselling.selling.utils.IdGenerator;
 
 
 @Entity
 @Table(name = "car")
 public class Car {
 
-	@Column(name = "id_transmission")
-	String idTransmission;
-	@Column(name = "id_model_fuel_type")
-	Integer idModelFuelType;
+	@ManyToOne
+	@JoinColumn(name = "id_transmission")
+	Transmission transmission;
+	@ManyToOne
+	@JoinColumn(name = "id_model_fuel_type")
+	ModelFuelType modelFuelType;
 	@Column(name = "door_number")
 	Integer doorNumber;
 	@Column(name = "color")
 	String color;
-	@Column(name = "id_model_motor")
-	Integer idModelMotor;
+	@ManyToOne
+	@JoinColumn(name = "id_model_motor")
+	ModelMotor modelMotor;
 	@Column(name = "kilometrage")
 	Double kilometrage;
-	@Column(name = "id_car_status")
-	Integer idCarStatus;
-	@Column(name = "id_users")
-	String idUsers;
+	@ManyToOne
+	@JoinColumn(name = "id_car-status")
+	CarStatus carStatus;
+	@ManyToOne
+	@JoinColumn(name = "id_users")
+	User user;
 	@Id
+	@GenericGenerator(name = "custom-id", type = IdGenerator.class,
+	parameters = {
+		@Parameter(name = "prefix", value = "CAR"),
+		@Parameter(name = "sequence", value = "seq_car"),
+		@Parameter(name = "max_length", value = "7")
+	})
+	@GeneratedValue(generator = "custom-id", strategy = GenerationType.IDENTITY)
 	@Column(name = "id_car")
 	String idCar;
-	@Column(name = "id_model_gear_box")
-	Integer idModelGearBox;
-	@Column(name = "id_model")
-	String idModel;
+	@ManyToOne
+	@JoinColumn(name = "id_model_gear_box")
+	ModelGearBox modelGearBox;
+	@ManyToOne
+	@JoinColumn(name = "id_model")
+	Model model;
+	
 
 
 
 
 	public Car(){}
 
-	public String getIdTransmission(){
-		return this.idTransmission;
-	}
-	public void setIdTransmission(String idTransmission){
-		this.idTransmission = idTransmission;
-	}
-	public Integer getIdModelFuelType(){
-		return this.idModelFuelType;
-	}
-	public void setIdModelFuelType(Integer idModelFuelType){
-		this.idModelFuelType = idModelFuelType;
-	}
+	
 	public Integer getDoorNumber(){
 		return this.doorNumber;
 	}
@@ -65,48 +77,93 @@ public class Car {
 	public void setColor(String color){
 		this.color = color;
 	}
-	public Integer getIdModelMotor(){
-		return this.idModelMotor;
-	}
-	public void setIdModelMotor(Integer idModelMotor){
-		this.idModelMotor = idModelMotor;
-	}
 	public Double getKilometrage(){
 		return this.kilometrage;
 	}
 	public void setKilometrage(Double kilometrage){
 		this.kilometrage = kilometrage;
 	}
-	public Integer getIdCarStatus(){
-		return this.idCarStatus;
+
+
+	public Transmission getTransmission() {
+		return transmission;
 	}
-	public void setIdCarStatus(Integer idCarStatus){
-		this.idCarStatus = idCarStatus;
+
+
+	public void setTransmission(Transmission transmission) {
+		this.transmission = transmission;
 	}
-	public String getIdUsers(){
-		return this.idUsers;
+
+
+	public ModelFuelType getModelFuelType() {
+		return modelFuelType;
 	}
-	public void setIdUsers(String idUsers){
-		this.idUsers = idUsers;
+
+
+	public void setModelFuelType(ModelFuelType modelFuelType) {
+		this.modelFuelType = modelFuelType;
 	}
-	public String getIdCar(){
-		return this.idCar;
+
+
+	public ModelMotor getModelMotor() {
+		return modelMotor;
 	}
-	public void setIdCar(String idCar){
-		this.idCar = idCar;
+
+
+	public void setModelMotor(ModelMotor modelMotor) {
+		this.modelMotor = modelMotor;
 	}
-	public Integer getIdModelGearBox(){
-		return this.idModelGearBox;
+
+
+	public CarStatus getCarStatus() {
+		return carStatus;
 	}
-	public void setIdModelGearBox(Integer idModelGearBox){
-		this.idModelGearBox = idModelGearBox;
+
+
+	public void setCarStatus(CarStatus carStatus) {
+		this.carStatus = carStatus;
 	}
-	public String getIdModel(){
-		return this.idModel;
+
+
+	public User getUser() {
+		return user;
 	}
-	public void setIdModel(String idModel){
-		this.idModel = idModel;
+
+
+	public void setUser(User user) {
+		this.user = user;
 	}
+
+	
+
+	public ModelGearBox getModelGearBox() {
+		return modelGearBox;
+	}
+
+
+	public void setModelGearBox(ModelGearBox modelGearBox) {
+		this.modelGearBox = modelGearBox;
+	}
+
+
+	public Model getModel() {
+		return model;
+	}
+
+
+	public void setModel(Model model) {
+		this.model = model;
+	}
+
+
+    public String getIdCar() {
+        return idCar;
+    }
+
+
+    public void setIdCar(String idCar) {
+        this.idCar = idCar;
+    }
 
 
 }

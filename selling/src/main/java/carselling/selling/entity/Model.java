@@ -1,31 +1,46 @@
 package carselling.selling.entity;
 
 
-import java.util.*;
+import java.util.List;
 
-import jakarta.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
+import carselling.selling.utils.IdGenerator;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 
 
 @Entity
 @Table(name = "model")
 public class Model {
-
-	@Column(name = "id_brand")
-	String idBrand;
-	@Column(name = "id_category")
-	String idCategory;
 	@Id
+	@GenericGenerator(name = "custom-id", type = IdGenerator.class,
+	parameters = {
+		@Parameter(name = "prefix", value = "MDL"),
+		@Parameter(name = "sequence", value = "seq_model"),
+		@Parameter(name = "max_length", value = "7")
+	})
+	@GeneratedValue(generator = "custom-id", strategy = GenerationType.IDENTITY)
 	@Column(name = "id_model")
 	String idModel;
-	@Column(name = "name")
-	String name;
+	
 	@ManyToOne
 	@JoinColumn(name = "id_brand")
 	Brand brand;
 	@ManyToOne
 	@JoinColumn(name = "id_category")
 	Category category;
+	@Column(name = "name")
+	String name;
 	@OneToMany(mappedBy = "model")
 	List<ModelGearBox> modelGearBoxes;
 
@@ -34,18 +49,6 @@ public class Model {
 
 	public Model(){}
 
-	public String getIdBrand(){
-		return this.idBrand;
-	}
-	public void setIdBrand(String idBrand){
-		this.idBrand = idBrand;
-	}
-	public String getIdCategory(){
-		return this.idCategory;
-	}
-	public void setIdCategory(String idCategory){
-		this.idCategory = idCategory;
-	}
 	public String getName(){
 		return this.name;
 	}
@@ -57,6 +60,22 @@ public class Model {
 	}
 	public void setIdModel(String idModel){
 		this.idModel = idModel;
+	}
+
+	public Brand getBrand() {
+		return brand;
+	}
+
+	public void setBrand(Brand brand) {
+		this.brand = brand;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 

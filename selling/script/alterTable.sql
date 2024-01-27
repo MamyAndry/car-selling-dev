@@ -1,0 +1,1 @@
+ALTER TABLE vente RENAME COLUMN id_users TO id_seller;
