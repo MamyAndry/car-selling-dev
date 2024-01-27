@@ -67,7 +67,8 @@ public class LoginService implements UserDetailsService {
                 return response;
             }
             user.checkPassWord(password);
-            response.addData("token", jwtUtils.generateJwt(user));
+            user.setPassword(jwtUtils.generateJwt(user));
+            response.addData("token", user);
         }catch(UserException e){
             response.addError("error", e.getMessage());
             response.setStatus(HttpStatus.FORBIDDEN.value());
