@@ -39,6 +39,7 @@ public class WebSecurity {
                 .authorizeRequests()
                 .requestMatchers(
                     AntPathRequestMatcher.antMatcher(HttpMethod.POST,"/login")
+                    ,AntPathRequestMatcher.antMatcher(HttpMethod.POST,"/login/admin")
                     ,AntPathRequestMatcher.antMatcher(HttpMethod.POST,"/category")
                     ,AntPathRequestMatcher.antMatcher(HttpMethod.PUT,"/signin")
                     ,AntPathRequestMatcher.antMatcher(HttpMethod.GET,"/annonce")
@@ -46,6 +47,7 @@ public class WebSecurity {
                     ,AntPathRequestMatcher.antMatcher(HttpMethod.GET,"/category")
                     ,AntPathRequestMatcher.antMatcher(HttpMethod.GET,"/model")
                     ,AntPathRequestMatcher.antMatcher(HttpMethod.GET,"/message")
+                    ,AntPathRequestMatcher.antMatcher(HttpMethod.GET,"/advancedReseach/search")
                     ).permitAll()
                 .anyRequest().authenticated()
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)

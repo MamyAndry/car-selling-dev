@@ -1,14 +1,15 @@
 --STATISTICS BRANDS
-CREATE OR REPLACE VIEW v_sold_car AS
-    SELECT br.name brand, m.name modele, m.id_model id, v.date_sell, v.id_vente FROM Brand br
-        LEFT JOIN Model m
-            ON m.id_brand = br.id_brand
-        LEFT JOIN Car c
-            ON c.id_model = m.id_model
-        LEFT JOIN Annonce an 
-            ON c.id_car = an.id_car
-        LEFT JOIN Vente v
-            ON v.id_annonce = an.id_annonce;
+
+-- CREATE OR REPLACE VIEW v_sold_car AS
+--     SELECT br.name brand, m.name modele, m.id_model id, v.date_sell, v.id_vente FROM Brand br
+--         LEFT JOIN Model m
+--             ON m.id_brand = br.id_brand
+--         LEFT JOIN Car c
+--             ON c.id_model = m.id_model
+--         LEFT JOIN Annonce an 
+--             ON c.id_car = an.id_car
+--         LEFT JOIN Vente v
+--             ON v.id_annonce = an.id_annonce;
 
 CREATE OR REPLACE FUNCTION f_get_sales_count_by_month()
 RETURNS TABLE(brand_result VARCHAR(50), model_result VARCHAR(50), model_id VARCHAR(50), year INT, month INT, vente_count INT) AS $$
@@ -48,6 +49,11 @@ BEGIN
 END;
 $$ LANGUAGE PLPGSQL;
 
+
+CREATE OR REPLACE VIEW v_sales_count_by_month AS
+    SELECT f.brand_result, f.model_result, f.model_id, f.year, m.month, f.vente_count
+        FROM f_get_sales_count_by_month() f
+            JOIN month m ON f.month = m.id_month;
 
 CREATE OR REPLACE VIEW v_most_sold_car_per_year AS
     SELECT brand_result, model_result, year, COALESCE(SUM(vente_count), 0) count  

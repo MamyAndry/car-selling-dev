@@ -30,6 +30,11 @@ BEGIN
 END;
 $$ LANGUAGE PLPGSQL;
 
+
+CREATE OR REPLACE VIEW v_profit_user_per_month AS
+    SELECT f.id_users_result, f.sum, f.year, m.month from f_get_profit_user_per_month() as f
+    JOIN month m ON f.month = m.id_month;
+
 CREATE OR REPLACE VIEW v_profit_variation_per_year AS
     SELECT id_users_result id, SUM(sum), year FROM f_get_profit_user_per_month()
         GROUP BY id_users_result,year;
@@ -62,7 +67,11 @@ BEGIN
 END;
 $$ LANGUAGE PLPGSQL;
 
+CREATE OR REPLACE VIEW v_fund_user_per_month AS
+    SELECT f.sum, f.year, m.month from f_get_fund_user_per_month() as f
+    JOIN month m ON f.month = m.id_month;
 
 CREATE OR REPLACE VIEW v_fund_variation_per_year AS
     SELECT SUM(sum), year FROM f_get_fund_user_per_month()
         GROUP BY year;
+

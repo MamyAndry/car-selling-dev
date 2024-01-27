@@ -13,4 +13,6 @@ import org.springframework.data.jpa.repository.Query;
 public interface AnnonceRepository extends CrudRepository<Annonce, String> {
     @Query(nativeQuery = true, value = "SELECT * FROM annonce LIMIT :start,:end")
     List<Annonce> paginer(@Param("start") int start, @Param("end") int end);
+
+    List<Annonce> findByStatus(Integer status);
 }
