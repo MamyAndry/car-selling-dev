@@ -1,4 +1,4 @@
---STATISTICS
+--STATISTICS BRANDS
 CREATE OR REPLACE VIEW v_sold_car AS
     SELECT br.name brand, m.name modele, m.id_model id, v.date_sell, v.id_vente FROM Brand br
         LEFT JOIN Model m

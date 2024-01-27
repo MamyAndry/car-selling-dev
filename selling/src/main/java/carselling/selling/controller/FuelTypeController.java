@@ -20,12 +20,12 @@ public class FuelTypeController
 
 
 	@PostMapping()
-	public ResponseEntity<FuelType> save(@RequestBody FuelType fuelType){
+	public ResponseEntity<?> save(@RequestBody FuelType fuelType){
 		fuelType.setIdFuelType(Service.getPK("FUT", repository.getNextSequenceValue(), 7));
 	 	return ResponseEntity.ok(repository.save(fuelType));
 	}
 	@PutMapping()
-	public ResponseEntity<FuelType> update(@RequestBody FuelType fuelType){
+	public ResponseEntity<?> update(@RequestBody FuelType fuelType){
 	 	return ResponseEntity.ok(repository.save(fuelType));
 	}
 	@DeleteMapping()
@@ -33,7 +33,7 @@ public class FuelTypeController
 	 	repository.delete(fuelType);
 	}
 	@GetMapping()
-	public ResponseEntity<Iterable<FuelType>> findAll(){
+	public ResponseEntity<?> findAll(){
 	 	return ResponseEntity.ok(repository.findAll());
 	}
 
