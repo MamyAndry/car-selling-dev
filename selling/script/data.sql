@@ -4,6 +4,11 @@ INSERT INTO Category (id_category, name) VALUES
 ('CAT0002', 'SUV'),
 ('CAT0003', 'Hatchback');
 
+INSERT INTO origin(id_origin, name) VALUES
+('ORG0001', 'German'),
+('ORG0002', 'French'),
+('ORG0003', 'Spanish'),
+('ORG0004', 'Italian');
 -- Inserting data into Brand table
 INSERT INTO Brand (id_brand, name) VALUES
 ('BRD0001', 'Toyota'),
