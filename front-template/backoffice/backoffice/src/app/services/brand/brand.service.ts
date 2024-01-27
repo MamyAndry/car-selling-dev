@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Brand } from '../../../mapping/Brand';
+import { Brand } from '../../../mapping/brand/Brand';
 import { Observable } from 'rxjs';
 import { post } from 'jquery';
 
@@ -21,5 +21,12 @@ export class BrandService {
       'Content-Type': 'application/json'
     });
     return this.http.post<any>(this.url, JSON.stringify(brand), {headers});
+  }
+
+  update(brand : Brand):Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.http.put<any>(this.url, JSON.stringify(brand), {headers});
   }
 }

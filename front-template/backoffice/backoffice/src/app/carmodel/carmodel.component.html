@@ -71,7 +71,7 @@
       </div>
         </div>
 
-        <div class="col-lg-2">
+        <!--<div class="col-lg-2">
           <div class="row">
             <div class="card col-lg-12">
               <div class="card-body">
@@ -106,11 +106,16 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-lg-5">
+        </div>-->
+        <div class="col-lg-7">
           <div class="card">
             <div class="card-body">
-              <div class="card-title">Brand list</div>
+              <div class="card-title">Brand list
+                <button type="button" class="close" data-toggle="modal" data-target="#addBrandModal" style="color: white;">
+                  <span aria-hidden="true">+</span>
+                </button>
+              </div>
+              <hr>
               <div class="table-responsive">
                 <table #brandlist id="brandlist" class="table table-bordered">
                   <thead>
@@ -133,7 +138,13 @@
           </div>
           <div class="card">
             <div class="card-body">
-              <div class="card-title">Category list</div>
+              <div class="card-title">Category list
+
+                <button type="button" class="close" data-toggle="modal" data-target="#addCategoryModal" style="color: white;">
+                  <span aria-hidden="true">+</span>
+                </button>
+              </div>
+              <hr>
               <div class="table-responsive">
                 <table #categorylist class="table table-bordered">
                   <thead>
@@ -156,4 +167,55 @@
           </div>
         </div>
       </div><!--End Row-->
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="addBrandModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content card" style="background-color: rgb(50, 60, 70) !important;">
+                              <div class="card-body">
+                                <div class="card-title">
+                                  Insertion Brand
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white;">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <hr>
+                                <div>
+                                  <div class="form-group">
+                                    <label for="brand-name">Name</label>
+                                    <input type="text" [(ngModel)]="this.brand.name" class="form-control" id="brand-name" placeholder="Audi, Chevrolet...">
+                                  </div>
+                                  <div class="form-group">
+                                    <button type="submit" class="btn btn-light btn-block" (click)="saveBrand()">Add</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="modal fade" id="addCategoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content card" style="background-color: rgb(50, 60, 70) !important;">
+                              <div class="card-body">
+                                <div class="card-title">
+                                  Insertion Categorie
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white;">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <hr>
+                                <div>
+                                  <div class="form-group">
+                                    <label for="brand-name">Name</label>
+                                    <input type="text" [(ngModel)]="this.category.name" class="form-control" id="brand-name" placeholder="Audi, Chevrolet...">
+                                  </div>
+                                  <div class="form-group">
+                                    <button type="submit" class="btn btn-light btn-block">Add</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
 

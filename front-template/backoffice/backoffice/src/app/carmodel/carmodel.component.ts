@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Model } from '../../mapping/Model';
-import { Brand } from '../../mapping/Brand';
-import { Category } from '../../mapping/Category';
+import { Brand } from '../../mapping/brand/Brand';
+import { Category } from '../../mapping/category/Category';
 import { BrandService } from '../services/brand/brand.service';
 import { CategoryService } from '../services/category/category.service';
 import DataTable from 'datatables.net-dt';
