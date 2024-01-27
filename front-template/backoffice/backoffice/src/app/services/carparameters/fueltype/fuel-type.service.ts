@@ -1,33 +1,32 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Category } from '../../../mapping/category/Category';
 import { Observable } from 'rxjs';
-import { Apiresponse } from '../../../mapping/response/Apiresponse';
+import { FuelType } from '../../../../mapping/CarParameters/FuelType';
+import { Apiresponse } from '../../../../mapping/response/Apiresponse';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CategoryService {
+export class FuelTypeService {
 
-  private url : string = "http://localhost:8080/category";
+  url : string = "localhost:8080/fuelType"
   constructor(private http : HttpClient) { }
-
 
   findAll():Observable<Apiresponse>{
     return this.http.get<Apiresponse>(this.url);
   }
 
-  save(Category : Category):Observable<any>{
+  save(FuelType : FuelType):Observable<any>{
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    return this.http.post<any>(this.url, JSON.stringify(Category), {headers});
+    return this.http.post<any>(this.url, JSON.stringify(FuelType), {headers});
   }
 
-  update(Category : Category):Observable<any>{
+  update(FuelType : FuelType):Observable<any>{
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    return this.http.put<any>(this.url, JSON.stringify(Category), {headers});
+    return this.http.put<any>(this.url, JSON.stringify(FuelType), {headers});
   }
 }

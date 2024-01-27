@@ -18,7 +18,6 @@ public class OriginController
 	@Autowired
 	private OriginRepository repository;
 
-
 	@PostMapping()
 	public ResponseEntity<?> save(@RequestBody Origin origin){
 		ApiResponse response = new ApiResponse();

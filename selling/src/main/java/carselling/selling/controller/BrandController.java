@@ -29,6 +29,7 @@ public class BrandController{
 			return ResponseEntity.ok(response);
 		}
 	}
+	
 	@PutMapping()
 	public ResponseEntity<?> update(@RequestBody Brand brand){
 		ApiResponse response = new ApiResponse();

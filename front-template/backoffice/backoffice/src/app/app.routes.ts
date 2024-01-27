@@ -1,10 +1,13 @@
 import { Routes } from '@angular/router';
-import { CarmodelComponent } from './carmodel/carmodel.component';
+import { CarmodelComponent } from './components/carmodel/carmodel.component';
 import { SignComponent } from './sign/sign.component';
-import { AnnonceComponent } from './annonce/annonce.component';
+import { CarparametersComponent } from './components/carparameters/carparameters.component';
+import { AnnonceComponent } from './components/annonce/annonce.component';
 
 export const routes: Routes = [
   { path : "carmodel", component : CarmodelComponent },
   { path : "login", component : SignComponent},
+  { path : "carparameter", component : CarparametersComponent},
+  { path : "carparameters", component : CarparametersComponent},
   { path : "annonce", component : AnnonceComponent},
 ];
