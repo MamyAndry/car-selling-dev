@@ -51,6 +51,37 @@ public class LoginService implements UserDetailsService {
         return response;
     }
 
+    public ApiResponse loginAdmin( User user ) {
+        ApiResponse response = new ApiResponse();
+        String password = user.getPassword();
+        try {
+            user = userRepository.getUsersByEmail(user.getEmail());
+            if (user == null) {
+                response.addError("email", "This account doesn't exist.");
+                response.setStatus(HttpStatus.FORBIDDEN.value());
+                return response;
+            }
+            if (!user.isAdmin()) {
+                response.addError("admin", "This account is not an admin.");
+                response.setStatus(HttpStatus.FORBIDDEN.value());
+                return response;
+            }
+            user.checkPassWord(password);
+            response.addData("token", jwtUtils.generateJwt(user));
+        }catch(UserException e){
+            response.addError("error", e.getMessage());
+            response.setStatus(HttpStatus.FORBIDDEN.value());
+            return response;
+        }
+        catch (Exception e) {
+            // TODO: handle exception
+            response.addData("error", e.getMessage());
+            response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+            return response;
+        }
+        return response;
+    }
+
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         // TODO Auto-generated method stub

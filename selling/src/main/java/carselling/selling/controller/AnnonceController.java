@@ -9,6 +9,9 @@ import org.springframework.http.*;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 
@@ -97,7 +100,7 @@ public class AnnonceController
 	}
 
 	@GetMapping("{debut}/{fin}")
-	public ResponseEntity<?>  paginer(@PathVariable int debut, @PathVariable int fin) {
+	public ResponseEntity<?>  pagination(@PathVariable int debut, @PathVariable int fin) {
 		ApiResponse response = new ApiResponse();
 		try{
 			response.addData("data", repository.paginer(debut, fin));

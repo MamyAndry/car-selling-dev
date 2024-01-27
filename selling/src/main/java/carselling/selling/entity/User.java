@@ -50,6 +50,7 @@ public class User {
     @ManyToOne
     @JoinColumn(name = "id_gender")
     Gender gender;
+    
     public String getId() {
         return id;
     }
@@ -105,6 +106,13 @@ public class User {
         this.isAdmin = isAdmin;
     }
 
+    public String getUsername() {
+        return username;
+    }
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public void checkPassWord(String password2) throws UserException {
         if (!this.getPassword().equals(password2)) {
             throw new UserException("Please check your password");
@@ -116,6 +124,4 @@ public class User {
     public void setDateRegistration(Date dateRegistration) {
         this.dateRegistration = dateRegistration;
     }
-    
-
 }

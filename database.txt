@@ -7,7 +7,6 @@ password :  c2B3d462CbG6BcEDfGcc5gdeA**ff55-
 --insert
     ApiResponse response = new ApiResponse();
     try{
-        
         response.addData("data", "Inserted successfully");
         return ResponseEntity.ok(response);
     }catch(Exception e){
@@ -44,3 +43,9 @@ password :  c2B3d462CbG6BcEDfGcc5gdeA**ff55-
         response.addError("error", e.getCause().getMessage());
         return ResponseEntity.ok(response);
     }
+
+front office
+    - liste Annonce
+    - recherche avance
+    - gestion message: mandefa sy maka conversation
+    - achat
