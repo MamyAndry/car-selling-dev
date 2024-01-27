@@ -45,8 +45,6 @@ public class User {
     Integer gender;
     @Column(name = "is_admin")
     boolean isAdmin;
-    @Column
-    String username;
     @Column(name = "date_registration")
     Date dateRegistration;
     @Column

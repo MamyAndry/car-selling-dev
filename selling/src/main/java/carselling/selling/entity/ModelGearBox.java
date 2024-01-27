@@ -19,7 +19,6 @@ public class ModelGearBox {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "id_model_gear_box")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer idModelGearBox;
 	@ManyToOne
 	@JoinColumn(name = "id_gear_box")
@@ -33,7 +32,7 @@ public class ModelGearBox {
 
 	public ModelGearBox(){}
 
-	
+
 
 	public Model getModel() {
 		return model;
