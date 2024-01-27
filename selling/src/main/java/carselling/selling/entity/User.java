@@ -49,6 +49,8 @@ public class User {
     String username;
     @Column(name = "date_registration")
     Date dateRegistration;
+    @Column
+    String username;
 
     public String getId() {
         return id;
