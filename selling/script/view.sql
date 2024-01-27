@@ -1,15 +1,15 @@
 --STATISTICS BRANDS
 
--- CREATE OR REPLACE VIEW v_sold_car AS
---     SELECT br.name brand, m.name modele, m.id_model id, v.date_sell, v.id_vente FROM Brand br
---         LEFT JOIN Model m
---             ON m.id_brand = br.id_brand
---         LEFT JOIN Car c
---             ON c.id_model = m.id_model
---         LEFT JOIN Annonce an 
---             ON c.id_car = an.id_car
---         LEFT JOIN Vente v
---             ON v.id_annonce = an.id_annonce;
+CREATE OR REPLACE VIEW v_sold_car AS
+    SELECT br.name brand, m.name modele, m.id_model id, v.date_sell, v.id_vente FROM Brand br
+        LEFT JOIN Model m
+            ON m.id_brand = br.id_brand
+        LEFT JOIN Car c
+            ON c.id_model = m.id_model
+        LEFT JOIN Annonce an 
+            ON c.id_car = an.id_car
+        LEFT JOIN Vente v
+            ON v.id_annonce = an.id_annonce;
 
 CREATE OR REPLACE FUNCTION f_get_sales_count_by_month()
 RETURNS TABLE(brand_result VARCHAR(50), model_result VARCHAR(50), model_id VARCHAR(50), year INT, month INT, vente_count INT) AS $$
