@@ -9,7 +9,7 @@ import { Apiresponse } from '../../../mapping/response/Apiresponse';
 })
 export class OriginService {
 
-  url : string = "localhost:8080/origin"
+  url : string = "http://localhost:8080/origin"
   constructor(private http : HttpClient) { }
 
   findAll():Observable<Apiresponse>{
