@@ -114,6 +114,11 @@ INSERT INTO Favoris (id_favoris, id_annonce, id_users) VALUES
 (default, 'Manual'),
 (default, 'Semi-automatic');
 
+INSERT INTO Car(id_car, dour_number, kilometrage, status, colorm id_transmission, id_model_motor, id_model_fuel_type, id_users, id_model, id_car_status, id_model_gear_box) VALUES
+(default, )
+
+
+
 CREATE SEQUENCE seq_category
    START WITH 1
    INCREMENT BY 1;
