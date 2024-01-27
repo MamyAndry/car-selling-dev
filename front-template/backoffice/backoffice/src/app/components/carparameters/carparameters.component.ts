@@ -19,12 +19,12 @@ export class CarparametersComponent implements OnInit{
   ngOnInit(): void {
     this.carStatusService.findAll().subscribe(
       (data) => {
-        this.allCarStatus = data
+        this.allCarStatus = data.data
       }
     )
     this.fuelTypeService.findAll().subscribe(
       (data) => {
-        this.allFuelTypes = data
+        this.allFuelTypes = data.data
       }
     )
   }

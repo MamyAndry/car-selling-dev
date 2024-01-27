@@ -2,17 +2,18 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CarStatus } from '../../../../mapping/CarParameters/CarStatus';
+import { Apiresponse } from '../../../../mapping/response/Apiresponse';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarStatusService {
 
-  url : string = "localhost:8080/carstatus"
+  url : string = "localhost:8080/carStatus"
   constructor(private http : HttpClient) { }
 
-  findAll():Observable<CarStatus[]>{
-    return this.http.get<CarStatus[]>(this.url);
+  findAll():Observable<Apiresponse>{
+    return this.http.get<Apiresponse>(this.url);
   }
 
   save(CarStatus : CarStatus):Observable<any>{

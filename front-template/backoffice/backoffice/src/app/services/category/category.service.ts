@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Category } from '../../../mapping/category/Category';
 import { Observable } from 'rxjs';
+import { Apiresponse } from '../../../mapping/response/Apiresponse';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,8 @@ export class CategoryService {
   constructor(private http : HttpClient) { }
 
 
-  findAll():Observable<Category[]>{
-    return this.http.get<Category[]>(this.url);
+  findAll():Observable<Apiresponse>{
+    return this.http.get<Apiresponse>(this.url);
   }
 
   save(Category : Category):Observable<any>{

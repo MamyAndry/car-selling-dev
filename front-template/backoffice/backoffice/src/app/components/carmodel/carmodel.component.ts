@@ -34,19 +34,19 @@ export class CarmodelComponent implements OnInit{
   ngOnInit(): void {
     this.brandService.findAll().subscribe(
       (data) => {
-        this.brands = data
+        this.brands = data.data
         setTimeout(() => this.initializeDataTable(), 0);
       }
     );
     this.categoryService.findAll().subscribe(
       (data) => {
-        this.categories = data
+        this.categories = data.data
         //setTimeout(() => this.initializeDataTable(), 0);
       }
     );
     this.originService.findAll().subscribe(
       (data) => {
-        this.origins = data
+        this.origins = data.data
         //setTimeout(() => this.initializeDataTable(), 0);
       }
     );

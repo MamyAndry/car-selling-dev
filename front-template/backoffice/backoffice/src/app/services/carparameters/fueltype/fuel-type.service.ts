@@ -2,17 +2,18 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FuelType } from '../../../../mapping/CarParameters/FuelType';
+import { Apiresponse } from '../../../../mapping/response/Apiresponse';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FuelTypeService {
 
-  url : string = "localhost:8080/fueltype"
+  url : string = "localhost:8080/fuelType"
   constructor(private http : HttpClient) { }
 
-  findAll():Observable<FuelType[]>{
-    return this.http.get<FuelType[]>(this.url);
+  findAll():Observable<Apiresponse>{
+    return this.http.get<Apiresponse>(this.url);
   }
 
   save(FuelType : FuelType):Observable<any>{

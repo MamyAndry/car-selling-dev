@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Origin } from '../../../mapping/brand/Origin';
 import { Observable } from 'rxjs';
+import { Apiresponse } from '../../../mapping/response/Apiresponse';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,8 @@ export class OriginService {
   url : string = "localhost:8080/origin"
   constructor(private http : HttpClient) { }
 
-  findAll():Observable<Origin[]>{
-    return this.http.get<Origin[]>(this.url);
+  findAll():Observable<Apiresponse>{
+    return this.http.get<Apiresponse>(this.url);
   }
 
   save(Origin : Origin):Observable<any>{

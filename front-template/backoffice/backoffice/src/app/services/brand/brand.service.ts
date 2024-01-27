@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Brand } from '../../../mapping/brand/Brand';
 import { Observable } from 'rxjs';
 import { post } from 'jquery';
+import { Apiresponse } from '../../../mapping/response/Apiresponse';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,8 @@ export class BrandService {
   private url : string = "http://localhost:8080/brand";
   constructor(private http : HttpClient) { }
 
-  findAll():Observable<Brand[]>{
-    return this.http.get<Brand[]>(this.url);
+  findAll():Observable<Apiresponse>{
+    return this.http.get<Apiresponse>(this.url);
   }
 
   save(brand : Brand):Observable<any>{
