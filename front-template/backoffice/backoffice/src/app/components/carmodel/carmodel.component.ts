@@ -1,12 +1,14 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Model } from '../../mapping/Model';
-import { Brand } from '../../mapping/brand/Brand';
-import { Category } from '../../mapping/category/Category';
-import { BrandService } from '../services/brand/brand.service';
-import { CategoryService } from '../services/category/category.service';
+import { Model } from '../../../mapping/Model';
+import { Brand } from '../../../mapping/brand/Brand';
+import { Category } from '../../../mapping/category/Category';
+import { BrandService } from '../../services/brand/brand.service';
+import { CategoryService } from '../../services/category/category.service';
 import DataTable from 'datatables.net-dt';
 import { FormsModule } from '@angular/forms';
 import { data } from 'jquery';
+import { Origin } from '../../../mapping/brand/Origin';
+import { OriginService } from '../../services/brand/origin.service';
 
 @Component({
   selector: 'app-carmodel',
@@ -21,11 +23,12 @@ export class CarmodelComponent implements OnInit{
 
   model : Model = new Model;
   brands : Brand[] = []
+  origins : Origin[] = []
   categories : Category[] = []
   brand : Brand = new Brand;
   category : Category = new Category;
 
-  constructor(private brandService : BrandService, private categoryService : CategoryService){}
+  constructor(private brandService : BrandService, private categoryService : CategoryService, private originService : OriginService){}
 
 
   ngOnInit(): void {
@@ -38,6 +41,12 @@ export class CarmodelComponent implements OnInit{
     this.categoryService.findAll().subscribe(
       (data) => {
         this.categories = data
+        //setTimeout(() => this.initializeDataTable(), 0);
+      }
+    );
+    this.originService.findAll().subscribe(
+      (data) => {
+        this.origins = data
         //setTimeout(() => this.initializeDataTable(), 0);
       }
     );

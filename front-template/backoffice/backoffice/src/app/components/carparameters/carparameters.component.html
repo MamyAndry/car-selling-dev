@@ -1,0 +1,30 @@
+<div class="row mt-3">
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title">
+          Car status
+        </div>
+        <hr>
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (item of allCarStatus; track $index) {
+                <tr>
+                  <td>{{item.idCarStatus}}</td>
+                  <td>{{item.name}}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

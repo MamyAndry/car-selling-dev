@@ -1,5 +1,7 @@
+import { Origin } from "./Origin";
+
 export class Brand{
   idBrand : string = "";
   name : string = "";
-  Origin = ""
+  Origin : Origin = new Origin
 }
