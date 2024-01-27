@@ -1,0 +1,70 @@
+{
+  "hash": "278caeea",
+  "configHash": "dfc60110",
+  "lockfileHash": "2c4fa686",
+  "browserHash": "0171fa67",
+  "optimized": {
+    "@angular/common/http": {
+      "src": "../../../../../node_modules/@angular/common/fesm2022/http.mjs",
+      "file": "@angular_common_http.js",
+      "fileHash": "75cce38b",
+      "needsInterop": false
+    },
+    "@angular/core": {
+      "src": "../../../../../node_modules/@angular/core/fesm2022/core.mjs",
+      "file": "@angular_core.js",
+      "fileHash": "ba4d9d78",
+      "needsInterop": false
+    },
+    "@angular/forms": {
+      "src": "../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
+      "file": "@angular_forms.js",
+      "fileHash": "1951244d",
+      "needsInterop": false
+    },
+    "@angular/platform-browser": {
+      "src": "../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
+      "file": "@angular_platform-browser.js",
+      "fileHash": "ea3088e6",
+      "needsInterop": false
+    },
+    "@angular/router": {
+      "src": "../../../../../node_modules/@angular/router/fesm2022/router.mjs",
+      "file": "@angular_router.js",
+      "fileHash": "7d1a89f7",
+      "needsInterop": false
+    },
+    "datatables.net-dt": {
+      "src": "../../../../../node_modules/datatables.net-dt/js/dataTables.dataTables.mjs",
+      "file": "datatables__net-dt.js",
+      "fileHash": "5baabacc",
+      "needsInterop": false
+    },
+    "rxjs": {
+      "src": "../../../../../node_modules/rxjs/dist/esm5/index.js",
+      "file": "rxjs.js",
+      "fileHash": "9c177ac9",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-AKM7PS65": {
+      "file": "chunk-AKM7PS65.js"
+    },
+    "chunk-BH7M6V5L": {
+      "file": "chunk-BH7M6V5L.js"
+    },
+    "chunk-VRIYK5PX": {
+      "file": "chunk-VRIYK5PX.js"
+    },
+    "chunk-JSIHLUBV": {
+      "file": "chunk-JSIHLUBV.js"
+    },
+    "chunk-WSA2QMXP": {
+      "file": "chunk-WSA2QMXP.js"
+    },
+    "chunk-ASLTLD6L": {
+      "file": "chunk-ASLTLD6L.js"
+    }
+  }
+}
