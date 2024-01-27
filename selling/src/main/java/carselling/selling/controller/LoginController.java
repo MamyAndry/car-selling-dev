@@ -31,18 +31,18 @@ public class LoginController {
         return ResponseEntity.status(response.getStatus()).body(response);
     }
 
-    @GetMapping
-    public @ResponseBody ResponseEntity<ApiResponse> test(@RequestHeader String authorization) {
-        ApiResponse response = new ApiResponse();
-        try {
-            response.addData("token", jwtUtils.verify(jwtUtils.parseToken(authorization)));
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            response.addError("error", e.getMessage());
-            response.setStatus(HttpStatus.SERVICE_UNAVAILABLE.value());
-            return ResponseEntity.status(response.getStatus()).body(response);
-        }
-        return ResponseEntity.ok().body(response);
-    }
+    // @GetMapping
+    // public @ResponseBody ResponseEntity<ApiResponse> test(@RequestHeader String authorization) {
+    //     ApiResponse response = new ApiResponse();
+    //     try {
+    //         response.addData("token", jwtUtils.verify(jwtUtils.parseToken(authorization)));
+    //     } catch (Exception e) {
+    //         // TODO Auto-generated catch block
+    //         response.addError("error", e.getMessage());
+    //         response.setStatus(HttpStatus.SERVICE_UNAVAILABLE.value());
+    //         return ResponseEntity.status(response.getStatus()).body(response);
+    //     }
+    //     return ResponseEntity.ok().body(response);
+    // }
 
 }
