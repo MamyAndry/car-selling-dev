@@ -4,5 +4,5 @@ export class User{
   birthdate : string = ""
   firstname : string = ""
   password : string = ""
-
+  username : string = ""
 }
