@@ -45,6 +45,8 @@ public class WebSecurity {
                     ,AntPathRequestMatcher.antMatcher(HttpMethod.POST,"/login")
                     ,AntPathRequestMatcher.antMatcher(HttpMethod.POST,"/category")
                     ,AntPathRequestMatcher.antMatcher(HttpMethod.PUT,"/signin")
+                    ,AntPathRequestMatcher.antMatcher(HttpMethod.POST,"/login/*/**")
+                    , AntPathRequestMatcher.antMatcher(HttpMethod.PUT,"/signin")
                     ,AntPathRequestMatcher.antMatcher(HttpMethod.GET,"/annonce")
                     ,AntPathRequestMatcher.antMatcher("/brand")
 
