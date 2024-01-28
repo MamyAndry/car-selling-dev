@@ -72,6 +72,12 @@ CREATE TABLE profit(
    FOREIGN KEY(id_users) REFERENCES Users(id_users)
 );
 
+CREATE TABLE announcement_status (
+   id INTEGER PRIMARY KEY,
+   name VARCHAR(50)
+);
+
+
 CREATE TABLE Origin(
    id_origin VARCHAR(10) ,
    name VARCHAR(50) NOT NULL,
@@ -163,7 +169,7 @@ CREATE TABLE Announcement(
    id_announcement VARCHAR(50) ,
    date_addition TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
    date_validation DATE,
-   status INTEGER NOT NULL,
+   status INTEGER NOT NULL REFERENCES announcement_status(id),
    price DOUBLE PRECISION,
    description VARCHAR(255) NOT NULL,
    id_location VARCHAR(50) ,

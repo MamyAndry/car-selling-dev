@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Apiresponse } from '../../../mapping/response/Apiresponse';
-import { User } from '../../../mapping/User';
+import { Userlogin } from '../../../mapping/login/Userlogin';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class LoginService {
 
   constructor( private http : HttpClient){}
 
-  login(user : User):Observable<Apiresponse>{
+  login(user : Userlogin):Observable<Apiresponse>{
     return this.http.post<Apiresponse>(this.url, user);
   }
 }

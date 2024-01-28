@@ -4,6 +4,12 @@ INSERT INTO Category (id_category, name) VALUES
 ('CAT0002', 'SUV'),
 ('CAT0003', 'Hatchback');
 
+INSERT INTO announcement_status(id, name) VALUES
+(1, 'Unpublished'),
+(10, 'Published'),
+(20, 'Sold'),
+(30, 'Rejected');
+
 INSERT INTO gender (id, name) VALUES
 (0, 'Femme'),
 (1, 'Homme');

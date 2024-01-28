@@ -1,67 +1,56 @@
 package carselling.selling.controller;
 
 
-import carselling.selling.repository.AnnouncementRepository;
+import carselling.selling.repository.AnnouncementStatusRepository;
 import carselling.selling.response.ApiResponse;
-import carselling.selling.entity.Announcement;
+import carselling.selling.entity.AnnouncementStatus;
 import org.springframework.http.*;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-
-
 
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-@RequestMapping(path = "announcement")
-public class AnnouncementController
+@RequestMapping(path = "announcementStatus")
+public class AnnouncementStatusController
  {
-	@Autowired
-	private AnnouncementRepository repository;
 
+	@Autowired
+	private AnnouncementStatusRepository repository;
 
 	@PostMapping()
-	@PreAuthorize("hasRole('USER')")
-	public ResponseEntity<?> save(@RequestBody Announcement announcement){
+	public ResponseEntity<?> save(@RequestBody AnnouncementStatus announcementStatus){
 		ApiResponse response = new ApiResponse();
 		try{
-			repository.save(announcement);
+			repository.save(announcementStatus);
 			response.addData("data", "Inserted successfully");
 			return ResponseEntity.ok(response);
 		}catch(Exception e){
 			response.addError("error", e.getCause().getMessage());
 			return ResponseEntity.ok(response);	
-		}
-	}
+		}	}
 	@PutMapping()
-	public ResponseEntity<?> update(@RequestBody Announcement announcement){
+	public ResponseEntity<?> update(@RequestBody AnnouncementStatus announcementStatus){
 		ApiResponse response = new ApiResponse();
 		try{
-			repository.save(announcement);
+			repository.save(announcementStatus);
 			response.addData("data", "Updated succsessfully");
 			return ResponseEntity.ok(response);
 		}catch(Exception e){
 			response.addError("error", e.getCause().getMessage());
 			return ResponseEntity.ok(response);
-		}
-	}
+		}	}
 	@DeleteMapping()
-	public ResponseEntity<?> delete(@RequestBody Announcement announcement){
+	public ResponseEntity<?> delete(@RequestBody AnnouncementStatus announcementStatus){
 		ApiResponse response = new ApiResponse();
 		try{
-			repository.delete(announcement);
+			repository.delete(announcementStatus);
 			response.addData("data", "Deleted successfully");
 			return ResponseEntity.ok(response);
 		}catch(Exception e){
 			response.addError("error", e.getCause().getMessage());
 			return ResponseEntity.ok(response);
-		}
-	}
-
+		}	}
 	@GetMapping()
 	public ResponseEntity<?> findAll(){
 		ApiResponse response = new ApiResponse();
@@ -74,8 +63,9 @@ public class AnnouncementController
 		}
 	}
 
+
 	@GetMapping("{id}")
-	public ResponseEntity<?> findById(@PathVariable String id){
+	public ResponseEntity<?> findById(@PathVariable int id){
 		ApiResponse response = new ApiResponse();
 		try{
 			response.addData("data", repository.findById(id));
@@ -87,28 +77,5 @@ public class AnnouncementController
 	}
 
 
-	@GetMapping("status/{status}")
-	public ResponseEntity<?> findNotValidated(@PathVariable int status){
-		ApiResponse response = new ApiResponse();
-		try{
-			response.addData("data", repository.findByStatus(status));
-			return ResponseEntity.ok(response);
-		}catch(Exception e){
-			response.addError("error", e.getCause().getMessage());
-			return ResponseEntity.ok(response);
-		}
-	}
 
-	@GetMapping("{debut}/{fin}")
-	public ResponseEntity<?>  pagination(@PathVariable int debut, @PathVariable int fin) {
-		ApiResponse response = new ApiResponse();
-		try{
-			response.addData("data", repository.paginer(debut, fin));
-			return ResponseEntity.ok(response);
-		}catch(Exception e){
-			response.addError("error", e.getCause().getMessage());
-			return ResponseEntity.ok(response);
-		}
-	}
-	
 }

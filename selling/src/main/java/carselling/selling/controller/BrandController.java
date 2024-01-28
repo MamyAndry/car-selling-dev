@@ -5,6 +5,7 @@ import carselling.selling.repository.BrandRepository;
 import carselling.selling.response.ApiResponse;
 import carselling.selling.entity.Brand;
 import org.springframework.http.*;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -56,6 +57,7 @@ public class BrandController{
 		}
 	}
 	@GetMapping()
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> findAll(){
 		ApiResponse response = new ApiResponse();
 		try{

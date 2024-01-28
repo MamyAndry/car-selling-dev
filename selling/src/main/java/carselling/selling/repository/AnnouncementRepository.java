@@ -14,5 +14,6 @@ public interface AnnouncementRepository extends CrudRepository<Announcement, Str
     @Query(nativeQuery = true, value = "SELECT * FROM Announcement LIMIT :start,:end")
     List<Announcement> paginer(@Param("start") int start, @Param("end") int end);
 
-    List<Announcement> findByStatus(Integer status);
+    @Query(nativeQuery = true, value = "SELECT * FROM Announcement WHERE status = :status")
+    List<Announcement> findByStatus(@Param("status") Integer status);
 }

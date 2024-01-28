@@ -44,8 +44,9 @@ public class Announcement {
 	Double price;
 	@Column(name = "description")
 	String description;
-	@Column(name = "status")
-	Integer status;
+	@ManyToOne
+	@JoinColumn(name = "status")
+	AnnouncementStatus status;
 	@ManyToOne
 	@JoinColumn(name = "id_location")
 	Location location;
@@ -89,10 +90,10 @@ public class Announcement {
 	public void setDescription(String description){
 		this.description = description;
 	}
-	public Integer getStatus(){
+	public AnnouncementStatus getStatus(){
 		return this.status;
 	}
-	public void setStatus(Integer status){
+	public void setStatus(AnnouncementStatus status){
 		this.status = status;
 	}
 

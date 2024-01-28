@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { User } from '../../mapping/User';
+import { User } from '../../../mapping/login/User';
 import { FormsModule } from '@angular/forms';
-import { LoginService } from '../services/login/login.service';
+import { LoginService } from '../../services/login/login.service';
 import { Router } from '@angular/router';
+import { Userlogin } from '../../../mapping/login/Userlogin';
 
 @Component({
   selector: 'app-sign',
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
   styleUrl: './sign.component.scss'
 })
 export class SignComponent {
-  user : User = new User
+  user : Userlogin = new Userlogin
   error ?: string
   constructor(private loginService : LoginService, private route : Router){
     this.user.email = "rmams@gmail.com"
@@ -25,7 +26,7 @@ export class SignComponent {
       (data) => {
         if(data.error == null){
           let temp = data.data
-          localStorage.setItem("session_user", temp)
+          localStorage.setItem("session_user", JSON.stringify(temp))
           this.route.navigate(["/carmodel"])
         }else{
           this.error = data.error

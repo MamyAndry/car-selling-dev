@@ -1,7 +1,7 @@
 import { CarStatus } from "./CarParameters/CarStatus";
 import { ModelFuelType } from "./CarParameters/ModelFuelType";
 import { Transmission } from "./CarParts/Transmission";
-import { User } from "./User";
+import { User } from "./login/User";
 
 export class Car{
   transmission : Transmission = new Transmission
