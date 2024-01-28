@@ -1,5 +1,5 @@
 <div class="row mt-3">
-  <div class="col-lg-6">
+  <div class="col-lg-4">
     <div class="card">
       <div class="card-body">
         <div class="card-title">
@@ -19,6 +19,38 @@
                 <tr>
                   <td>{{item.idCarStatus}}</td>
                   <td>{{item.name}}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-8">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title">
+          Commission
+        </div>
+        <hr>
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Boundary inferior</th>
+                <th>Boundary superior</th>
+                <th>Percentage</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (item of this.allCommisions; track $index) {
+                <tr>
+                  <td>{{item.idCommission}}</td>
+                  <td>{{item.boundaryInferior}}</td>
+                  <td>{{item.boundarySuperior}}</td>
+                  <td>{{item.percentage}}</td>
                 </tr>
               }
             </tbody>

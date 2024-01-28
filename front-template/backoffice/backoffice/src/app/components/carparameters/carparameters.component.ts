@@ -3,6 +3,9 @@ import { CarStatusService } from '../../services/carparameters/carstatus/car-sta
 import { FuelTypeService } from '../../services/carparameters/fueltype/fuel-type.service';
 import { CarStatus } from '../../../mapping/CarParameters/CarStatus';
 import { FuelType } from '../../../mapping/CarParameters/FuelType';
+import { Commission } from '../../../mapping/com/Commission';
+import { CommissionService } from '../../services/carparameters/commission/commission.service';
+import { data } from 'jquery';
 
 @Component({
   selector: 'app-carparameters',
@@ -13,8 +16,8 @@ import { FuelType } from '../../../mapping/CarParameters/FuelType';
 })
 export class CarparametersComponent implements OnInit{
   allCarStatus : CarStatus[] = []
-  allFuelTypes : FuelType[] = []
-  constructor(private carStatusService : CarStatusService, private fuelTypeService : FuelTypeService){}
+  allCommisions : Commission[] = []
+  constructor(private carStatusService : CarStatusService, private fuelTypeService : FuelTypeService, private commissionService : CommissionService){}
 
   ngOnInit(): void {
     this.carStatusService.findAll().subscribe(
@@ -22,11 +25,13 @@ export class CarparametersComponent implements OnInit{
         this.allCarStatus = data.data
       }
     )
-    this.fuelTypeService.findAll().subscribe(
+
+    this.commissionService.findAll().subscribe(
       (data) => {
-        this.allFuelTypes = data.data
+        this.allCommisions = data.data
       }
     )
+
   }
 
 
