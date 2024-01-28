@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "commission")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class CommissionController
  {
 
@@ -55,8 +56,15 @@ public class CommissionController
 		}
 	}
 	@GetMapping()
-	public ResponseEntity<Iterable<Commission>> findAll(){
-	 	return ResponseEntity.ok(repository.findAll());
+	public ResponseEntity<ApiResponse> findAll(){
+		ApiResponse response = new ApiResponse();
+		try{
+			response.addData("data", repository.findAll());
+			return ResponseEntity.ok(response);
+		}catch(Exception e){
+			response.addError("error", e.getCause().getMessage());
+			return ResponseEntity.ok(response);
+		}
 	}
 
 	@GetMapping("{id}")
