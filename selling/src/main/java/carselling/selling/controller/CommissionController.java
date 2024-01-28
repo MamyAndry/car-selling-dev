@@ -5,6 +5,7 @@ import carselling.selling.repository.CommissionRepository;
 import carselling.selling.response.ApiResponse;
 import carselling.selling.entity.Commission;
 import org.springframework.http.*;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,6 +33,7 @@ public class CommissionController
 		}
 	}
 	@PutMapping()
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> update(@RequestBody Commission commission){
 		ApiResponse response = new ApiResponse();
 		try{
@@ -44,6 +46,7 @@ public class CommissionController
 		}
 	}
 	@DeleteMapping()
+	@PreAuthorize("hasRole('ADMIN')")
 		public ResponseEntity<?> delete(@RequestBody Commission commission){
 		ApiResponse response = new ApiResponse();
 		try{
@@ -55,9 +58,17 @@ public class CommissionController
 			return ResponseEntity.ok(response);
 		}
 	}
+
 	@GetMapping()
-	public ResponseEntity<Iterable<Commission>> findAll(){
-	 	return ResponseEntity.ok(repository.findAll());
+	public ResponseEntity<?> findAll(){
+		ApiResponse response = new ApiResponse();
+		try{
+			response.addData("data", repository.findAll());
+			return ResponseEntity.ok(response);
+		}catch(Exception e){
+			response.addError("error", e.getCause().getMessage());
+			return ResponseEntity.ok(response);
+		}
 	}
 
 	@GetMapping("{id}")

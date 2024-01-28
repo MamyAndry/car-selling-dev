@@ -25,7 +25,6 @@ public class AnnouncementController
 
 
 	@PostMapping()
-	@PreAuthorize("hasRole('USER')")
 	public ResponseEntity<?> save(@RequestBody Announcement announcement){
 		ApiResponse response = new ApiResponse();
 		try{
@@ -88,6 +87,7 @@ public class AnnouncementController
 
 
 	@GetMapping("status/{status}")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> findNotValidated(@PathVariable int status){
 		ApiResponse response = new ApiResponse();
 		try{

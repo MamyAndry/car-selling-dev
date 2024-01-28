@@ -6,7 +6,7 @@ import carselling.selling.response.ApiResponse;
 import carselling.selling.service.sale.SaleService;
 import carselling.selling.entity.Sale;
 import org.springframework.http.*;
-
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -48,6 +48,7 @@ public class SaleController
 		}
 	}
 	@DeleteMapping()
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> delete(@RequestBody Sale sale){
 		ApiResponse response = new ApiResponse();
 		try{

@@ -19,6 +19,7 @@ public class BrandController{
 
 
 	@PostMapping()
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> save(@RequestBody Brand brand){
 		ApiResponse response = new ApiResponse();
 		try{
@@ -32,6 +33,7 @@ public class BrandController{
 	}
 	
 	@PutMapping()
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> update(@RequestBody Brand brand){
 		ApiResponse response = new ApiResponse();
 		try{
@@ -45,6 +47,7 @@ public class BrandController{
 	
 	}
 	@DeleteMapping()
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> delete(@RequestBody Brand brand){
 		ApiResponse response = new ApiResponse();
 		try{
@@ -57,7 +60,6 @@ public class BrandController{
 		}
 	}
 	@GetMapping()
-	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> findAll(){
 		ApiResponse response = new ApiResponse();
 		try{

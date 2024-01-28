@@ -5,6 +5,7 @@ import carselling.selling.repository.AnnouncementStatusRepository;
 import carselling.selling.response.ApiResponse;
 import carselling.selling.entity.AnnouncementStatus;
 import org.springframework.http.*;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +20,7 @@ public class AnnouncementStatusController
 	private AnnouncementStatusRepository repository;
 
 	@PostMapping()
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> save(@RequestBody AnnouncementStatus announcementStatus){
 		ApiResponse response = new ApiResponse();
 		try{
@@ -28,8 +30,11 @@ public class AnnouncementStatusController
 		}catch(Exception e){
 			response.addError("error", e.getCause().getMessage());
 			return ResponseEntity.ok(response);	
-		}	}
+		}	
+	}
+
 	@PutMapping()
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> update(@RequestBody AnnouncementStatus announcementStatus){
 		ApiResponse response = new ApiResponse();
 		try{
@@ -39,8 +44,11 @@ public class AnnouncementStatusController
 		}catch(Exception e){
 			response.addError("error", e.getCause().getMessage());
 			return ResponseEntity.ok(response);
-		}	}
+		}	
+	}
+
 	@DeleteMapping()
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> delete(@RequestBody AnnouncementStatus announcementStatus){
 		ApiResponse response = new ApiResponse();
 		try{

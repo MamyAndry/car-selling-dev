@@ -5,6 +5,7 @@ import carselling.selling.repository.LocationRepository;
 import carselling.selling.response.ApiResponse;
 import carselling.selling.entity.Location;
 import org.springframework.http.*;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,8 +19,8 @@ public class LocationController
 	@Autowired
 	private LocationRepository repository;
 
-
 	@PostMapping()
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> save(@RequestBody Location location){
 		ApiResponse response = new ApiResponse();
 		try{
@@ -31,7 +32,9 @@ public class LocationController
 			return ResponseEntity.ok(response);
 		}	
 	}
+
 	@PutMapping()
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> update(@RequestBody Location location){
 		ApiResponse response = new ApiResponse();
 		try{
@@ -43,8 +46,10 @@ public class LocationController
 			return ResponseEntity.ok(response);
 		}	
 	}
+
 	@DeleteMapping()
-	public ResponseEntity<?>  delete(@RequestBody Location location){
+	@PreAuthorize("hasRole('ADMIN')")
+	public ResponseEntity<?> delete(@RequestBody Location location){
 		ApiResponse response = new ApiResponse();
 		try{
 			repository.delete(location);
@@ -55,6 +60,7 @@ public class LocationController
 			return ResponseEntity.ok(response);
 		}	
 	}
+	
 	@GetMapping()
 	public ResponseEntity<?> findAll(){
 		ApiResponse response = new ApiResponse();
