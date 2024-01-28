@@ -5,9 +5,9 @@ import carselling.selling.repository.OriginRepository;
 import carselling.selling.response.ApiResponse;
 import carselling.selling.entity.Origin;
 import org.springframework.http.*;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -19,10 +19,11 @@ public class OriginController
 	private OriginRepository repository;
 
 	@PostMapping()
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> save(@RequestBody Origin origin){
 		ApiResponse response = new ApiResponse();
 		try{
-			repository.delete(origin);
+			repository.save(origin);
 			response.addData("data", "Inserted successfully");
 			return ResponseEntity.ok(response);
 		}catch(Exception e){
@@ -31,10 +32,11 @@ public class OriginController
 		}	
 	}
 	@PutMapping()
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> update(@RequestBody Origin origin){
 		ApiResponse response = new ApiResponse();
 		try{
-			repository.delete(origin);
+			repository.save(origin);
 			response.addData("data", "Updated successfully");
 			return ResponseEntity.ok(response);
 		}catch(Exception e){
@@ -43,6 +45,7 @@ public class OriginController
 		}	
 	}
 	@DeleteMapping()
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> delete(@RequestBody Origin origin){
 		ApiResponse response = new ApiResponse();
 		try{

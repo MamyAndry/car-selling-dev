@@ -1,6 +1,6 @@
 package carselling.selling.repository.statistics;
 
-import carselling.selling.entity.Vente;
+import carselling.selling.entity.Sale;
 import carselling.selling.entity.statistics.FundPerMonthPerYear;
 import carselling.selling.entity.statistics.FundPerYear;
 import carselling.selling.entity.statistics.ProfitPerMonthPerYear;
@@ -12,7 +12,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
-public interface MoneyPerceivedRepository extends CrudRepository<Vente, String> {
+public interface MoneyPerceivedRepository extends CrudRepository<Sale, String> {
     
 
     @Query(nativeQuery = true,value = "SELECT * FROM v_profit_user_per_month WHERE id_user_result LIKE :id")

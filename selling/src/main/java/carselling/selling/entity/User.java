@@ -46,7 +46,7 @@ public class User {
     @Column
     String password;
     @Column(name = "is_admin")
-    boolean isAdmin;
+    boolean admin;
     @Column(name = "date_registration")
     Date dateRegistration;
     @ManyToOne
@@ -102,10 +102,10 @@ public class User {
         this.password = password;
     }
     public boolean isAdmin() {
-        return isAdmin;
+        return admin;
     }
-    public void setAdmin(boolean isAdmin) {
-        this.isAdmin = isAdmin;
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 
     public String getUsername() {

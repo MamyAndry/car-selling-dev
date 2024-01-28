@@ -1,12 +1,11 @@
 package carselling.selling.controller;
 
 
-import carselling.selling.repository.AnnonceRepository;
+import carselling.selling.repository.AnnouncementRepository;
 import carselling.selling.response.ApiResponse;
-import carselling.selling.service.Service;
-import carselling.selling.entity.Annonce;
+import carselling.selling.entity.Announcement;
 import org.springframework.http.*;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,21 +14,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 
+
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-@RequestMapping(path = "annonce")
-public class AnnonceController
+@RequestMapping(path = "announcement")
+public class AnnouncementController
  {
-
 	@Autowired
-	private AnnonceRepository repository;
+	private AnnouncementRepository repository;
 
 
 	@PostMapping()
-	public ResponseEntity<?> save(@RequestBody Annonce annonce){
+	public ResponseEntity<?> save(@RequestBody Announcement announcement){
 		ApiResponse response = new ApiResponse();
 		try{
-			repository.save(annonce);
+			repository.save(announcement);
 			response.addData("data", "Inserted successfully");
 			return ResponseEntity.ok(response);
 		}catch(Exception e){
@@ -38,10 +37,10 @@ public class AnnonceController
 		}
 	}
 	@PutMapping()
-	public ResponseEntity<?> update(@RequestBody Annonce annonce){
+	public ResponseEntity<?> update(@RequestBody Announcement announcement){
 		ApiResponse response = new ApiResponse();
 		try{
-			repository.save(annonce);
+			repository.save(announcement);
 			response.addData("data", "Updated succsessfully");
 			return ResponseEntity.ok(response);
 		}catch(Exception e){
@@ -50,16 +49,16 @@ public class AnnonceController
 		}
 	}
 	@DeleteMapping()
-	public ResponseEntity<?> delete(@RequestBody Annonce annonce){
+	public ResponseEntity<?> delete(@RequestBody Announcement announcement){
 		ApiResponse response = new ApiResponse();
 		try{
-			 repository.delete(annonce);
-			 response.addData("data", "Deleted successfully");
-			 return ResponseEntity.ok(response);
-		 }catch(Exception e){
-			 response.addError("error", e.getCause().getMessage());
-			 return ResponseEntity.ok(response);
-		 }
+			repository.delete(announcement);
+			response.addData("data", "Deleted successfully");
+			return ResponseEntity.ok(response);
+		}catch(Exception e){
+			response.addError("error", e.getCause().getMessage());
+			return ResponseEntity.ok(response);
+		}
 	}
 
 	@GetMapping()
@@ -87,7 +86,8 @@ public class AnnonceController
 	}
 
 
-	@GetMapping("{status}")
+	@GetMapping("status/{status}")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> findNotValidated(@PathVariable int status){
 		ApiResponse response = new ApiResponse();
 		try{

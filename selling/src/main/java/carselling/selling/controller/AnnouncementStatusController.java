@@ -1,9 +1,9 @@
 package carselling.selling.controller;
 
 
-import carselling.selling.repository.ModelGearBoxRepository;
+import carselling.selling.repository.AnnouncementStatusRepository;
 import carselling.selling.response.ApiResponse;
-import carselling.selling.entity.ModelGearBox;
+import carselling.selling.entity.AnnouncementStatus;
 import org.springframework.http.*;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,66 +12,65 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-@RequestMapping(path = "modelGearBox")
-public class ModelGearBoxController
+@RequestMapping(path = "announcementStatus")
+public class AnnouncementStatusController
  {
 
 	@Autowired
-	private ModelGearBoxRepository repository;
-
+	private AnnouncementStatusRepository repository;
 
 	@PostMapping()
 	@PreAuthorize("hasRole('ADMIN')")
-	public ResponseEntity<?> save(@RequestBody ModelGearBox modelGearBox){
+	public ResponseEntity<?> save(@RequestBody AnnouncementStatus announcementStatus){
 		ApiResponse response = new ApiResponse();
 		try{
-			repository.save(modelGearBox);
+			repository.save(announcementStatus);
 			response.addData("data", "Inserted successfully");
 			return ResponseEntity.ok(response);
 		}catch(Exception e){
 			response.addError("error", e.getCause().getMessage());
-			return ResponseEntity.ok(response);
-		}
-	}
-	@PutMapping()
-	@PreAuthorize("hasRole('ADMIN')")
-	public ResponseEntity<?> update(@RequestBody ModelGearBox modelGearBox){
-		ApiResponse response = new ApiResponse();
-		try{
-			repository.save(modelGearBox);
-			response.addData("data", "Updated successfully");
-			return ResponseEntity.ok(response);
-		}catch(Exception e){
-			response.addError("error", e.getCause().getMessage());
-			return ResponseEntity.ok(response);
-		}
+			return ResponseEntity.ok(response);	
+		}	
 	}
 
-	@DeleteMapping()
+	@PutMapping()
 	@PreAuthorize("hasRole('ADMIN')")
-	public ResponseEntity<?> delete(@RequestBody ModelGearBox modelGearBox){
+	public ResponseEntity<?> update(@RequestBody AnnouncementStatus announcementStatus){
 		ApiResponse response = new ApiResponse();
 		try{
-			repository.delete(modelGearBox);
-			response.addData("data", "Deleted successfully");
+			repository.save(announcementStatus);
+			response.addData("data", "Updated succsessfully");
 			return ResponseEntity.ok(response);
 		}catch(Exception e){
 			response.addError("error", e.getCause().getMessage());
 			return ResponseEntity.ok(response);
 		}	
 	}
-	
-	@GetMapping()
-	public ResponseEntity<?> findAll(){
+
+	@DeleteMapping()
+	@PreAuthorize("hasRole('ADMIN')")
+	public ResponseEntity<?> delete(@RequestBody AnnouncementStatus announcementStatus){
 		ApiResponse response = new ApiResponse();
 		try{
-			response.addData("data", repository.findAll());
+			repository.delete(announcementStatus);
+			response.addData("data", "Deleted successfully");
 			return ResponseEntity.ok(response);
 		}catch(Exception e){
 			response.addError("error", e.getCause().getMessage());
 			return ResponseEntity.ok(response);
+		}	}
+	@GetMapping()
+	public ResponseEntity<?> findAll(){
+		ApiResponse response = new ApiResponse();
+		try{
+			  response.addData("data", repository.findAll());
+			  return ResponseEntity.ok(response);
+		}catch(Exception e){
+			  response.addError("error", e.getCause().getMessage());
+			  return ResponseEntity.ok(response);
 		}
 	}
+
 
 	@GetMapping("{id}")
 	public ResponseEntity<?> findById(@PathVariable int id){
@@ -86,16 +85,5 @@ public class ModelGearBoxController
 	}
 
 
-	@GetMapping("{debut}/{fin}")
-	public ResponseEntity<?>  pagination(@PathVariable int debut, @PathVariable int fin) {
-		ApiResponse response = new ApiResponse();
-		try{
-			response.addData("data", repository.paginer(debut, fin));
-			return ResponseEntity.ok(response);
-		}catch(Exception e){
-			response.addError("error", e.getCause().getMessage());
-			return ResponseEntity.ok(response);
-		}
-	}
 
 }

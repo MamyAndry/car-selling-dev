@@ -1,9 +1,9 @@
 package carselling.selling.controller;
 
 
-import carselling.selling.repository.FavorisRepository;
+import carselling.selling.repository.FavoriteRepository;
 import carselling.selling.response.ApiResponse;
-import carselling.selling.entity.Favoris;
+import carselling.selling.entity.Favorite;
 import org.springframework.http.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,19 +11,19 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-@RequestMapping(path = "favoris")
-public class FavorisController
+@RequestMapping(path = "favorite")
+public class FavoriteController
  {
 
 	@Autowired
-	private FavorisRepository repository;
+	private FavoriteRepository repository;
 
 
 	@PostMapping()
-	public ResponseEntity<?> save(@RequestBody Favoris favoris){
+	public ResponseEntity<?> save(@RequestBody Favorite favorite){
 		ApiResponse response = new ApiResponse();
 		try{
-			repository.save(favoris);
+			repository.save(favorite);
 			response.addData("data", "Inserted successfully");
 			return ResponseEntity.ok(response);
 		}catch(Exception e){
@@ -32,10 +32,10 @@ public class FavorisController
 		}
 	}
 	@PutMapping()
-	public ResponseEntity<?> update(@RequestBody Favoris favoris){
+	public ResponseEntity<?> update(@RequestBody Favorite favorite){
 		ApiResponse response = new ApiResponse();
 		try{
-			repository.save(favoris);
+			repository.save(favorite);
 			response.addData("data", "Updated successfully");
 			return ResponseEntity.ok(response);
 		}catch(Exception e){
@@ -44,10 +44,10 @@ public class FavorisController
 		}
 	}
 	@DeleteMapping()
-	public ResponseEntity<?> delete(@RequestBody Favoris favoris){
+	public ResponseEntity<?> delete(@RequestBody Favorite favorite){
 		ApiResponse response = new ApiResponse();
 		try{
-			repository.delete(favoris);
+			repository.delete(favorite);
 			response.addData("data", "Deleted successfully");
 			return ResponseEntity.ok(response);
 		}catch(Exception e){

@@ -1,12 +1,12 @@
 package carselling.selling.controller;
 
 
-import carselling.selling.repository.VenteRepository;
+import carselling.selling.repository.SaleRepository;
 import carselling.selling.response.ApiResponse;
-import carselling.selling.service.vente.VenteService;
-import carselling.selling.entity.Vente;
+import carselling.selling.service.sale.SaleService;
+import carselling.selling.entity.Sale;
 import org.springframework.http.*;
-
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,20 +14,20 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-@RequestMapping(path = "vente")
-public class VenteController
+@RequestMapping(path = "sale")
+public class SaleController
  {
 
 	@Autowired
-	private VenteRepository repository;
+	private SaleRepository repository;
 	@Autowired 
-	private VenteService venteService;
+	private SaleService saleService;
 
 	@PostMapping()
-	public ResponseEntity<?> save(@RequestBody Vente vente){
+	public ResponseEntity<?> save(@RequestBody Sale sale){
 		ApiResponse response = new ApiResponse();
 		try{
-			repository.save(vente);
+			repository.save(sale);
 			response.addData("data", "Inserted successfully");
 			return ResponseEntity.ok(response);
 		}catch(Exception e){
@@ -36,10 +36,10 @@ public class VenteController
 		}
 	}
 	@PutMapping()
-	public ResponseEntity<?> update(@RequestBody Vente vente){
+	public ResponseEntity<?> update(@RequestBody Sale sale){
 		ApiResponse response = new ApiResponse();
 		try{
-			repository.save(vente);
+			repository.save(sale);
 			response.addData("data", "Updated successfully");
 			return ResponseEntity.ok(response);
 		}catch(Exception e){
@@ -48,10 +48,11 @@ public class VenteController
 		}
 	}
 	@DeleteMapping()
-	public ResponseEntity<?> delete(@RequestBody Vente vente){
+	@PreAuthorize("hasRole('ADMIN')")
+	public ResponseEntity<?> delete(@RequestBody Sale sale){
 		ApiResponse response = new ApiResponse();
 		try{
-			repository.delete(vente);
+			repository.delete(sale);
 			response.addData("data", "Deleted successfully");
 			return ResponseEntity.ok(response);
 		}catch(Exception e){
@@ -72,9 +73,9 @@ public class VenteController
 	}
 
 	@PostMapping("validateSell")
-	public ResponseEntity<?> sellCar(@RequestBody Vente vente) {
+	public ResponseEntity<?> sellCar(@RequestBody Sale sale) {
 		try {
-			return venteService.sellCar(vente);
+			return saleService.sellCar(sale);
 		} catch (Exception e) {
 			return ResponseEntity.ok(e.getMessage());
 		}

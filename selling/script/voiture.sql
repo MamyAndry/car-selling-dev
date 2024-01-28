@@ -1,38 +1,38 @@
 CREATE TABLE Category(
    id_category VARCHAR(50) ,
-   name VARCHAR(50) ,
+   name VARCHAR(50) NOT NULL,
    PRIMARY KEY(id_category)
 );
 
 
 CREATE TABLE Transmission(
    id_transmission VARCHAR(50) ,
-   name VARCHAR(50) ,
+   name VARCHAR(50) NOT NULL,
    id_car VARCHAR(50) ,
    PRIMARY KEY(id_transmission)
 );
 
 CREATE TABLE Fuel_type(
    id_fuel_type VARCHAR(50) ,
-   name VARCHAR(50) ,
+   name VARCHAR(50) NOT NULL,
    PRIMARY KEY(id_fuel_type)
 );
 
 CREATE TABLE Motorisation(
    id_motorisation VARCHAR(50) ,
-   name VARCHAR(50) ,
+   name VARCHAR(50) NOT NULL,
    PRIMARY KEY(id_motorisation)
 );
 
 CREATE TABLE Car_status(
    id_car_status INTEGER,
-   name VARCHAR(50) ,
+   name VARCHAR(50) NOT NULL,
    PRIMARY KEY(id_car_status)
 );
 
 CREATE TABLE Gear_box(
    id_gear_box VARCHAR(50) ,
-   name VARCHAR(50) ,
+   name VARCHAR(50) NOT NULL,
    PRIMARY KEY(id_gear_box)
 );
 
@@ -43,16 +43,16 @@ CREATE TABLE gender(
 
 CREATE TABLE Users(
    id_users VARCHAR(50) ,
-   name VARCHAR(50) ,
-   first_name VARCHAR(50) ,
-   birthdate DATE,
-   username VARCHAR(50),
-   email VARCHAR(50) ,
-   password VARCHAR(50) ,
-   is_admin BOOLEAN,
-   date_registration DATE,
+   name VARCHAR(50) NOT NULL,
+   first_name VARCHAR(50) NOT NULL,
+   birthdate DATE NOT NULL,
+   username VARCHAR(50) NOT NULL,
+   email VARCHAR(50) NOT NULL,
+   password VARCHAR(50) NOT NULL,
+   is_admin BOOLEAN DEFAULT false,
+   date_registration DATE DEFAULT NOW(),
    id_gender integer references gender(id),
-   PRIMARY KEY(id_users)
+   PRIMARY KEY(id_users)   
 );
 
 CREATE TABLE Commission(
@@ -66,37 +66,43 @@ CREATE TABLE Commission(
 CREATE TABLE profit(
    id_profit VARCHAR(50) ,
    rising DOUBLE PRECISION,
-   date_add DATE,
+   date_addition DATE,
    id_users VARCHAR(50)  NOT NULL,
    PRIMARY KEY(id_profit),
    FOREIGN KEY(id_users) REFERENCES Users(id_users)
 );
 
+CREATE TABLE announcement_status (
+   id INTEGER PRIMARY KEY,
+   name VARCHAR(50)
+);
+
+
 CREATE TABLE Origin(
    id_origin VARCHAR(10) ,
-   name VARCHAR(50) ,
+   name VARCHAR(50) NOT NULL,
    PRIMARY KEY(id_origin)
 );
 
 CREATE TABLE Location(
    id_location VARCHAR(50) ,
-   name VARCHAR(50) ,
+   name VARCHAR(50) NOT NULL,
    PRIMARY KEY(id_location)
 );
 
 CREATE TABLE Brand(
    id_brand VARCHAR(50) ,
-   name VARCHAR(50) ,
-   id_origin VARCHAR(10)  NOT NULL,
+   name VARCHAR(50) NOT NULL,
+   id_origin VARCHAR(10),
    PRIMARY KEY(id_brand),
    FOREIGN KEY(id_origin) REFERENCES Origin(id_origin)
 );
 
 CREATE TABLE Model(
    id_model VARCHAR(50) ,
-   name VARCHAR(50) ,
-   id_brand VARCHAR(50)  NOT NULL,
-   id_category VARCHAR(50)  NOT NULL,
+   name VARCHAR(50) NOT NULL,
+   id_brand VARCHAR(50) ,
+   id_category VARCHAR(50) ,
    PRIMARY KEY(id_model),
    FOREIGN KEY(id_brand) REFERENCES Brand(id_brand),
    FOREIGN KEY(id_category) REFERENCES Category(id_category)
@@ -122,7 +128,7 @@ CREATE TABLE model_motor(
 
 CREATE TABLE model_fuel_type(
    id_model_fuel_type SERIAL,
-   id_model VARCHAR(50)  NOT NULL,
+   id_model VARCHAR(50) ,
    id_fuel_type VARCHAR(50) ,
    PRIMARY KEY(id_model_fuel_type),
    FOREIGN KEY(id_model) REFERENCES Model(id_model),
@@ -130,12 +136,12 @@ CREATE TABLE model_fuel_type(
 );
 
 CREATE TABLE Car(
-   id_car VARCHAR(50) ,
+   id_car VARCHAR(50),
    door_number INTEGER,
-   kilometrage NUMERIC(15,2)  ,
+   kilometrage DOUBLE PRECISION ,
    id_model_motor INTEGER,
    id_model_fuel_type INTEGER,
-   id_users VARCHAR(50)  NOT NULL,
+   id_users VARCHAR(50) ,
    id_model VARCHAR(50) ,
    color VARCHAR(50),
    id_car_status INTEGER,
@@ -152,57 +158,57 @@ CREATE TABLE Car(
 
 CREATE TABLE Photo(
    id SERIAL,
-   picture TEXT,
-   id_car VARCHAR(50)  NOT NULL,
+   picture TEXT NOT NULL,
+   id_car VARCHAR(50),
    PRIMARY KEY(id),
    FOREIGN KEY(id_car) REFERENCES Car(id_car)
 );
 
 
-CREATE TABLE Annonce(
-   id_annonce VARCHAR(50) ,
-   date_add TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+CREATE TABLE Announcement(
+   id_announcement VARCHAR(50) ,
+   date_addition TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
    date_validation DATE,
-   status INTEGER,
-   price NUMERIC(15,2)  ,
-   description VARCHAR(255),
-   id_location VARCHAR(50)  NOT NULL,
+   status INTEGER NOT NULL REFERENCES announcement_status(id),
+   price DOUBLE PRECISION,
+   description VARCHAR(255) NOT NULL,
+   id_location VARCHAR(50) ,
    id_car VARCHAR(50) ,
-   PRIMARY KEY(id_annonce),
+   PRIMARY KEY(id_announcement),
    UNIQUE(id_car),
    FOREIGN KEY(id_location) REFERENCES Location(id_location),
    FOREIGN KEY(id_car) REFERENCES Car(id_car)
 );
 
-CREATE TABLE Vente(
-   id_vente VARCHAR(50) ,
-   date_sell TIMESTAMP,
-   price_payed NUMERIC(15,2)  ,
+CREATE TABLE Sale(
+   id_sale VARCHAR(50) ,
+   date_sale DATE,
+   price_payed DOUBLE PRECISION ,
    status INTEGER,
    date_validation DATE,
-   id_annonce VARCHAR(50) ,
+   id_announcement VARCHAR(50) ,
    id_users VARCHAR(50) ,
-   PRIMARY KEY(id_vente),
-   FOREIGN KEY(id_annonce) REFERENCES Annonce(id_annonce),
+   PRIMARY KEY(id_sale),
+   FOREIGN KEY(id_announcement) REFERENCES Announcement(id_announcement),
    FOREIGN KEY(id_users) REFERENCES Users(id_users)
 );
 
-CREATE TABLE Favoris(
-   id_favoris VARCHAR(50) ,
-   id_users VARCHAR(50)  NOT NULL,
-   id_annonce VARCHAR(50) ,
-   PRIMARY KEY(id_favoris),
+CREATE TABLE Favorite(
+   id_favorite VARCHAR(50) ,
+   id_users VARCHAR(50) ,
+   id_announcement VARCHAR(50) ,
+   PRIMARY KEY(id_favorite),
    FOREIGN KEY(id_users) REFERENCES Users(id_users),
-   FOREIGN KEY(id_annonce) REFERENCES Annonce(id_annonce)
+   FOREIGN KEY(id_announcement) REFERENCES Announcement(id_announcement)
 );
 
 CREATE TABLE fund(
    id_fund VARCHAR(50) ,
    rising DOUBLE PRECISION,
-   date_add DATE,
-   id_vente VARCHAR(50)  NOT NULL,
+   date_addition DATE,
+   id_sale VARCHAR(50) ,
    PRIMARY KEY(id_fund),
-   FOREIGN KEY(id_vente) REFERENCES Vente(id_vente)
+   FOREIGN KEY(id_sale) REFERENCES sale(id_sale)
 );
 
 CREATE TABLE month (
@@ -210,4 +216,4 @@ CREATE TABLE month (
     month VARCHAR(50)
 );
 
-ALTER TABLE vente RENAME COLUMN id_users TO id_seller;
+ALTER TABLE sale RENAME COLUMN id_users TO id_seller;

@@ -5,11 +5,13 @@ import carselling.selling.repository.ProfitRepository;
 import carselling.selling.response.ApiResponse;
 import carselling.selling.entity.Profit;
 import org.springframework.http.*;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping(path = "profit")
 public class ProfitController
  {
@@ -40,8 +42,10 @@ public class ProfitController
 		}catch(Exception e){
 			response.addError("error", e.getCause().getMessage());
 			return ResponseEntity.ok(response);
-		}	}
+		}	
+	}
 	@DeleteMapping()
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> delete(@RequestBody Profit profit){
 		ApiResponse response = new ApiResponse();
 		try{
