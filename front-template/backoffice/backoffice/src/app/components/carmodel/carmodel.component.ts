@@ -9,11 +9,14 @@ import { FormsModule } from '@angular/forms';
 import { data } from 'jquery';
 import { Origin } from '../../../mapping/brand/Origin';
 import { OriginService } from '../../services/brand/origin.service';
+import { ModelService } from '../../services/model/model.service';
+import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @Component({
   selector: 'app-carmodel',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule,MdbTooltipModule],
   templateUrl: './carmodel.component.html',
   styleUrl: './carmodel.component.scss'
 })
@@ -25,10 +28,11 @@ export class CarmodelComponent implements OnInit{
   brands : Brand[] = []
   origins : Origin[] = []
   categories : Category[] = []
+  models : Model[] = []
   brand : Brand = new Brand;
   category : Category = new Category;
 
-  constructor(private brandService : BrandService, private categoryService : CategoryService, private originService : OriginService){}
+  constructor(private modelService : ModelService, private brandService : BrandService, private categoryService : CategoryService, private originService : OriginService){}
 
 
   ngOnInit(): void {
@@ -36,6 +40,12 @@ export class CarmodelComponent implements OnInit{
       (data) => {
         this.brands = data.data
         setTimeout(() => this.initializeDataTable(), 0);
+      }
+    );
+    this.modelService.findAll().subscribe(
+      (data) => {
+        this.models = data.data
+        //setTimeout(() => this.initializeDataTable(), 0);
       }
     );
     this.categoryService.findAll().subscribe(
