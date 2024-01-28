@@ -31,5 +31,5 @@ public interface MoneyPerceivedRepository extends CrudRepository<Sale, String> {
     public List<FundPerMonthPerYear> getFundVariationForYear(@Param(value = "year") int year);
 
     @Query(nativeQuery = true,value = "SELECT * FROM v_fund_variation_per_year")
-    public List<FundPerYear> getFundVariationPerYears();
+    public List<FundPerYear> getFundVariationPerYear();
 }
