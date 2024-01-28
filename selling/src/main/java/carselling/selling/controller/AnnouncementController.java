@@ -87,7 +87,7 @@ public class AnnouncementController
 
 
 	@GetMapping("status/{status}")
-	@PreAuthorize("hasRole('ADMIN')")
+	//@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> findNotValidated(@PathVariable int status){
 		ApiResponse response = new ApiResponse();
 		try{
