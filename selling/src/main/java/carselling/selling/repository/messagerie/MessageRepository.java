@@ -10,10 +10,5 @@ import carselling.selling.entity.messagerie.Message;
 
 public interface MessageRepository extends MongoRepository<Message, String>{
     
-    @Query(value = "{ $or: [ { idSender: id }, { idReceiver: id } ] }", fields = "{ _id: 0, idSender: 1, idReceiver: 1, sender: 1, receiver: 1 }", sort = "{ idSender: 1, idReceiver: 1 }")
-    List<Message> findDistinctMessagesByIdSenderOrIdReceiver(@Param("id") String id);
-
-
-    @Query(value = "{ $or: [ { idSender: id }, { idReceiver: id }, { idSender: id2 }, { idReceiver: id2 } ] }")
-    List<Message> findMessagesByIdSenderOrIdReceiverOrderByDateTimeDesc(@Param("id")String id, @Param("id2")String id2);
+    List<Message> findByIdSenderOrIdReceiverOrderByDateTimeSendDesc(String idSender, String idReceiver);
 }

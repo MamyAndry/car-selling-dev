@@ -49,3 +49,5 @@ front office
     - recherche avance
     - gestion message: mandefa sy maka conversation
     - achat
+
+{ $or: [ { idSender: 'USR0002' }, { idReceiver: 'USR0002' } ] }", fields = "{ _id: 0, idSender: 1, idReceiver: 1, sender: 1, receiver: 1 }", sort = "{ idSender: 1, idReceiver: 1 }

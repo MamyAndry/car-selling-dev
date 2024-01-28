@@ -48,7 +48,6 @@ public class TokenFilter extends OncePerRequestFilter {
             if (claims!=null && jwt.validateClaims(claims)) {
                 String id = claims.getIssuer();
                 String role = (String) claims.get("role");
-                System.out.println(role);
                 SimpleGrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + role);
                 List<SimpleGrantedAuthority> authorities = new ArrayList<>();
                 authorities.add(authority);
