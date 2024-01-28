@@ -46,11 +46,16 @@ CREATE SEQUENCE seq_announcement
    START WITH 1
    INCREMENT BY 1;
 
-CREATE SEQUENCE seq_sale    
+CREATE SEQUENCE seq_sale
    START WITH 1
    INCREMENT BY 1;
 
-CREATE SEQUENCE seq_favorite 
+CREATE SEQUENCE seq_favorite
+CREATE SEQUENCE seq_vente
+   START WITH 1
+   INCREMENT BY 1;
+
+CREATE SEQUENCE seq_favoris
    START WITH 1
    INCREMENT BY 1;
 
@@ -62,7 +67,7 @@ CREATE SEQUENCE seq_commission
    START WITH 1
    INCREMENT BY 1;
 
-CREATE SEQUENCE seq_profit 
+CREATE SEQUENCE seq_profit
    START WITH 1
    INCREMENT BY 1;
 
@@ -77,16 +82,21 @@ CREATE SEQUENCE seq_location
 
 CREATE SEQUENCE seq_origin
    START WITH 1
-   INCREMENT BY 1;   
+   INCREMENT BY 1;
+
+
+
+CREATE SEQUENCE seq_announcement
+   START WITH 1
+   INCREMENT BY 1;
+CREATE SEQUENCE seq_favorite
+   START WITH 1
+   INCREMENT BY 1;
 
 
 
 
 
 
-   
 
-   
-
-   
 

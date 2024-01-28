@@ -8,7 +8,6 @@ CREATE TABLE Category(
 CREATE TABLE Transmission(
    id_transmission VARCHAR(50) ,
    name VARCHAR(50) NOT NULL,
-   id_car VARCHAR(50) ,
    PRIMARY KEY(id_transmission)
 );
 
@@ -52,7 +51,7 @@ CREATE TABLE Users(
    is_admin BOOLEAN DEFAULT false,
    date_registration DATE DEFAULT NOW(),
    id_gender integer references gender(id),
-   PRIMARY KEY(id_users)   
+   PRIMARY KEY(id_users)
 );
 
 CREATE TABLE Commission(
