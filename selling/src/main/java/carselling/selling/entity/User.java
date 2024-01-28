@@ -25,7 +25,7 @@ public class User {
     @Id
     @GenericGenerator(name = "custom-id", type = IdGenerator.class,
 	parameters = {
-		@Parameter(name = "prefix", value = "CAT"),
+		@Parameter(name = "prefix", value = "USR"),
 		@Parameter(name = "sequence", value = "seq_users"),
 		@Parameter(name = "max_length", value = "7")
 	})

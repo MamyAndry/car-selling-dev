@@ -9,7 +9,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 
@@ -33,7 +32,7 @@ public class AnnouncementController
 			return ResponseEntity.ok(response);
 		}catch(Exception e){
 			response.addError("error", e.getCause().getMessage());
-			return ResponseEntity.ok(response);	
+			return ResponseEntity.ok(response);
 		}
 	}
 	@PutMapping()
@@ -109,5 +108,5 @@ public class AnnouncementController
 			return ResponseEntity.ok(response);
 		}
 	}
-	
+
 }
