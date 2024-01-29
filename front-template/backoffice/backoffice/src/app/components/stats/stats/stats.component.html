@@ -1,0 +1,29 @@
+<div class="row mt-3">
+  <div class="col-lg-4">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title">Best Sales</div>
+        <hr>
+        <div class="chart-container">
+          <div style="display: block">
+            <canvas #lineChart>{{ chart }}</canvas>
+            </div>
+        </div>
+        <br>
+        <div class="table-responsive">
+          <table class="table align-items-center">
+            <tbody>
+              @for (item of salesCarData; track $index) {
+                <tr>
+                  <td><i class="fa fa-circle mr-2" [style]="'color:' + this.colors[$index]"></i> {{item.brand}} {{item.model}}</td>
+                  <td>Year - {{item.year}}</td>
+                  <td>{{item.count}}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

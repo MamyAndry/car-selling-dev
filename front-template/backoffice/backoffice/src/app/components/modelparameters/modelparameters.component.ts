@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { data } from 'jquery';
 import DataTable from 'datatables.net-dt';
 import { ModelService } from '../../services/model/model.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-modelparameters',
@@ -57,14 +58,17 @@ export class ModelparametersComponent implements OnInit{
 
     private fuelTypeService : FuelTypeService,
     private motorService : MotorisationService,
-    private gearBoxService : GearBoxService
+    private gearBoxService : GearBoxService,
+    private route : Router
   ){}
 
   ngOnInit(): void {
     const sessionUserData = localStorage.getItem("session_user");
     this.session_user = sessionUserData ? JSON.parse(sessionUserData) : undefined;
     this.token = this.token = this.session_user?.password || '';
-
+    if(this.token == ''){
+      this.route.navigate(['login'])
+    }
     this.modelService.findAll(this.token).subscribe(
       (data) => {
         this.models = data.data

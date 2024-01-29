@@ -16,8 +16,8 @@ export class SignComponent {
   user : Userlogin = new Userlogin
   error ?: string = ""
   constructor(private loginService : LoginService, private route : Router){
-    this.user.email = "rmams@gmail.com"
-    this.user.password = "mamisoa"
+    this.user.email = "dianarakoto9@gmail.com"
+    this.user.password = "1234567huit"
     localStorage.removeItem("session_user")
   }
 

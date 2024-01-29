@@ -7,7 +7,7 @@
         </div>
         <hr>
         <div class="table-responsive">
-          <table class="table table-bordered">
+          <table class="table table-bordered" #statuslist>
             <thead>
               <tr>
                 <th>#</th>
@@ -21,7 +21,8 @@
                   <td>
                     {{item.idCarStatus}}
                   </td>
-                  <td><input class="input-update" [(ngModel)]="item.name" [value]="item.name"></td>
+                  <td>
+                    <span style="display: none;">{{item.name}}</span><input class="input-update" [(ngModel)]="item.name" [value]="item.name"></td>
                   <td>
                     <a style="cursor: pointer;" (click)="updateCarStatus(item)">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -46,7 +47,7 @@
         </div>
         <hr>
         <div class="table-responsive">
-          <table class="table table-bordered">
+          <table class="table table-bordered" #commissionlist>
             <thead>
               <tr>
                 <th>#</th>
@@ -63,13 +64,16 @@
                     {{item.idCommission}}
                   </td>
                   <td>
+                    <span style="display: none;">{{item.boundaryInferior}}</span>
                     <input class="input-update" [(ngModel)]="item.boundaryInferior" [value]="item.boundaryInferior">
                   </td>
                   <td>
+                    <span style="display: none;">{{item.boundarySuperior}}</span>
                     <input class="input-update" [(ngModel)]="item.boundarySuperior" [value]="item.boundarySuperior">
 
                   </td>
                   <td>
+                    <span style="display: none;">{{item.percentage}}</span>
                     <input class="input-update" [(ngModel)]="item.percentage" [value]="item.percentage">
                   </td>
                   <td>

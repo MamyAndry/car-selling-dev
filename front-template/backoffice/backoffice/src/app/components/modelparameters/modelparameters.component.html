@@ -23,7 +23,8 @@
               @for (item of this.gearBoxes; track $index) {
                 <tr>
                   <td>{{item.idGearBox}}</td>
-                  <td><input class="input-update" [(ngModel)]="item.name" [value]="item.name"></td>
+                  <td>
+                    <span style="display: none;">{{item.name}}</span><input class="input-update" [(ngModel)]="item.name" [value]="item.name"></td>
                   <td>
                     <a style="cursor: pointer;" (click)="updateGearBox(item)">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -66,6 +67,7 @@
                 <tr>
                   <td>{{item.idFuelType}}</td>
                   <td>
+                    <span style="display: none;">{{item.name}}</span>
                     <input class="input-update" [(ngModel)]="item.name" [value]="item.name">
                   </td>
                   <td>
@@ -109,6 +111,7 @@
                 <tr>
                   <td>{{item.idMotorisation}}</td>
                   <td>
+                    <span style="display: none;">{{item.name}}</span>
                     <input class="input-update" [(ngModel)]="item.name" [value]="item.name">
                   </td>
                   <td>
