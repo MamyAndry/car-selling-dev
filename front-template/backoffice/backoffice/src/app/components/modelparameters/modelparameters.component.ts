@@ -73,7 +73,6 @@ export class ModelparametersComponent implements OnInit{
       (data) => {
         this.models = data.data
         this.model = this.models[0]
-        setTimeout(() => this.initializeDataTable(), 0);
 
         this.gearBoxService.findAll(this.token).subscribe(
           (data)=>{
@@ -81,6 +80,7 @@ export class ModelparametersComponent implements OnInit{
             this.gearBoxes = data.data
             this.modelGearBox.gearBox = this.gearBoxes[0]
             this.modelGearBox.model = this.model
+            setTimeout(() => this.initializeDataTable3(), 0);
           }
         )
 
@@ -90,6 +90,7 @@ export class ModelparametersComponent implements OnInit{
             this.motorisations = data.data
             this.modelMotor.motorisation = this.motorisations[0]
             this.modelMotor.model = this.model
+            setTimeout(() => this.initializeDataTable1(), 0);
           }
         )
 
@@ -99,6 +100,7 @@ export class ModelparametersComponent implements OnInit{
             this.fuelTypes = data.data
             this.modelFuelType.fuelType = this.fuelTypes[0]
             this.modelFuelType.model = this.model
+            setTimeout(() => this.initializeDataTable2(), 0);
           }
         )
       }
@@ -191,9 +193,17 @@ export class ModelparametersComponent implements OnInit{
     this.motorisation = new Motorisation
   }
 
-  private initializeDataTable(): void {
+  private initializeDataTable1(): void {
     let dataTable = new DataTable(this.motorlist.nativeElement,{info : false, searching : true, lengthChange : false});
+    // ... configuration supplémentaire de dataTable si nécessaire
+  }
+
+  private initializeDataTable2(): void {
     let dataTable2 = new DataTable(this.fuellist.nativeElement,{info : false,searching : true , lengthChange : false});
+    // ... configuration supplémentaire de dataTable si nécessaire
+  }
+
+  private initializeDataTable3(): void {
     let dataTable3 = new DataTable(this.gearlist.nativeElement,{info : false,searching : true , lengthChange : false});
     // ... configuration supplémentaire de dataTable si nécessaire
   }

@@ -7,27 +7,29 @@
                   <hr>
                   <div class="row">
                     <div class="col-lg-12">
-                      <form>
+                      <div>
                        <div class="form-group">
                         <label for="nom_model">Name</label>
-                        <input type="text" class="form-control" id="nom_model" placeholder="model name...">
+                        <input type="text" [(ngModel)]="this.model.name" class="form-control" id="nom_model" placeholder="model name...">
                        </div>
                        <div class="row">
                          <div class="form-group col-lg-6">
                           <label for="input-2">Brand</label>
-                          <select name="" id="input-2" class="form-control">
+                          <select name="" id="input-2" [(ngModel)]="this.model.brand" class="form-control">
+                            <option value="" disabled>Choose a Brand</option>
                             @for (item of this.brands; track $index)
                             {
-                              <option value="">{{item.name}}</option>
+                              <option [ngValue]="item">{{item.name}}</option>
                             }
 
                           </select>
                          </div>
                          <div class="form-group col-lg-6">
-                          <label for="input-3">Categorie</label>
-                          <select name="" id="input-3" class="form-control">
+                          <label for="input-3">Category</label>
+                          <select name="" id="input-3" [(ngModel)]="this.model.category" class="form-control">
+                            <option selected value="" disabled>Choose a Category</option>
                             @for (item of this.categories; track $index) {
-                              <option value="">{{ item.name}}</option>
+                              <option [ngValue]="item">{{ item.name}}</option>
                             }
 
                           </select>
@@ -35,9 +37,9 @@
                        </div>
 
                        <div class="form-group">
-                        <button type="submit" class="btn btn-light btn-block">Add</button>
+                        <button type="submit" (click)="submitModel()" class="btn btn-light btn-block">Add</button>
                       </div>
-                      </form>
+                    </div>
                     </div>
                   </div>
                 </div>
@@ -302,7 +304,7 @@
                                     </label>
                                     <select class="form-control" id="brand-origin" [(ngModel)]="this.brand.origin">
                                       @for (item of origins; track $index) {
-                                        <option [value]="item" >{{item.name}}</option>
+                                        <option [ngValue]="item" >{{item.name}}</option>
                                       }
                                     </select>
                                   </div>
@@ -332,7 +334,7 @@
                                     <input type="text" [(ngModel)]="this.category.name" class="form-control" id="brand-name" placeholder="Audi, Chevrolet...">
                                   </div>
                                   <div class="form-group">
-                                    <button type="submit" class="btn btn-light btn-block">Add</button>
+                                    <button type="submit" class="btn btn-light btn-block" (click)="saveCategory()">Add</button>
                                   </div>
                                 </div>
                               </div>
