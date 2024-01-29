@@ -18,4 +18,12 @@ export class StatsService {
     });
     return this.http.get<Apiresponse>(this.url+"/sold", {headers : headers});
   }
+
+  public getMostSoldBrandPerYear(token : string) : Observable<Apiresponse>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    });
+    return this.http.get<Apiresponse>(this.url+"/brand", {headers : headers});
+  }
 }
