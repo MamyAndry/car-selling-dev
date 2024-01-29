@@ -16,4 +16,5 @@ public interface AnnouncementRepository extends CrudRepository<Announcement, Str
 
     @Query(nativeQuery = true, value = "SELECT * FROM Announcement WHERE status = :status")
     List<Announcement> findByStatus(@Param("status") Integer status);
+
 }
