@@ -13,15 +13,20 @@ export class BrandService {
   private url : string = "http://localhost:8080/brand";
   constructor(private http : HttpClient) { }
 
-  findAll():Observable<Apiresponse>{
-    return this.http.get<Apiresponse>(this.url);
+  findAll(token : string):Observable<Apiresponse>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    });
+    return this.http.get<Apiresponse>(this.url, {headers : headers});
   }
 
-  save(brand : Brand):Observable<any>{
+  save(token : string, brand : Brand):Observable<any>{
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
     });
-    return this.http.post<any>(this.url, JSON.stringify(brand), {headers});
+    return this.http.post<any>(this.url, JSON.stringify(brand), {headers : headers});
   }
 
   update(brand : Brand):Observable<any>{

@@ -25,7 +25,7 @@
   <link href="http://localhost:4200/assets/css/app-style.css" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css" rel="stylesheet">
 </head>
-<body class="bg-theme bg-theme9">
+<body class="bg-theme bg-theme9" style="min-height: 1000px;">
 
   <!-- start loader -->
      <div id="pageloader-overlay" class="visible incoming"><div class="loader-wrapper-outer"><div class="loader-wrapper-inner" ><div class="loader"></div></div></div></div>
@@ -45,8 +45,24 @@
      <ul class="sidebar-menu do-nicescrol">
         <li class="sidebar-header">MAIN NAVIGATION</li>
         <li>
-          <a href="index.html">
-            <i class="zmdi zmdi-view-dashboard"></i> <span>Dashboard</span>
+          <a routerLink="/carmodel" routerLinkActive="active">
+            <i class="zmdi zmdi-view-dashboard"></i>Model of Car
+          </a>
+        </li>
+        <li>
+          <a routerLink="/modelparameters" routerLinkActive="active">
+            <i class="zmdi zmdi-view-dashboard"></i>Model Car parameters
+          </a>
+        </li>
+        <li>
+          <a routerLink="/carparameters" routerLinkActive="active">
+            <i class="zmdi zmdi-view-dashboard"></i>Car basic parameters
+          </a>
+        </li>
+        <hr>
+        <li>
+          <a (click)="logout()" routerLink="/sign" routerLinkActive="active">
+            <i class="zmdi zmdi-view-dashboard"></i>Log Out
           </a>
         </li>
 

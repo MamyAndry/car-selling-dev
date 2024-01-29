@@ -1,0 +1,386 @@
+
+<div class="row mt-3">
+  <div class="col-lg-4">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title">
+          Gear Box
+          <button type="button" class="close" data-toggle="modal" data-target="#addGearBoxModal" style="color: white;">
+            <span aria-hidden="true">+</span>
+          </button>
+        </div>
+        <hr>
+        <div class="table-responsive">
+          <table #gearlist class="table table-bordered">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (item of this.gearBoxes; track $index) {
+                <tr>
+                  <td>{{item.idGearBox}}</td>
+                  <td><input class="input-update" [(ngModel)]="item.name" [value]="item.name"></td>
+                  <td>
+                    <a style="cursor: pointer;" (click)="updateGearBox(item)">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                      </svg>
+                    </a>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title">
+          Fuel Type
+          <button type="button" class="close" data-toggle="modal" data-target="#addFuelTypeModal" style="color: white;">
+            <span aria-hidden="true">+</span>
+          </button>
+        </div>
+        <hr>
+        <div class="table-responsive">
+          <table #fuellist class="table table-bordered">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (item of this.fuelTypes; track $index) {
+                <tr>
+                  <td>{{item.idFuelType}}</td>
+                  <td>
+                    <input class="input-update" [(ngModel)]="item.name" [value]="item.name">
+                  </td>
+                  <td>
+                    <a style="cursor: pointer;" (click)="updateFuel(item)">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                      </svg>
+                    </a>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title">
+          Motorisations
+          <button type="button" class="close" data-toggle="modal" data-target="#addMotorisationModal" style="color: white;">
+            <span aria-hidden="true">+</span>
+          </button>
+        </div>
+        <hr>
+        <div class="table-responsive">
+          <table #motorlist class="table table-bordered">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (item of motorisations; track $index) {
+                <tr>
+                  <td>{{item.idMotorisation}}</td>
+                  <td>
+                    <input class="input-update" [(ngModel)]="item.name" [value]="item.name">
+                  </td>
+                  <td>
+                    <a style="cursor: pointer;" (click)="updateMotor(item)">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                      </svg>
+                    </a>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<div class="row mt-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title">Model choice {{this.error}}</div><hr>
+        <div class="row">
+          <div class="col-lg-11">
+            <select class="form-control" [(ngModel)]="this.model" [(ngModel)]="this.modelGearBox.model" [(ngModel)]="this.modelFuelType.model" [(ngModel)]="this.modelMotor.model">
+              @for (item of models; track $index) {
+                <option [ngValue]="item">{{item.name}}</option>
+              }
+            </select>
+          </div>
+          <div class="col-lg-1">
+            <button class="btn btn-light btn-block">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z"/>
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col-lg-4">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title">
+          Gear Box of Model
+        </div>
+        <hr>
+        <div>
+          <div class="form-group">
+            <label>Gear Box</label>
+            <select class="form-control" [(ngModel)]="modelGearBox.gearBox">
+              @for (item of gearBoxes; track $index) {
+                <option [ngValue]="item">{{item.name}}</option>
+              }
+            </select>
+          </div>
+          <div class="form-group">
+            <label></label>
+            <input type="submit" (click)="submitModelGearBox()" class="btn btn-light btn-block">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title">
+          Motor of Model
+        </div>
+        <hr>
+        <div>
+          <div class="form-group">
+            <label>Motorisation</label>
+            <select class="form-control" [(ngModel)]="modelMotor.motorisation">
+              @for (item of motorisations; track $index) {
+                <option [ngValue]="item">{{item.name}}</option>
+              }
+            </select>
+          </div>
+          <div class="form-group">
+            <label></label>
+            <input type="submit"  (click)="submitModelMotor()" class="btn btn-light btn-block">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title">
+          Fuel Type of Model
+        </div>
+        <hr>
+        <div>
+          <div class="form-group">
+            <label>Fuel Type</label>
+            <select class="form-control" [(ngModel)]="modelFuelType.fuelType">
+              @for (item of fuelTypes; track $index) {
+                <option [ngValue]="item">{{item.name}}</option>
+              }
+            </select>
+          </div>
+          <div class="form-group">
+            <label></label>
+            <input type="submit"  (click)="submitModelFuelType()" class="btn btn-light btn-block">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="row mt-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title">
+          Model info
+        </div>
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Categorie</th>
+              <th>Brand</th>
+            </tr>
+            <tr>
+              <td>{{this.model.idModel}}</td>
+              <td>{{this.model.name}}</td>
+              <td>{{this.model.category?.name}}</td>
+              <td>{{this.model.brand?.name}}</td>
+            </tr>
+          </table>
+
+        </div>
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Gearboxes</th>
+                <th>Motorisations</th>
+                <th>Fuel types</th>
+              </tr>
+            </thead>
+            <tbody>
+              <td>
+                <ul>
+                  @for (gearBox of model.gearBoxes; track $index) {
+                    <li title="{{gearBox.idGearBox}}">
+                      <span>{{gearBox.name}}</span>
+                    </li>
+                  }
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  @for (motorisation of model.motorisations; track $index) {
+                    <li title="{{motorisation.idMotorisation}}">
+                      <span>
+                        {{motorisation.name}}
+                      </span>
+                    </li>
+                  }
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  @for (fuel of model.fuelTypes; track $index) {
+                    <li title="{{fuel.idFuelType}}">
+                      <span>
+                        {{fuel.name}}
+                      </span>
+                    </li>
+                  }
+                </ul>
+              </td>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="addGearBoxModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content card" style="background-color: rgb(50, 60, 70) !important;">
+      <div class="card-body">
+        <div class="card-title">
+          Insertion Gear Box
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white;">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <hr>
+        <div>
+          <div class="form-group">
+            <label for="brand-name">Name</label>
+            <input type="text" [(ngModel)]="this.gearBox.name" class="form-control" id="brand-name" placeholder="Audi, Chevrolet...">
+          </div>
+          <div class="form-group">
+            <button type="submit" (click)="submitGearBox()" class="btn btn-light btn-block">Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="addMotorisationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content card" style="background-color: rgb(50, 60, 70) !important;">
+      <div class="card-body">
+        <div class="card-title">
+          Insertion Motorisation
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white;">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <hr>
+        <div>
+          <div class="form-group">
+            <label for="brand-name">Name</label>
+            <input type="text" [(ngModel)]="this.motorisation.name" class="form-control" id="brand-name" placeholder="Audi, Chevrolet...">
+          </div>
+          <div class="form-group">
+            <button type="submit" (click)="submitMotorisation()" class="btn btn-light btn-block">Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="addFuelTypeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content card" style="background-color: rgb(50, 60, 70) !important;">
+      <div class="card-body">
+        <div class="card-title">
+          Insertion Fuel Type
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white;">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <hr>
+        <div>
+          <div class="form-group">
+            <label for="brand-name">Name</label>
+            <input type="text" [(ngModel)]="this.fuelType.name" class="form-control" id="brand-name" placeholder="Audi, Chevrolet...">
+          </div>
+          <div class="form-group">
+            <button type="submit" (click)="submitFuelType()" class="btn btn-light btn-block">Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

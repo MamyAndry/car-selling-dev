@@ -1,15 +1,15 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Category } from '../../../mapping/category/Category';
-import { Observable } from 'rxjs';
 import { Apiresponse } from '../../../mapping/response/Apiresponse';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Model } from '../../../mapping/Model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CategoryService {
+export class ModelService {
 
-  private url : string = "http://localhost:8080/category";
+  private url : string = "http://localhost:8080/model";
   constructor(private http : HttpClient) { }
 
 
@@ -21,18 +21,18 @@ export class CategoryService {
     return this.http.get<Apiresponse>(this.url, {headers : headers});
   }
 
-  save(token : string, Category : Category):Observable<any>{
+  save(token : string, Model : Model):Observable<any>{
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + token
     });
-    return this.http.post<any>(this.url, JSON.stringify(Category), {headers:headers});
+    return this.http.post<any>(this.url, JSON.stringify(Model), {headers:headers});
   }
 
-  update(Category : Category):Observable<any>{
+  update(Model : Model):Observable<any>{
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    return this.http.put<any>(this.url, JSON.stringify(Category), {headers:headers});
+    return this.http.put<any>(this.url, JSON.stringify(Model), {headers:headers});
   }
 }

@@ -1,17 +1,16 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Category } from '../../../mapping/category/Category';
+import { Apiresponse } from '../../../../mapping/response/Apiresponse';
 import { Observable } from 'rxjs';
-import { Apiresponse } from '../../../mapping/response/Apiresponse';
+import { ModelMotor } from '../../../../mapping/CarParameters/ModelMotor';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CategoryService {
+export class ModelMotorService {
 
-  private url : string = "http://localhost:8080/category";
+  url : string = "http://localhost:8080/modelMotor"
   constructor(private http : HttpClient) { }
-
 
   findAll(token : string):Observable<Apiresponse>{
     const headers = new HttpHeaders({
@@ -21,18 +20,18 @@ export class CategoryService {
     return this.http.get<Apiresponse>(this.url, {headers : headers});
   }
 
-  save(token : string, Category : Category):Observable<any>{
+  save(token : string, ModelMotor : ModelMotor):Observable<any>{
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + token
     });
-    return this.http.post<any>(this.url, JSON.stringify(Category), {headers:headers});
+    return this.http.post<any>(this.url, JSON.stringify(ModelMotor), {headers:headers});
   }
 
-  update(Category : Category):Observable<any>{
+  update(ModelMotor : ModelMotor):Observable<any>{
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    return this.http.put<any>(this.url, JSON.stringify(Category), {headers:headers});
+    return this.http.put<any>(this.url, JSON.stringify(ModelMotor), {headers:headers});
   }
 }
