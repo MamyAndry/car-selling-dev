@@ -81,17 +81,14 @@ public class LoginService implements UserDetailsService {
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         // TODO Auto-generated method stub
         User user = userRepository.findByEmail(email);
-        System.out.println("HOAOAOOAOAOAO");
         List<GrantedAuthority> authorities = new ArrayList<>();
         if (user == null) {
             throw new UsernameNotFoundException("Check your mail");
         }
         if(user.isAdmin()){
-            System.out.println("HUHUHHU");
             authorities.add(new SimpleGrantedAuthority("ADMIN"));
         }
         else{
-            System.out.println("HAHAHAHHA");
             authorities.add(new SimpleGrantedAuthority("USER"));
         }
         System.out.println(authorities.size() + " " + authorities.get(0));

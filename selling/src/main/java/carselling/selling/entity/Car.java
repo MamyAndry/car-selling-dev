@@ -59,10 +59,6 @@ public class Car {
 	@JoinColumn(name = "id_model")
 	Model model;
 	
-
-
-
-
 	public Car(){}
 
 	
@@ -85,11 +81,9 @@ public class Car {
 		this.kilometrage = kilometrage;
 	}
 
-
 	public Transmission getTransmission() {
 		return transmission;
 	}
-
 
 	public void setTransmission(Transmission transmission) {
 		this.transmission = transmission;
