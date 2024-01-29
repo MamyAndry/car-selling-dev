@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { data } from 'jquery';
 import DataTable from 'datatables.net-dt';
 import { ModelService } from '../../services/model/model.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-modelparameters',
@@ -57,19 +58,21 @@ export class ModelparametersComponent implements OnInit{
 
     private fuelTypeService : FuelTypeService,
     private motorService : MotorisationService,
-    private gearBoxService : GearBoxService
+    private gearBoxService : GearBoxService,
+    private route : Router
   ){}
 
   ngOnInit(): void {
     const sessionUserData = localStorage.getItem("session_user");
     this.session_user = sessionUserData ? JSON.parse(sessionUserData) : undefined;
     this.token = this.token = this.session_user?.password || '';
-
+    if(this.token == ''){
+      this.route.navigate(['login'])
+    }
     this.modelService.findAll(this.token).subscribe(
       (data) => {
         this.models = data.data
         this.model = this.models[0]
-        setTimeout(() => this.initializeDataTable(), 0);
 
         this.gearBoxService.findAll(this.token).subscribe(
           (data)=>{
@@ -77,6 +80,7 @@ export class ModelparametersComponent implements OnInit{
             this.gearBoxes = data.data
             this.modelGearBox.gearBox = this.gearBoxes[0]
             this.modelGearBox.model = this.model
+            setTimeout(() => this.initializeDataTable3(), 0);
           }
         )
 
@@ -86,6 +90,7 @@ export class ModelparametersComponent implements OnInit{
             this.motorisations = data.data
             this.modelMotor.motorisation = this.motorisations[0]
             this.modelMotor.model = this.model
+            setTimeout(() => this.initializeDataTable1(), 0);
           }
         )
 
@@ -95,6 +100,7 @@ export class ModelparametersComponent implements OnInit{
             this.fuelTypes = data.data
             this.modelFuelType.fuelType = this.fuelTypes[0]
             this.modelFuelType.model = this.model
+            setTimeout(() => this.initializeDataTable2(), 0);
           }
         )
       }
@@ -156,6 +162,7 @@ export class ModelparametersComponent implements OnInit{
   submitModelMotor(){
     this.modelMotorService.save(this.token, this.modelMotor).subscribe(
       (data) => {
+        console.log(this.modelMotor)
         console.log(data)
         this.model.motorisations.push(this.modelMotor.motorisation)
       }
@@ -187,9 +194,17 @@ export class ModelparametersComponent implements OnInit{
     this.motorisation = new Motorisation
   }
 
-  private initializeDataTable(): void {
+  private initializeDataTable1(): void {
     let dataTable = new DataTable(this.motorlist.nativeElement,{info : false, searching : true, lengthChange : false});
+    // ... configuration supplémentaire de dataTable si nécessaire
+  }
+
+  private initializeDataTable2(): void {
     let dataTable2 = new DataTable(this.fuellist.nativeElement,{info : false,searching : true , lengthChange : false});
+    // ... configuration supplémentaire de dataTable si nécessaire
+  }
+
+  private initializeDataTable3(): void {
     let dataTable3 = new DataTable(this.gearlist.nativeElement,{info : false,searching : true , lengthChange : false});
     // ... configuration supplémentaire de dataTable si nécessaire
   }

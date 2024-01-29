@@ -73,15 +73,89 @@ export class CarmodelComponent implements OnInit{
     this.brandService.save(this.token, this.brand).subscribe(
       (data)=>{
         console.log(data);
-        this.brand = new Brand
+
+        if(data.error != null){
+          alert("an error occured try reload or the check console")
+        }else{
+          this.brand.idBrand="NEW! (reload for use)"
+          this.brands.push(this.brand)
+          this.brand = new Brand
+        }
+      },(err)=>{
+        alert("an error occured try reload or the" + err)
+        console.log(err)
       }
     );
+  }
+
+  updateBrand(brand : Brand){
+    this.brandService.update(this.token, brand).subscribe(
+      (data)=>{
+        console.log(data)
+        if(data.error != null){
+          alert("an error occured try reload or the check console")
+        }
+        window.location.reload()
+      },(err)=>{
+        alert("an error occured try reload or the" + err)
+        console.log(err)
+      }
+    )
+  }
+
+  updateCategory(cat : Category){
+    this.categoryService.update(this.token, cat).subscribe(
+      (data)=>{
+        console.log(data)
+        window.location.reload()
+      },(err)=>{
+        alert("an error occured try reload or the" + err)
+        console.log(err)
+      }
+    )
   }
 
   private initializeDataTable(): void {
     let dataTable = new DataTable(this.brandlist.nativeElement,{info : false,lengthMenu: [3, 5, 10]});
     let dataTable2 = new DataTable(this.categorylist.nativeElement,{info : false,lengthMenu: [3, 5, 10]});
     // ... configuration supplémentaire de dataTable si nécessaire
+  }
+
+  submitModel(){
+    this.modelService.save(this.token, this.model).subscribe(
+      (data)=>{
+        console.log(data)
+        this.model.idModel="NEW! (reload for use)"
+        if(data.error != null){
+          alert("an error occured try reload or the check console")
+        }else{
+          this.models.push(this.model)
+          this.model = new Model
+        }
+        //window.location.reload
+      },(err)=>{
+        alert("an error occured try reload or the" + err)
+        console.log(err)
+      }
+    )
+  }
+
+  saveCategory(){
+    this.categoryService.save(this.token, this.category).subscribe(
+      (data)=>{
+        console.log(data);
+        this.category.idCategory="NEW! (reload for use)"
+        if(data.error != null){
+          alert("an error occured try reload or the check console")
+        }else{
+          this.categories.push(this.category)
+          this.category = new Category
+        }
+      },(err)=>{
+        alert("an error occured try reload or the" + err)
+        console.log(err)
+      }
+    );
   }
 
 
