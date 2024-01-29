@@ -1,3 +1,4 @@
+import { BrandSales } from './../../../../mapping/stats/BrandSales';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import Chart from 'chart.js/auto';
 import { SoldCarStats } from '../../../../mapping/stats/SoldCarStats';
@@ -16,8 +17,11 @@ import { data } from 'jquery';
 export class StatsComponent implements OnInit{
 
   @ViewChild('lineChart', {static: true}) private chartRef !:ElementRef;
+  @ViewChild('barChart', {static: true}) private barChartRef !:ElementRef;
   chart : any;
+  brandChart: any;
   salesCarData : SoldCarStats[] = []
+  salesBrandData: BrandSales[] = []
   session_user ?: User
   token : string = ""
   colors : string[] = [
@@ -36,6 +40,7 @@ export class StatsComponent implements OnInit{
       this.route.navigate(['login'])
     }
     this.createChart()
+    this.chartBrandPerYear()
   }
 
   constructor(private statsService : StatsService, private route : Router){}
@@ -85,6 +90,77 @@ export class StatsComponent implements OnInit{
              }
           }
            }
+        });
+      }
+    )
+  }
+  chartBrandPerYear(){
+    // chart 3
+    this.statsService.getMostSoldBrandPerYear(this.token).subscribe(
+      (data)=>{
+        this.salesBrandData = data.data
+        let label : any[] = []
+        let salesData : number[][] = []
+        let stacks : string[] = []
+        let brands : string[] = []
+        for (let index = 0; index < this.salesBrandData.length; index++) {
+          let sum: number[] = []
+          const element = this.salesBrandData[index];
+          if (!label.includes(element.year)) {
+            label.push(element.year)
+          }
+          sum.push(element.sum)
+          stacks.push("stack "+index)
+          salesData.push(sum)
+          brands.push(element.brand)
+        }
+        console.log(salesData)
+        let dataset:{
+          label: string;
+          data: number[];
+          backgroundColor: string;
+          stack: string;
+        }[] = [];
+        for (let index = 0; index < brands.length; index++) {
+          let d ={
+            label: brands[index],
+            data: salesData[index],
+            backgroundColor: this.colors[index],
+            stack: stacks[index],
+          };
+          dataset.push(d)
+        }
+
+        console.log(dataset)
+        let data1 = {
+          labels: label,
+          datasets: dataset,
+        }
+
+        var ctx = this.barChartRef.nativeElement.getContext('2d');
+        this.brandChart = new Chart(ctx, {
+          type: 'bar',
+          data: data1,
+          options: {
+            plugins: {
+              title: {
+                display: true,
+                text: 'Chart.js Bar Chart - Stacked'
+              },
+            },
+            responsive: true,
+            interaction: {
+              intersect: false,
+            },
+            scales: {
+              x: {
+                stacked: true,
+              },
+              y: {
+                stacked: true
+              }
+            }
+          }
         });
       }
     )
