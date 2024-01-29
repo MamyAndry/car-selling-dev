@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { data } from 'jquery';
 import { AnnouncementService } from '../../services/announcement/announcement.service';
 import { Router } from '@angular/router';
+import { User } from '../../../mapping/login/User';
 
 @Component({
   selector: 'app-announcement',
@@ -16,12 +17,19 @@ import { Router } from '@angular/router';
 export class AnnouncementComponent implements OnInit{
 
   Announcements : Announcement[] = []
+  session_user ?: User
+  token : string = ""
+
 
   constructor(private announcementService : AnnouncementService, private route : Router){}
 
 
   ngOnInit(): void {
-    this.announcementService.findAllUnpublishedAnnouncement().subscribe(
+    const sessionUserData = localStorage.getItem("session_user");
+    this.session_user = sessionUserData ? JSON.parse(sessionUserData) : undefined;
+    this.token = this.token = this.session_user?.password || '';
+
+    this.announcementService.findAllUnpublishedAnnouncement(this.token).subscribe(
       (data) => {
         this.Announcements = data.data
       }
@@ -40,7 +48,7 @@ export class AnnouncementComponent implements OnInit{
     temp.dateValidation = new Date().toDateString()
     temp.status.id = 10
     temp.status.name = "Published"
-    this.announcementService.validate(temp)
+    this.announcementService.validate(this.token, temp)
     // location.reload()
   }
   private initializeDataTable(): void {

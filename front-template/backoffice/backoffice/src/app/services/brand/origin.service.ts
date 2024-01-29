@@ -12,21 +12,27 @@ export class OriginService {
   url : string = "http://localhost:8080/origin"
   constructor(private http : HttpClient) { }
 
-  findAll():Observable<Apiresponse>{
-    return this.http.get<Apiresponse>(this.url);
+  findAll(token : string):Observable<Apiresponse>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    });
+    return this.http.get<Apiresponse>(this.url, {headers : headers});
   }
 
-  save(Origin : Origin):Observable<any>{
+  save(token : string, Origin : Origin):Observable<any>{
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
     });
-    return this.http.post<any>(this.url, JSON.stringify(Origin), {headers});
+    return this.http.post<any>(this.url, JSON.stringify(Origin), {headers : headers});
   }
 
-  update(Origin : Origin):Observable<any>{
+  update(token : string, Origin : Origin):Observable<any>{
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
     });
-    return this.http.put<any>(this.url, JSON.stringify(Origin), {headers});
+    return this.http.put<any>(this.url, JSON.stringify(Origin), {headers : headers});
   }
 }

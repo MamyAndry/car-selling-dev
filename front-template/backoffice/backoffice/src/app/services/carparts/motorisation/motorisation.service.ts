@@ -9,24 +9,29 @@ import { Apiresponse } from '../../../../mapping/response/Apiresponse';
 })
 export class MotorisationService {
 
-  url : string = "localhost:8080/motorisation"
+  url : string = "http://localhost:8080/motorisation"
   constructor(private http : HttpClient) { }
-
-  findAll():Observable<Apiresponse>{
-    return this.http.get<Apiresponse>(this.url);
+  findAll(token : string):Observable<Apiresponse>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    });
+    return this.http.get<Apiresponse>(this.url, {headers : headers});
   }
 
-  save(motorisation : Motorisation):Observable<any>{
+  save(token : string, Motorisation : Motorisation):Observable<any>{
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
     });
-    return this.http.post<any>(this.url, JSON.stringify(motorisation), {headers});
+    return this.http.post<any>(this.url, JSON.stringify(Motorisation), {headers:headers});
   }
 
-  update(motorisation : Motorisation):Observable<any>{
+  update(token : string, Motorisation : Motorisation):Observable<any>{
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
     });
-    return this.http.put<any>(this.url, JSON.stringify(motorisation), {headers});
+    return this.http.put<any>(this.url, JSON.stringify(Motorisation), {headers:headers});
   }
 }
