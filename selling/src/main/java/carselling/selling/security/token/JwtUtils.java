@@ -12,34 +12,35 @@ import java.util.Date;
 
 import javax.naming.AuthenticationException;
 
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 @Component
 public class JwtUtils {
     private static String secret = "This_is_secret";
-    private static long expiryDuration = 60 * 60;
+    private static long expiryDuration = 60 * 60 * 100;
 
     private final String TOKEN_HEADER = "Authorization";
     private final String TOKEN_PREFIX = "Bearer ";
 
-    public String generateJwt(User user){
+    public String generateJwt(UserDetails user){
 
         long milliTime = System.currentTimeMillis();
-        long expiryTime = milliTime + expiryDuration * 1000;
+        long expiryTime = milliTime + expiryDuration * 10000000;
 
         Date issuedAt = new Date(milliTime);
         Date expiryAt = new Date(expiryTime);
 
         // claims
         Claims claims = Jwts.claims()
-                .setIssuer(user.getId())
+                .setIssuer(user.getUsername())
                 .setIssuedAt(issuedAt)
                 .setExpiration(expiryAt);
 
         // optional claims
-        claims.put("email", user.getEmail());
-        claims.put("admin", user.isAdmin());
-
+        claims.put("email", user.getUsername());
+        claims.put("admin", user.getPassword());
+        claims.put("role", user.getAuthorities().iterator().next().getAuthority());
         // generate jwt using claims
         return Jwts.builder()
                 .setClaims(claims)

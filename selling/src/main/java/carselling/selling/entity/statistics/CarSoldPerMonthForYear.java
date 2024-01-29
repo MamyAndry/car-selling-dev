@@ -3,7 +3,8 @@ package carselling.selling.entity.statistics;
 public interface CarSoldPerMonthForYear {
     String getBRAND();
     String getMODEL();
-    Integer getCOUNT();
-    String getMOIS();
-    String getANNEE();
+    String getMODEL_ID();
+    String getMONTH();
+    Integer getYEAR();
+    Integer getSALES_COUNT();
 }

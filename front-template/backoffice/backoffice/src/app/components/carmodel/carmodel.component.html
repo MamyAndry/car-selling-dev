@@ -1,0 +1,320 @@
+
+      <div class="row mt-3">
+        <div class="col-lg-7">
+          <div class="card">
+                <div class="card-body">
+                  <div class="card-title">Model</div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <form>
+                       <div class="form-group">
+                        <label for="nom_model">Name</label>
+                        <input type="text" class="form-control" id="nom_model" placeholder="model name...">
+                       </div>
+                       <div class="row">
+                         <div class="form-group col-lg-6">
+                          <label for="input-2">Brand</label>
+                          <select name="" id="input-2" class="form-control">
+                            @for (item of this.brands; track $index)
+                            {
+                              <option value="">{{item.name}}</option>
+                            }
+
+                          </select>
+                         </div>
+                         <div class="form-group col-lg-6">
+                          <label for="input-3">Categorie</label>
+                          <select name="" id="input-3" class="form-control">
+                            @for (item of this.categories; track $index) {
+                              <option value="">{{ item.name}}</option>
+                            }
+
+                          </select>
+                         </div>
+                       </div>
+
+                       <div class="form-group">
+                        <button type="submit" class="btn btn-light btn-block">Add</button>
+                      </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <div class="card-title">Model list</div>
+              <div class="table-responsive">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Name</th>
+                      <th>Categorie</th>
+                      <th>Brand</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (item of models; track $index) {
+                      <tr>
+                        <td>{{item.idModel}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.category?.name}}</td>
+                        <td>{{item.brand?.name}}</td>
+                        <td style="text-align: center;">
+                          <a style="cursor: pointer;" data-toggle="modal" [attr.data-target]="'#detailModel-'+item.idModel" title="Details">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+                              <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z"/>
+                              <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0z"/>
+                            </svg>
+                          </a>
+                        </td>
+                      </tr>
+
+                      <div class="modal fade" [id]="'detailModel-'+item.idModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                          <div class="modal-content card" style="background-color: rgb(50, 60, 70) !important;">
+                            <div class="card-body">
+                              <div class="card-title">
+                                Details model
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white;">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <hr>
+                              <div class="table-responsive">
+                                <table class="table">
+                                  <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Categorie</th>
+                                    <th>Brand</th>
+                                  </tr>
+                                  <tr>
+                                    <td>{{item.idModel}}</td>
+                                    <td>{{item.name}}</td>
+                                    <td>{{item.category?.name}}</td>
+                                    <td>{{item.brand?.name}}</td>
+                                  </tr>
+                                </table>
+
+                              </div>
+                              <hr>
+                              <div class="table-responsive">
+                                <table class="table">
+                                  <thead>
+                                    <tr>
+                                      <th>Gearboxes</th>
+                                      <th>Motorisations</th>
+                                      <th>Fuel types</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <td>
+                                      <ul>
+                                        @for (gearBox of item.gearBoxes; track $index) {
+                                          <li title="{{gearBox.idGearBox}}">
+                                            <span>{{gearBox.name}}</span>
+                                          </li>
+                                        }
+                                      </ul>
+                                    </td>
+                                    <td>
+                                      <ul>
+                                        @for (motorisation of item.motorisations; track $index) {
+                                          <li title="{{motorisation.idMotorisation}}">
+                                            <span>
+                                              {{motorisation.name}}
+                                            </span>
+                                          </li>
+                                        }
+                                      </ul>
+                                    </td>
+                                    <td>
+                                      <ul>
+                                        @for (fuel of item.fuelTypes; track $index) {
+                                          <li title="{{fuel.idFuelType}}">
+                                            <span>
+                                              {{fuel.name}}
+                                            </span>
+                                          </li>
+                                        }
+                                      </ul>
+                                    </td>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+      </div>
+        </div>
+
+        <!--<div class="col-lg-2">
+          <div class="row">
+            <div class="card col-lg-12">
+              <div class="card-body">
+                <div class="card-title">Brand</div>
+                <hr>
+                <div>
+                  <div class="form-group">
+                    <label for="brand-name">Name</label>
+                    <input type="text" [(ngModel)]="this.brand.name" class="form-control" id="brand-name" placeholder="Audi, Chevrolet...">
+                  </div>
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-light btn-block" (click)="saveBrand()">Add</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="card col-lg-12">
+              <div class="card-body">
+                <div class="card-title">Categorie</div>
+                <hr>
+                <div>
+                  <div class="form-group">
+                    <label for="brand-name">Name</label>
+                    <input type="text" [(ngModel)]="this.category.name" class="form-control" id="brand-name" placeholder="Audi, Chevrolet...">
+                  </div>
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-light btn-block">Add</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>-->
+        <div class="col-lg-5">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-title">Brand list
+                <button type="button" class="close" data-toggle="modal" data-target="#addBrandModal" style="color: white;">
+                  <span aria-hidden="true">+</span>
+                </button>
+              </div>
+              <hr>
+              <div class="table-responsive">
+                <table #brandlist id="brandlist" class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Name</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (item of this.brands; track $index) {
+                      <tr>
+                        <td>{{item.idBrand}}</td>
+                        <td>{{item.name}}</td>
+                      </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <div class="card-title">Category list
+
+                <button type="button" class="close" data-toggle="modal" data-target="#addCategoryModal" style="color: white;">
+                  <span aria-hidden="true">+</span>
+                </button>
+              </div>
+              <hr>
+              <div class="table-responsive">
+                <table #categorylist class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Name</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (item of this.categories; track $index) {
+                      <tr>
+                        <td>{{item.idCategory}}</td>
+                        <td>{{item.name}}</td>
+                      </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!--End Row-->
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="addBrandModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content card" style="background-color: rgb(50, 60, 70) !important;">
+                              <div class="card-body">
+                                <div class="card-title">
+                                  Insertion Brand
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white;">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <hr>
+                                <div>
+                                  <div class="form-group">
+                                    <label for="brand-name">Name</label>
+                                    <input type="text" [(ngModel)]="this.brand.name" class="form-control" id="brand-name" placeholder="Audi, Chevrolet...">
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="brand-origin">
+                                      Origin
+                                    </label>
+                                    <select class="form-control" id="brand-origin" [(ngModel)]="this.brand.origin">
+                                      @for (item of origins; track $index) {
+                                        <option [value]="item" >{{item.name}}</option>
+                                      }
+                                    </select>
+                                  </div>
+                                  <div class="form-group">
+                                    <button type="submit" class="btn btn-light btn-block" (click)="saveBrand()">Add</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="modal fade" id="addCategoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content card" style="background-color: rgb(50, 60, 70) !important;">
+                              <div class="card-body">
+                                <div class="card-title">
+                                  Insertion Categorie
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white;">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <hr>
+                                <div>
+                                  <div class="form-group">
+                                    <label for="brand-name">Name</label>
+                                    <input type="text" [(ngModel)]="this.category.name" class="form-control" id="brand-name" placeholder="Audi, Chevrolet...">
+                                  </div>
+                                  <div class="form-group">
+                                    <button type="submit" class="btn btn-light btn-block">Add</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+

@@ -1,0 +1,120 @@
+
+      <div class="row mt-3">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-title">Announcement awaiting validation</div>
+              <hr>
+                <div class="table-responsive">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Addition date</th>
+                        <th>Price</th>
+                        <th>Location</th>
+                        <th></th>
+                        <!-- <th></th>
+                        <th></th> -->
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                    @for (item of Announcements; track $index) {
+                      <tr>
+                        <td>{{item.idAnnouncement}}</td>
+                        <td>{{item.dateAddition}}</td>
+                        <td>{{item.price}}</td>
+                        <td>{{item.location ? item.location.name : ""}}</td>
+                        <td>
+                          <button class="btn btn-light btn-block" data-toggle="modal" [attr.data-target] ="'#detailAnnouncement-' +item.idAnnouncement">Details</button>
+                        </td>
+                          <!-- Modal -->
+                          <div class="modal fade" [id]="'detailAnnouncement-' + item.idAnnouncement" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content card" style="background-color: rgb(50, 60, 70) !important;">
+                                <div class="card-body">
+                                  <div class="card-title">
+                                    Details Announcement {{ item.idAnnouncement }}
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white;">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <hr>
+                                  <div>
+                                      <ul class="list-group list-group-flush">
+                                        <li class="list-group-item" style="background-color: rgb(50, 60, 70)">
+                                          <p><label><b>Brand</b></label> : {{item.car?.modelFuelType?.model?.brand?.name}}</p>
+                                        </li>
+                                        <li class="list-group-item" style="background-color: rgb(50, 60, 70)">
+                                          <p><label><b>Origin</b></label> : {{item.car?.modelFuelType?.model?.brand?.origin?.name}}</p>
+                                        </li>
+                                        <li class="list-group-item" style="background-color: rgb(50, 60, 70)">
+                                          <p><label><b>Model</b></label> : {{item.car?.modelFuelType?.model?.name}}</p>
+                                        </li>
+                                        <li class="list-group-item" style="background-color: rgb(50, 60, 70)">
+                                          <p><label><b>Transmission</b></label> : {{item.car?.transmission?.name}}</p>
+                                        </li>
+                                        <li class="list-group-item" style="background-color: rgb(50, 60, 70)">
+                                          <p><label><b>Car Status</b></label> : {{item.car?.carStatus?.name}}</p>
+                                        </li>
+                                        <li class="list-group-item" style="background-color: rgb(50, 60, 70)">
+                                          <p><label><b>Kilometrage</b></label> : {{item.car?.kilometrage}}</p>
+                                        </li>
+                                        <li class="list-group-item" style="background-color: rgb(50, 60, 70)">
+                                          <p><label><b>Fuel type</b></label> : {{item.car?.modelFuelType?.fuelType?.name}}</p>
+                                        </li>
+                                        <li class="list-group-item" style="background-color: rgb(50, 60, 70)">
+                                          <p><label><b>Color</b></label> : {{item.car?.color}}</p>
+                                        </li>
+                                        <li class="list-group-item" style="background-color: rgb(50, 60, 70)">
+                                          <p><label ><b>Description</b></label> : {{item.description}}</p>
+                                        </li>
+
+                                      </ul>
+                                    </div>
+                                    <div>
+                                    <!-- <div>
+
+
+                                    </div>
+                                    <div>
+
+
+                                    </div>
+                                    <div>
+
+                                    </div>
+                                    <div>
+
+                                    </div>
+                                    <div>
+
+                                    </div>
+                                    <div>
+
+                                    </div>
+                                    <div>
+
+                                    </div> -->
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        <!-- <td><button class="btn btn-success" (click)="validate(item)">Validate</button></td>
+                        <td><button class="btn btn-warning" (click)="delete()">Delete</button></td> -->
+                      </tr>
+                    }
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+          <div>
+        </div>
+      </div>
+    </div><!--End Row-->
+
+
+
+

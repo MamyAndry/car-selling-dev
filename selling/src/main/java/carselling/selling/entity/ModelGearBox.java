@@ -1,17 +1,25 @@
 package carselling.selling.entity;
 
 
+import org.bson.types.ObjectId;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerator;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import jakarta.persistence.*;
+
 
 
 
 @Entity
 @Table(name = "model_gear_box")
+
 public class ModelGearBox {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "id_model_gear_box")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer idModelGearBox;
 	@ManyToOne
 	@JoinColumn(name = "id_gear_box")
@@ -25,23 +33,36 @@ public class ModelGearBox {
 
 	public ModelGearBox(){}
 
-	public GearBox getGearBox(){
-		return this.gearBox;
+	
+
+	public Model getModel() {
+		return model;
 	}
-	public void setGearBox(GearBox gearBox){
+
+	public void setModel(Model model) {
+		this.model = model;
+	}
+
+	public GearBox getGearBox() {
+		return gearBox;
+	}
+
+
+
+	public void setGearBox(GearBox gearBox) {
 		this.gearBox = gearBox;
 	}
-	public Integer getIdModelGearBox(){
-		return this.idModelGearBox;
+
+
+
+	public Integer getIdModelGearBox() {
+		return idModelGearBox;
 	}
-	public void setIdModelGearBox(Integer idModelGearBox){
+
+
+
+	public void setIdModelGearBox(Integer idModelGearBox) {
 		this.idModelGearBox = idModelGearBox;
-	}
-	public Model getModel(){
-		return this.model;
-	}
-	public void setModel(Model model){
-		this.model = model;
 	}
 
 
