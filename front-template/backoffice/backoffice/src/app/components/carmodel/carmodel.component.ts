@@ -78,6 +78,24 @@ export class CarmodelComponent implements OnInit{
     );
   }
 
+  updateBrand(brand : Brand){
+    this.brandService.update(this.token, brand).subscribe(
+      (data)=>{
+        console.log(data)
+        window.location.reload()
+      }
+    )
+  }
+
+  updateCategory(cat : Category){
+    this.categoryService.update(this.token, cat).subscribe(
+      (data)=>{
+        console.log(data)
+        window.location.reload()
+      }
+    )
+  }
+
   private initializeDataTable(): void {
     let dataTable = new DataTable(this.brandlist.nativeElement,{info : false,lengthMenu: [3, 5, 10]});
     let dataTable2 = new DataTable(this.categorylist.nativeElement,{info : false,lengthMenu: [3, 5, 10]});

@@ -29,9 +29,10 @@ export class CategoryService {
     return this.http.post<any>(this.url, JSON.stringify(Category), {headers:headers});
   }
 
-  update(Category : Category):Observable<any>{
+  update(token:string, Category : Category):Observable<any>{
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
     });
     return this.http.put<any>(this.url, JSON.stringify(Category), {headers:headers});
   }

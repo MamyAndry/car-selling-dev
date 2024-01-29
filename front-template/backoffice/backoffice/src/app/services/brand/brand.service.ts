@@ -29,10 +29,11 @@ export class BrandService {
     return this.http.post<any>(this.url, JSON.stringify(brand), {headers : headers});
   }
 
-  update(brand : Brand):Observable<any>{
+  update(token : string, brand : Brand):Observable<any>{
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
     });
-    return this.http.put<any>(this.url, JSON.stringify(brand), {headers});
+    return this.http.put<any>(this.url, JSON.stringify(brand), {headers : headers});
   }
 }
