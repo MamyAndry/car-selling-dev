@@ -18,6 +18,7 @@ export class SignComponent {
   constructor(private loginService : LoginService, private route : Router){
     this.user.email = "rmams@gmail.com"
     this.user.password = "mamisoa"
+    localStorage.removeItem("session_user")
   }
 
   login(){

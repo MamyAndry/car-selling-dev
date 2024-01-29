@@ -11,5 +11,6 @@ export const routes: Routes = [
   { path : "carparameter", component : CarparametersComponent},
   { path : "carparameters", component : CarparametersComponent},
   { path : "announcement", component : AnnouncementComponent},
-  { path : "modelparameters", component : ModelparametersComponent}
+  { path : "modelparameters", component : ModelparametersComponent},
+  { path: '**', redirectTo: '/login'}
 ];
