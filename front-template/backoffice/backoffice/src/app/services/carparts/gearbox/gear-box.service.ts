@@ -8,24 +8,30 @@ import { Apiresponse } from '../../../../mapping/response/Apiresponse';
   providedIn: 'root'
 })
 export class GearBoxService {
-  url : string = "localhost:8080/gearbox"
+  url : string = "http://localhost:8080/gearBox"
   constructor(private http : HttpClient) { }
 
-  findAll():Observable<Apiresponse>{
-    return this.http.get<Apiresponse>(this.url);
+  findAll(token : string):Observable<Apiresponse>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    });
+    return this.http.get<Apiresponse>(this.url, {headers : headers});
   }
 
-  save(gearbox : GearBox):Observable<any>{
+  save(token : string, GearBox : GearBox):Observable<any>{
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
     });
-    return this.http.post<any>(this.url, JSON.stringify(gearbox), {headers});
+    return this.http.post<any>(this.url, JSON.stringify(GearBox), {headers:headers});
   }
 
-  update(gearbox : GearBox):Observable<any>{
+  update(token : string, GearBox : GearBox):Observable<any>{
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
     });
-    return this.http.put<any>(this.url, JSON.stringify(gearbox), {headers});
+    return this.http.put<any>(this.url, JSON.stringify(GearBox), {headers:headers});
   }
 }

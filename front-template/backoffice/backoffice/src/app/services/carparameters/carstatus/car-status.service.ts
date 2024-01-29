@@ -12,21 +12,27 @@ export class CarStatusService {
   url : string = "http://localhost:8080/carStatus"
   constructor(private http : HttpClient) { }
 
-  findAll():Observable<Apiresponse>{
-    return this.http.get<Apiresponse>(this.url);
+  findAll(token : string):Observable<Apiresponse>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    });
+    return this.http.get<Apiresponse>(this.url, {headers : headers});
   }
 
-  save(CarStatus : CarStatus):Observable<any>{
+  save(token : string, CarStatus : CarStatus):Observable<any>{
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
     });
-    return this.http.post<any>(this.url, JSON.stringify(CarStatus), {headers});
+    return this.http.post<any>(this.url, JSON.stringify(CarStatus), {headers:headers});
   }
 
-  update(CarStatus : CarStatus):Observable<any>{
+  update(token : string, CarStatus : CarStatus):Observable<any>{
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
     });
-    return this.http.put<any>(this.url, JSON.stringify(CarStatus), {headers});
+    return this.http.put<any>(this.url, JSON.stringify(CarStatus), {headers:headers});
   }
 }

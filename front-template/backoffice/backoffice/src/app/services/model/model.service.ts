@@ -13,21 +13,26 @@ export class ModelService {
   constructor(private http : HttpClient) { }
 
 
-  findAll():Observable<Apiresponse>{
-    return this.http.get<Apiresponse>(this.url);
+  findAll(token : string):Observable<Apiresponse>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    });
+    return this.http.get<Apiresponse>(this.url, {headers : headers});
   }
 
-  save(Model : Model):Observable<any>{
+  save(token : string, Model : Model):Observable<any>{
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
     });
-    return this.http.post<any>(this.url, JSON.stringify(Model), {headers});
+    return this.http.post<any>(this.url, JSON.stringify(Model), {headers:headers});
   }
 
   update(Model : Model):Observable<any>{
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    return this.http.put<any>(this.url, JSON.stringify(Model), {headers});
+    return this.http.put<any>(this.url, JSON.stringify(Model), {headers:headers});
   }
 }

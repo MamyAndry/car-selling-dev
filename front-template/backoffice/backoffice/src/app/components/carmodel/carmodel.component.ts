@@ -12,6 +12,7 @@ import { OriginService } from '../../services/brand/origin.service';
 import { ModelService } from '../../services/model/model.service';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { User } from '../../../mapping/login/User';
 
 @Component({
   selector: 'app-carmodel',
@@ -31,30 +32,36 @@ export class CarmodelComponent implements OnInit{
   models : Model[] = []
   brand : Brand = new Brand;
   category : Category = new Category;
+  session_user ?: User
+  token : string = ""
 
   constructor(private modelService : ModelService, private brandService : BrandService, private categoryService : CategoryService, private originService : OriginService){}
 
 
   ngOnInit(): void {
-    this.brandService.findAll().subscribe(
+    const sessionUserData = localStorage.getItem("session_user");
+    this.session_user = sessionUserData ? JSON.parse(sessionUserData) : undefined;
+    this.token = this.token = this.session_user?.password || '';
+
+    this.brandService.findAll(this.token).subscribe(
       (data) => {
         this.brands = data.data
         setTimeout(() => this.initializeDataTable(), 0);
       }
     );
-    this.modelService.findAll().subscribe(
+    this.modelService.findAll(this.token).subscribe(
       (data) => {
         this.models = data.data
         //setTimeout(() => this.initializeDataTable(), 0);
       }
     );
-    this.categoryService.findAll().subscribe(
+    this.categoryService.findAll(this.token).subscribe(
       (data) => {
         this.categories = data.data
         //setTimeout(() => this.initializeDataTable(), 0);
       }
     );
-    this.originService.findAll().subscribe(
+    this.originService.findAll(this.token).subscribe(
       (data) => {
         this.origins = data.data
         //setTimeout(() => this.initializeDataTable(), 0);
@@ -63,7 +70,7 @@ export class CarmodelComponent implements OnInit{
   }
 
   saveBrand(){
-    this.brandService.save(this.brand).subscribe(
+    this.brandService.save(this.token, this.brand).subscribe(
       (data)=>{
         console.log(data);
         this.brand = new Brand

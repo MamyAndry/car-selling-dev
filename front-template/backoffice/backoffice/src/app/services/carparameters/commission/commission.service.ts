@@ -12,21 +12,27 @@ export class CommissionService {
   url : string = "http://localhost:8080/commission"
   constructor(private http : HttpClient) { }
 
-  findAll():Observable<Apiresponse>{
-    return this.http.get<Apiresponse>(this.url);
+  findAll(token : string):Observable<Apiresponse>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    });
+    return this.http.get<Apiresponse>(this.url, {headers : headers});
   }
 
-  save(commission : Commission):Observable<any>{
+  save(token : string, Commission : Commission):Observable<any>{
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
     });
-    return this.http.post<any>(this.url, JSON.stringify(commission), {headers});
+    return this.http.post<any>(this.url, JSON.stringify(Commission), {headers:headers});
   }
 
-  update(commission : Commission):Observable<any>{
+  update(token : string, Commission : Commission):Observable<any>{
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
     });
-    return this.http.put<any>(this.url, JSON.stringify(commission), {headers});
+    return this.http.put<any>(this.url, JSON.stringify(Commission), {headers:headers});
   }
 }

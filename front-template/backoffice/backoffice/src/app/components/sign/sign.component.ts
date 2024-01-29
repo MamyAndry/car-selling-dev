@@ -14,7 +14,7 @@ import { Userlogin } from '../../../mapping/login/Userlogin';
 })
 export class SignComponent {
   user : Userlogin = new Userlogin
-  error ?: string
+  error ?: string = ""
   constructor(private loginService : LoginService, private route : Router){
     this.user.email = "rmams@gmail.com"
     this.user.password = "mamisoa"
@@ -24,7 +24,11 @@ export class SignComponent {
     console.log(this.user)
     this.loginService.login(this.user).subscribe(
       (data) => {
-        if(data.error == null){
+        console.log(data)
+        if(data.data == null){
+          this.error = "Auth failed"
+        }
+        else if(data.error == null){
           let temp = data.data
           localStorage.setItem("session_user", JSON.stringify(temp))
           this.route.navigate(["/carmodel"])

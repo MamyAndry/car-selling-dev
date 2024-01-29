@@ -45,8 +45,24 @@
      <ul class="sidebar-menu do-nicescrol">
         <li class="sidebar-header">MAIN NAVIGATION</li>
         <li>
-          <a href="index.html">
-            <i class="zmdi zmdi-view-dashboard"></i> <span>Dashboard</span>
+          <a routerLink="/carmodel" routerLinkActive="active">
+            <i class="zmdi zmdi-view-dashboard"></i>Model of Car
+          </a>
+        </li>
+        <li>
+          <a routerLink="/modelparameters" routerLinkActive="active">
+            <i class="zmdi zmdi-view-dashboard"></i>Model Car parameters
+          </a>
+        </li>
+        <li>
+          <a routerLink="/carparameters" routerLinkActive="active">
+            <i class="zmdi zmdi-view-dashboard"></i>Car basic parameters
+          </a>
+        </li>
+        <hr>
+        <li>
+          <a (click)="logout()" routerLink="/sign" routerLinkActive="active">
+            <i class="zmdi zmdi-view-dashboard"></i>Log Out
           </a>
         </li>
 
