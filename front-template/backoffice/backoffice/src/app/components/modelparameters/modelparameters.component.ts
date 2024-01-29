@@ -162,6 +162,7 @@ export class ModelparametersComponent implements OnInit{
   submitModelMotor(){
     this.modelMotorService.save(this.token, this.modelMotor).subscribe(
       (data) => {
+        console.log(this.modelMotor)
         console.log(data)
         this.model.motorisations.push(this.modelMotor.motorisation)
       }

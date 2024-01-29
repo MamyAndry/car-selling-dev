@@ -48,6 +48,8 @@ export class StatsComponent implements OnInit{
         let label : any[] = []
         let salesData : number[] = []
         for (let index = 0; index < this.salesCarData.length; index++) {
+          if(index >= 4) break;
+
           const element = this.salesCarData[index];
           label.push(element.brand + " "+element.model + " ("+element.year+")")
           salesData.push(element.count)
