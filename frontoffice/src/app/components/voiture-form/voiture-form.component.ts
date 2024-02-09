@@ -1,3 +1,4 @@
+import { Photo } from './../../../mapping/CarParameters/Photo';
 import { Component, OnInit } from '@angular/core';
 import { Brand } from '../../../mapping/brand/Brand';
 import { ModelFuelType } from '../../../mapping/CarParameters/ModelFuelType';
@@ -10,6 +11,7 @@ import { ModelFuelTypeService } from '../../service/cars/model-fuel-type.service
 import { ModelGearBoxService } from '../../service/cars/model-gear-box.service';
 import { ModelMotorService } from '../../service/cars/model-motor.service';
 import { ModelService } from '../../service/cars/model.service';
+import { Car } from '../../../mapping/Car';
 
 @Component({
   selector: 'app-voiture-form',
@@ -34,10 +36,12 @@ export class VoitureFormComponent implements OnInit{
       console.log(error);
     });
   }
+  car: Car = new Car
   models: Model[] = []
   brands: Brand[] = []
   modelFuelTypes: ModelFuelType[] = []
   modelMotors: ModelMotor[] = []
   modelGearBox: ModelGearBox[] = []
+  photo: Photo[] = []
 
 }

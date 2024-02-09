@@ -1,50 +1,46 @@
-<div class="content-wrapper">
-  <div class="container-fluid">
-    <div class="row mt-3">
+
+  <div class="container">
+    <div class="row justify-content-center">
       <div class="col-lg-12">
           <div class="card">
+            <div class="card-title">Creer un annonce de {{"Votre voiture"}}</div>
+            <hr>
             <div class="card-body">
-              <div class="card-title">Ajout annonce</div>
-              <hr>
               <form method="post" action="">
-                <div class="form-group">
-                  <label for="input-1">Date d'ajout</label>
-                  <input type="date" class="form-control" id="input-1" name="dateAddition">
-                </div>
-                <div class="form-group">
-                  <label for="input-2">Voiture</label>
-                  <select name="idCar" class="form-control" id="input-2">
-                    <option value="">Tesla</option>
-                    <option value="">Porsche</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="input-2">Voiture</label>
-                  <select name="idCar" class="form-control" id="input-2">
-                    <option value="">Tesla</option>
-                    <option value="">Porsche</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="input-3">Lieu de vente</label>
-                  <input type="text" class="form-control" id="input-3" placeholder="Enter Your Mobile Number">
-                </div>
-                <div class="form-group">
-                  <label for="input-4">Password</label>
-                  <input type="text" class="form-control" id="input-4" placeholder="Enter Password">
-                </div>
-                <div class="form-group">
-                  <label for="input-5">Confirm Password</label>
-                  <input type="text" class="form-control" id="input-5" placeholder="Confirm Password">
-                </div>
-                <div class="form-group py-2">
-                  <div class="icheck-material-white">
-                  <input type="checkbox" id="user-checkbox1" checked=""/>
-                  <label for="user-checkbox1">I Agree Terms & Conditions</label>
+                <div class="row mt-3">
+                  <div class="form-group">
+                    <label for="input-1">Date d'ajout</label>
+                    <input type="date" class="form-control" id="input-1" name="dateAddition">
                   </div>
                 </div>
-                <div class="form-group">
-                  <button type="submit" class="btn btn-light px-5"><i class="icon-lock"></i> Register</button>
+                <div class="row mt-3">
+                  <div class="form-group">
+                    <label for="">Lieu de vente</label>
+                    <select name="idBrand" class="form-control" id="">
+                      <option value="">Tesla</option>
+                      <option value="">Porsche</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="form-group">
+                    <label for="">Prix</label>
+                    <select name="idModel" class="form-control" id="">
+                      <option value="">SUV</option>
+                      <option value="">Sport</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="form-group">
+                    <label for="input-2">Description</label>
+                    <input type="text-area" class="form-control" id="input-2" name="descrition">
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-danger "><i class="fa fa-ok"></i>Valider</button>
+                  </div>
                 </div>
               </form>
           </div>
@@ -52,6 +48,3 @@
       </div>
     </div>
   </div>
-<!-- End container-fluid-->
-
-</div><!--End content-wrapper-->
