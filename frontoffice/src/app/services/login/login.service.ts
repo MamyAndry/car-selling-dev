@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UrlService } from '../url/url.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Userlogin } from '../../../mapping/login/Userlogin';
 import { Observable } from 'rxjs';
 import { Apiresponse } from '../../../mapping/response/Apiresponse';
@@ -14,6 +14,9 @@ export class LoginService {
   constructor(private http : HttpClient) { }
   login(user : Userlogin):Observable<Apiresponse>{
     console.log(JSON.stringify(user))
-    return this.http.post<Apiresponse>(this.url, JSON.stringify(user));
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.http.post<Apiresponse>(this.url, JSON.stringify(user), {headers:headers});
   }
 }
