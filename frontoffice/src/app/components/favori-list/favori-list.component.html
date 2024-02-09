@@ -1,8 +1,13 @@
 <section id="featured-cars" class="featured-cars">
   <div class="row">
     <div class="section-header">
-      <p>checkout <span>the</span> featured cars</p>
-      <h2>featured cars</h2>
+
+      <h2>
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-bookmark-fill" viewBox="0 0 16 16">
+          <path d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2"/>
+        </svg>
+        Favoris
+      </h2>
     </div><!--/.section-header-->
     <div class="featured-cars-content">
       <button type="button" data-toggle="modal" data-target="#searchModal" class="featured-cars-search btn btn-primary"  >
@@ -210,7 +215,8 @@
 
     <!-- Modal -->
     <div class="modal fade justify-content-center" id="searchModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered" role="document" style="width: 1190px;">
+      <div class="modal-dialog" role="document" style="width: 1190px;">
+          <div class="container">
             <div class="row">
               <div class="col-md-12">
                 <div class="model-search-content">
@@ -321,6 +327,7 @@
                   </div>
                 </div>
               </div>
+            </div>
           </div>
       </div>
     </div>

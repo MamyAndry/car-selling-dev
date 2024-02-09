@@ -20,9 +20,11 @@ public class ModelMotor {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "id_model_motor")
 	Integer idModelMotor;
+
 	@ManyToOne
 	@JoinColumn(name = "id_motorisation")
 	Motorisation motorisation;
+
 	@ManyToOne
 	@JoinColumn(name = "id_model")
 	Model model;
@@ -45,6 +47,13 @@ public class ModelMotor {
 
 	public void setModel(Model model) {
 		this.model = model;
+	}
+
+	public Motorisation getMotorisation() {
+		return motorisation;
+	}
+	public void setMotorisation(Motorisation motorisation) {
+		this.motorisation = motorisation;
 	}
 	
 

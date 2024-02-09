@@ -1,48 +1,3 @@
-<!doctype html>
-<html class="no-js" lang="en">
-
-    <head>
-        <!-- meta data -->
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
-        <!-- title of site -->
-        <title>CarVilla</title>
-
-        <!-- For favicon png -->
-		<link rel="shortcut icon" type="image/icon" href="http://localhost:4200/assets/logo/favicon.png"/>
-
-        <!--font-awesome.min.css-->
-        <link rel="stylesheet" href="http://localhost:4200/assets/css/font-awesome.min.css">
-
-        <!--linear icon css-->
-		<link rel="stylesheet" href="http://localhost:4200/assets/css/linearicons.css">
-
-        <!--flaticon.css-->
-		<link rel="stylesheet" href="http://localhost:4200/assets/css/flaticon.css">
-
-		<!--animate.css-->
-        <link rel="stylesheet" href="http://localhost:4200/assets/css/animate.css">
-        <!--owl.carousel.css-->
-        <link rel="stylesheet" href="http://localhost:4200/assets/css/owl.carousel.min.css">
-		<link rel="stylesheet" href="http://localhost:4200/assets/css/owl.theme.default.min.css">
-
-        <!--bootstrap.min.css-->
-        <link rel="stylesheet" href="http://localhost:4200/assets/css/bootstrap.min.css">
-
-		<!-- bootsnav -->
-		<link rel="stylesheet" href="http://localhost:4200/assets/css/bootsnav.css" >
-
-        <!--style.css-->
-        <link rel="stylesheet" href="http://localhost:4200/assets/css/style.css">
-
-        <!--responsive.css-->
-        <link rel="stylesheet" href="http://localhost:4200/assets/css/responsive.css">
-		<link rel="stylesheet" href="http://localhost:4200/assets/css/grid.css">
-
-    </head>
 
 	<body>
 
@@ -62,7 +17,7 @@
 				                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
 				                    <i class="fa fa-bars"></i>
 				                </button>
-				                <a class="navbar-brand" href="index.html">carvilla<span></span></a>
+				                <a class="navbar-brand" href="index.html">carselling<span></span></a>
 
 				            </div><!--/.navbar-header-->
 				            <!-- End Header Navigation -->
@@ -74,17 +29,25 @@
 				                    <li class="scroll"><a href="#service">service</a></li>
 				                    <li class="scroll"><a href="#featured-cars">featured cars</a></li>
 				                    <li class="scroll"><a href="#contact">contact</a></li>
+                            @if (!isLogged()) {
+                              <li class="scroll"><a  data-toggle="modal" data-target="#login-modal">log in</a></li>
+                            }
+                            @else {
+                              <li class="scroll"><a  (click)="logout()">log out</a></li>
+                            }
+
 				                </ul><!--/.nav -->
 				            </div><!-- /.navbar-collapse -->
 				        </div><!--/.container-->
 				    </nav><!--/nav-->
 				    <!-- End Navigation -->
+
 				</div><!--/.header-area-->
 			</div><!-- /.top-area-->
 			<!-- top-area End -->
 
 			<div class="container">
-				<div class="welcome-hero-txt">
+				<div class="welcome-hero-txt animated fadeInUp">
 					<h2>get your desired car in resonable price</h2>
 					<p>
 						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore   magna aliqua.
@@ -139,114 +102,35 @@
 			</div><!--/.container-->
 
 		</section><!--/.service-->
-		<!--service end-->
 
+    <router-outlet />
 
+		<!--blog start -->
+		<section id="blog" class="blog"></section><!--/.blog-->
+		<!--blog end -->
+
+    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="login-page">
+            <div class="form-login">
+              <div class="login-form">
+                <input type="email" placeholder="email" [(ngModel)]="user.email"/>
+                <input type="password" placeholder="password" [(ngModel)]="user.password"/>
+                <button (click)="login()">login</button>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
 		<!--contact start-->
-		<footer id="contact"  class="contact">
-			<div class="container">
-				<div class="footer-top">
-					<div class="row">
-						<div class="col-md-3 col-sm-6">
-							<div class="single-footer-widget">
-								<div class="footer-logo">
-									<a href="index.html">carvilla</a>
-								</div>
-								<p>
-									Ased do eiusm tempor incidi ut labore et dolore magnaian aliqua. Ut enim ad minim veniam.
-								</p>
-								<div class="footer-contact">
-									<p>+1 (885) 2563154554</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-2 col-sm-6">
-							<div class="single-footer-widget">
-								<h2>about devloon</h2>
-								<ul>
-									<li><a href="#">about us</a></li>
-									<li><a href="#">career</a></li>
-									<li><a href="#">terms <span> of service</span></a></li>
-									<li><a href="#">privacy policy</a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-md-3 col-xs-12">
-							<div class="single-footer-widget">
-								<h2>top brands</h2>
-								<div class="row">
-									<div class="col-md-7 col-xs-6">
-										<ul>
-											<li><a href="#">BMW</a></li>
-											<li><a href="#">lamborghini</a></li>
-											<li><a href="#">camaro</a></li>
-											<li><a href="#">audi</a></li>
-											<li><a href="#">infiniti</a></li>
-											<li><a href="#">nissan</a></li>
-										</ul>
-									</div>
-									<div class="col-md-5 col-xs-6">
-										<ul>
-											<li><a href="#">ferrari</a></li>
-											<li><a href="#">porsche</a></li>
-											<li><a href="#">land rover</a></li>
-											<li><a href="#">aston martin</a></li>
-											<li><a href="#">mersedes</a></li>
-											<li><a href="#">opel</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-offset-1 col-md-3 col-sm-6">
-							<div class="single-footer-widget">
-								<h2>news letter</h2>
-								<div class="footer-newsletter">
-									<p>
-										Subscribe to get latest news  update and informations
-									</p>
-								</div>
-								<div class="hm-foot-email">
-									<div class="foot-email-box">
-										<input type="text" class="form-control" placeholder="Add Email">
-									</div><!--/.foot-email-box-->
-									<div class="foot-email-subscribe">
-										<span><i class="fa fa-arrow-right"></i></span>
-									</div><!--/.foot-email-icon-->
-								</div><!--/.hm-foot-email-->
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="footer-copyright">
-					<div class="row">
-						<div class="col-sm-6">
-							<p>
 
-							</p><!--/p-->
-						</div>
-						<div class="col-sm-6">
-							<div class="footer-social">
-								<a href="#"><i class="fa fa-facebook"></i></a>
-								<a href="#"><i class="fa fa-instagram"></i></a>
-								<a href="#"><i class="fa fa-linkedin"></i></a>
-								<a href="#"><i class="fa fa-pinterest-p"></i></a>
-								<a href="#"><i class="fa fa-behance"></i></a>
-							</div>
-						</div>
-					</div>
-				</div><!--/.footer-copyright-->
-			</div><!--/.container-->
-
-			<div id="scroll-Top">
-				<div class="return-to-top">
-					<i class="fa fa-angle-up " id="scroll-top" data-toggle="tooltip" data-placement="top" title="" data-original-title="Back to Top" aria-hidden="true"></i>
-				</div>
-			</div>
-
-    </footer><!--/.contact-->
 		<!--contact end-->
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
 </body>
 
-</html>
+

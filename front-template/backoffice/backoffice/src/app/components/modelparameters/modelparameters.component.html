@@ -197,7 +197,7 @@
         <div>
           <div class="form-group">
             <label>Motorisation</label>
-            <select class="form-control" [(ngModel)]="modelMotor.motorisation">
+            <select class="form-control" [(ngModel)]="this.modelMotor.motorisation">
               @for (item of motorisations; track $index) {
                 <option [ngValue]="item">{{item.name}}</option>
               }
