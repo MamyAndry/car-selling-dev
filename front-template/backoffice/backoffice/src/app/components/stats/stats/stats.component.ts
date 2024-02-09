@@ -145,13 +145,20 @@ export class StatsComponent implements OnInit{
             plugins: {
               title: {
                 display: true,
-                text: 'Chart.js Bar Chart - Stacked'
               },
+              legend: {
+                position :"bottom",
+                display: false,
+                   labels: {
+                   boxWidth:15
+                  }
+               }
             },
             responsive: true,
             interaction: {
               intersect: false,
             },
+
             scales: {
               x: {
                 stacked: true,
