@@ -101,7 +101,6 @@ public class Car {
 		this.modelFuelType = modelFuelType;
 	}
 
-
 	public ModelMotor getModelMotor() {
 		return modelMotor;
 	}

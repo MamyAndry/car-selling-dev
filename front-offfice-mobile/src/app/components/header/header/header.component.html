@@ -1,0 +1,210 @@
+<ion-content>
+
+
+<section id="home" class="welcome-hero">
+
+  <!-- top-area Start -->
+  <div class="top-area">
+    <div class="header-area">
+      <!-- Start Navigation -->
+        <nav class="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy"  data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
+
+            <div class="container">
+
+                <!-- Start Header Navigation -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand" href="index.html">carselling<span></span></a>
+
+                </div><!--/.navbar-header-->
+                <!-- End Header Navigation -->
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
+                    <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+                        <li class=" scroll active"><a href="#home">home</a></li>
+                        <li class="scroll"><a href="#service">service</a></li>
+                        <li class="scroll"><a href="#featured-cars">featured cars</a></li>
+                        <li class="scroll"><a href="#contact">contact</a></li>
+                        @if (!isLogged()) {
+                          <li class="scroll"><a  (click)="setOpen(true)">log in</a></li>
+                          <ion-modal [isOpen]="isModalOpen">
+                            <ng-template>
+                              <ion-header>
+                                <ion-toolbar>
+                                  <ion-title>Login</ion-title>
+                                  <ion-buttons slot="end">
+                                    <ion-button (click)="setOpen(false)">Close</ion-button>
+                                  </ion-buttons>
+                                </ion-toolbar>
+                              </ion-header>
+                              <ion-content class="ion-padding">
+                                <div class="login-page">
+                                  <div class="form-login">
+                                    <div class="register-form-login" style="text-align: left;" [style.display]="registerFormVisible ? 'block' : 'none'" [@fadeInOut] *ngIf="registerFormVisible">
+                                      <input type="text" placeholder="Username" [(ngModel)]="userIn.username"/>
+                                      <input type="text" placeholder="Nom" [(ngModel)]="userIn.name"/>
+                                      <input type="text" placeholder="Prenom" [(ngModel)]="userIn.firstName"/>
+                                      <input type="date" placeholder="Prenom" [(ngModel)]="userIn.birthdate"/>
+                                      <input type="email" placeholder="email" [(ngModel)]="userIn.email"/>
+                                      <input type="password" placeholder="password" [(ngModel)]="userIn.password"/>
+                                      <button (click)="signin()">create</button>
+                                      <p class="message">Se <a (click)="toggleForms()" style="cursor: pointer;">connecter</a></p>
+                                    </div>
+                                    <div class="login-form" [style.display]="!registerFormVisible ? 'block' : 'none'" [@fadeInOut] *ngIf="!registerFormVisible">
+                                      <input type="email" placeholder="email" [(ngModel)]="user.email"/>
+                                      <input type="password" placeholder="password" [(ngModel)]="user.password"/>
+                                      <button (click)="login()">login</button>
+                                      <p class="message">Ou S' <a style="cursor: pointer;" (click)="toggleForms()"> enregistrer</a></p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </ion-content>
+                            </ng-template>
+                          </ion-modal>
+                        }
+                        @else {
+                          <li class="scroll"><a  (click)="logout()">log out</a></li>
+                        }
+
+                    </ul><!--/.nav -->
+                </div><!-- /.navbar-collapse -->
+            </div><!--/.container-->
+        </nav><!--/nav-->
+        <!-- End Navigation -->
+
+    </div><!--/.header-area-->
+  </div><!-- /.top-area-->
+  <!-- top-area End -->
+
+  <div class="container">
+    <div class="welcome-hero-txt animated fadeInUp">
+      <h2>get your desired car in resonable price</h2>
+      <p>
+
+      </p>
+      <button type="button" class="welcome-btn">Decouvrir</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="model-search-content">
+          <div class="row">
+            <div class="col-md-offset-1 col-md-2 col-sm-12">
+              <div class="single-model-search">
+                <h2>select year</h2>
+                <div class="model-select-icon">
+                  <select class="form-control">
+
+                      <option value="default">year</option><!-- /.option-->
+
+                      <option value="2018">2018</option><!-- /.option-->
+
+                      <option value="2017">2017</option><!-- /.option-->
+                      <option value="2016">2016</option><!-- /.option-->
+
+                  </select><!-- /.select-->
+                </div><!-- /.model-select-icon -->
+              </div>
+              <div class="single-model-search">
+                <h2>body style</h2>
+                <div class="model-select-icon">
+                  <select class="form-control">
+
+                      <option value="default">style</option><!-- /.option-->
+
+                      <option value="sedan">sedan</option><!-- /.option-->
+
+                      <option value="van">van</option><!-- /.option-->
+                      <option value="roadster">roadster</option><!-- /.option-->
+
+                  </select><!-- /.select-->
+                </div><!-- /.model-select-icon -->
+              </div>
+            </div>
+            <div class="col-md-offset-1 col-md-2 col-sm-12">
+              <div class="single-model-search">
+                <h2>select make</h2>
+                <div class="model-select-icon">
+                  <select class="form-control">
+
+                      <option value="default">make</option><!-- /.option-->
+
+                      <option value="toyota">toyota</option><!-- /.option-->
+
+                      <option value="holden">holden</option><!-- /.option-->
+                      <option value="maecedes-benz">maecedes-benz.</option><!-- /.option-->
+
+                  </select><!-- /.select-->
+                </div><!-- /.model-select-icon -->
+              </div>
+              <div class="single-model-search">
+                <h2>car condition</h2>
+                <div class="model-select-icon">
+                  <select class="form-control">
+
+                      <option value="default">condition</option><!-- /.option-->
+
+                      <option value="something">something</option><!-- /.option-->
+
+                      <option value="something">something</option><!-- /.option-->
+                      <option value="something">something</option><!-- /.option-->
+
+                  </select><!-- /.select-->
+                </div><!-- /.model-select-icon -->
+              </div>
+            </div>
+            <div class="col-md-offset-1 col-md-2 col-sm-12">
+              <div class="single-model-search">
+                <h2>select model</h2>
+                <div class="model-select-icon">
+                  <select class="form-control">
+
+                      <option value="default">model</option><!-- /.option-->
+
+                      <option value="kia-rio">kia-rio</option><!-- /.option-->
+
+                      <option value="mitsubishi">mitsubishi</option><!-- /.option-->
+                      <option value="ford">ford</option><!-- /.option-->
+
+                  </select><!-- /.select-->
+                </div><!-- /.model-select-icon -->
+              </div>
+              <div class="single-model-search">
+                <h2>select price</h2>
+                <div class="model-select-icon">
+                  <select class="form-control">
+
+                      <option value="default">price</option><!-- /.option-->
+
+                      <option value="$0.00">$0.00</option><!-- /.option-->
+
+                      <option value="$0.00">$0.00</option><!-- /.option-->
+                      <option value="$0.00">$0.00</option><!-- /.option-->
+
+                  </select><!-- /.select-->
+                </div><!-- /.model-select-icon -->
+              </div>
+            </div>
+            <div class="col-md-2 col-sm-12">
+              <div class="single-model-search text-center">
+                <button class="welcome-btn model-search-btn" onclick="window.location.href='#'">
+                  search
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</section><!--/.welcome-hero-->
+
+</ion-content>

@@ -1,97 +1,67 @@
 .featured-cars-grid {
-    padding: 5%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1% 5%;
-    padding-top: 1%;
-    padding-bottom: 1%;
-    max-height: 500px;
-    overflow: auto;
+  padding: 5%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1% 5%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  max-height: 500px;
+  overflow: auto;
 }
 .featured-cars-details{
-    max-width: 30%;
-
+  max-width: 30%;
 }
 
 .featured-cars-search{
-    /* background-color: #4E4FFA; */
-    min-width: 50px;
-    height: 50px;
-    border-radius: 100%;
-    box-shadow:0 10px 40px 0px rgba(38,40,64,.2);
-    /* position: absolute; */
-    color: black;
-    justify-items: center;
+  /* background-color: #4E4FFA; */
+  min-width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  box-shadow:0 10px 40px 0px rgba(38,40,64,.2);
+  /* position: absolute; */
+  color: black;
+  justify-items: center;
 }
 .search-btn{
-        display: inline-block;
-        width: 100%;
-        height: 50px;
-        background: #4e4ffa;
-        color: #fff;
-        margin-top: 30px;
-        border-radius: 3px;
-        -webkit-transition: .3s linear;
-        -moz-transition: .3s linear;
-        -ms-transition: .3s linear;
-        -o-transition: .3s linear;
-        transition: .3s linear;
+      display: inline-block;
+      width: 100%;
+      height: 50px;
+      background: #4e4ffa;
+      color: #fff;
+      margin-top: 30px;
+      border-radius: 3px;
+      -webkit-transition: .3s linear;
+      -moz-transition: .3s linear;
+      -ms-transition: .3s linear;
+      -o-transition: .3s linear;
+      transition: .3s linear;
 }
 
 
 @media screen and (max-width: 800px) {
-    .featured-cars-content {
-        padding-top: 96px;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        padding: 10px;
-    }
+  .featured-cars-content {
+      padding-top: 96px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 10px;
+  }
 
-    .featured-cars-grid {
-        padding: 5%;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1% 5%;
-        padding-top: 1%;
-        padding-bottom: 1%;
-        justify-content: center;
-        max-height: 1000px;
-    }
-    .featured-cars-details{
-        max-width: 100%;
-    }
-    .featured-cars-search{
-        /* background-color: #4E4FFA; */
-        margin-bottom: 50px;
-    }
+  .featured-cars-grid {
+      gap: 1%; /* Espacement uniforme */
+      padding: 5%; /* Ajustement du padding */
+      max-height: none; /* Annule la hauteur maximale */
+      overflow: visible; /* Annule le défilement */
+  }
+  .featured-cars-details{
+      max-width: 100%; /* Prend toute la largeur */
+  }
+  .featured-cars-search{
+      /* background-color: #4E4FFA; */
+      margin-bottom: 50px;
+  }
+  .featured-cars-item {
+      width: 100%; /* Chaque élément de la grille prend toute la largeur disponible */
+  }
 }
 
-@media screen and (max-width: 1199px) {
-    .featured-cars-grid {
-        padding: 5%;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1% 5%;
-        padding-top: 1%;
-        padding-bottom: 1%;
-        max-height: 500px;
-        overflow: auto;
-    }
-    .featured-cars-details{
-        max-width: 30%;
-
-    }
-
-    .featured-cars-search{
-        /* background-color: #4E4FFA; */
-        min-width: 30%;
-        max-height: 500px;
-        padding: 50px;
-        border-radius: 0.5em;
-        box-shadow:0 10px 40px 0px rgba(38,40,64,.2);
-        /* position: absolute; */
-        color: white;
-    }
-
-}

@@ -3,7 +3,9 @@ package carselling.selling.entity;
 
 import org.bson.types.ObjectId;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerator;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -27,6 +29,7 @@ public class ModelGearBox {
 	GearBox gearBox;
 	
 	@ManyToOne
+	@JsonBackReference
 	@JoinColumn(name = "id_model")
 	Model model;
 

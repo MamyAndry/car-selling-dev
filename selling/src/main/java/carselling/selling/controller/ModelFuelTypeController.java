@@ -106,16 +106,4 @@ public class ModelFuelTypeController
 		}
 	}
 
-
-	@GetMapping("model")
-	public ResponseEntity<?> getList(@RequestBody Model model){
-		ApiResponse response = new ApiResponse();
-		try{
-			response.addData("data", repository.findByModel(model));
-			return ResponseEntity.ok(response);
-		}catch(Exception e){
-			response.addError("error", e.getCause().getMessage());
-			return ResponseEntity.ok(response);
-		}
-	}
 }

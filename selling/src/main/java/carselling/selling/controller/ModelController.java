@@ -69,28 +69,6 @@ public class ModelController {
 		}
 	}
 
-	@GetMapping("brand")
-	public ResponseEntity<?> getModel(@RequestBody Brand brand) {
-		ApiResponse response = new ApiResponse();
-		try {
-			response.addData("data", repository.findByBrand(brand));
-			return ResponseEntity.ok(response);
-		} catch (Exception e) {
-			response.addError("error", e.getCause().getMessage());
-			return ResponseEntity.ok(response);
-		}
-	}
-	@GetMapping("brand")
-	public ResponseEntity<?> getListModel(@RequestBody Brand brand){
-		ApiResponse response = new ApiResponse();
-		try{
-			response.addData("data", repository.findByBrand(brand));
-			return ResponseEntity.ok(response);
-		}catch(Exception e){
-			response.addError("error", e.getCause().getMessage());
-			return ResponseEntity.ok(response);
-		}
-	}
 
 	@GetMapping("{id}")
 	public ResponseEntity<?> findById(@PathVariable String id) {

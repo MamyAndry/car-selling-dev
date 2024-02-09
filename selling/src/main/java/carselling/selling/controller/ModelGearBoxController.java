@@ -76,17 +76,6 @@ public class ModelGearBoxController
 		}
 	}
 
-	@GetMapping("model")
-	public ResponseEntity<?> getModelGearBox(@RequestBody Model model) {
-		ApiResponse response = new ApiResponse();
-		try {
-			response.addData("data", repository.findByModel(model));
-			return ResponseEntity.ok(response);
-		} catch (Exception e) {
-			response.addError("error", e.getCause().getMessage());
-			return ResponseEntity.ok(response);
-		}
-	}
 
 	@GetMapping()
 	public ResponseEntity<?> findAll(){

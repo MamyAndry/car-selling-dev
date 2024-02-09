@@ -238,15 +238,35 @@
                   <option [ngValue]="item">{{item.name}}</option>
                 }
               </select>
+              <label>Carburant</label>
+              <select [(ngModel)]="car.modelFuelType">
+                @for (item of car.model.modelFuelTypes; track $index) {
+                  <option [ngValue]="item">{{item.fuelType.name}}</option>
+                }
+              </select>
               <label>Boite de vitesse</label>
-              <select></select>
+              <select [(ngModel)]="car.modelGearBox">
+                @for (item of car.model.modelGearBoxes; track $index) {
+                  <option [ngValue]="item">{{item.gearBox.name}}</option>
+                }
+              </select>
               <label>Type de moteur</label>
-              <select></select>
+              <select [(ngModel)]="car.modelMotor">
+                @for (item of car.model.modelMotors; track $index) {
+                  <option [ngValue]="item">{{item.motorisation.name}}</option>
+                }
+              </select>
               <label>Etat de la voiture</label>
-              <select></select>
+              <select [(ngModel)]="car.carStatus">
+                @for (item of carStatus; track $index) {
+                  <option [ngValue]="item">
+                    {{item.name}}
+                  </option>
+                }
+              </select>
               <label>Nombre de porte</label>
-              <input type="number">
-              <label>Couleur</label>
+              <input [(ngModel)]="car.doorNumber" type="number">
+              <label [(ngModel)]="car.color">Couleur</label>
               <input type="text">
               <label>Photo</label>
               <input type="file">
