@@ -1,0 +1,91 @@
+{
+  "hash": "aeaaab94",
+  "configHash": "f0077505",
+  "lockfileHash": "6f7a5240",
+  "browserHash": "1d0b8957",
+  "optimized": {
+    "@angular/common/http": {
+      "src": "../../../../../node_modules/@angular/common/fesm2022/http.mjs",
+      "file": "@angular_common_http.js",
+      "fileHash": "ac83b8a5",
+      "needsInterop": false
+    },
+    "@angular/core": {
+      "src": "../../../../../node_modules/@angular/core/fesm2022/core.mjs",
+      "file": "@angular_core.js",
+      "fileHash": "df1d9f5a",
+      "needsInterop": false
+    },
+    "@angular/forms": {
+      "src": "../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
+      "file": "@angular_forms.js",
+      "fileHash": "b9855318",
+      "needsInterop": false
+    },
+    "@angular/platform-browser": {
+      "src": "../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
+      "file": "@angular_platform-browser.js",
+      "fileHash": "25f5d652",
+      "needsInterop": false
+    },
+    "@angular/platform-browser/animations": {
+      "src": "../../../../../node_modules/@angular/platform-browser/fesm2022/animations.mjs",
+      "file": "@angular_platform-browser_animations.js",
+      "fileHash": "d422c3c5",
+      "needsInterop": false
+    },
+    "@angular/router": {
+      "src": "../../../../../node_modules/@angular/router/fesm2022/router.mjs",
+      "file": "@angular_router.js",
+      "fileHash": "de383f76",
+      "needsInterop": false
+    },
+    "chart.js/auto": {
+      "src": "../../../../../node_modules/chart.js/auto/auto.js",
+      "file": "chart__js_auto.js",
+      "fileHash": "5b1cd9fe",
+      "needsInterop": false
+    },
+    "datatables.net-dt": {
+      "src": "../../../../../node_modules/datatables.net-dt/js/dataTables.dataTables.mjs",
+      "file": "datatables__net-dt.js",
+      "fileHash": "cc87f8c2",
+      "needsInterop": false
+    },
+    "mdb-angular-ui-kit/tooltip": {
+      "src": "../../../../../node_modules/mdb-angular-ui-kit/fesm2022/mdb-angular-ui-kit-tooltip.mjs",
+      "file": "mdb-angular-ui-kit_tooltip.js",
+      "fileHash": "288831f2",
+      "needsInterop": false
+    },
+    "rxjs": {
+      "src": "../../../../../node_modules/rxjs/dist/esm5/index.js",
+      "file": "rxjs.js",
+      "fileHash": "fa71252f",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-RY3DDNX3": {
+      "file": "chunk-RY3DDNX3.js"
+    },
+    "chunk-O6WI52VI": {
+      "file": "chunk-O6WI52VI.js"
+    },
+    "chunk-6EPTIF4K": {
+      "file": "chunk-6EPTIF4K.js"
+    },
+    "chunk-AGLMDZJR": {
+      "file": "chunk-AGLMDZJR.js"
+    },
+    "chunk-PLSGOPMQ": {
+      "file": "chunk-PLSGOPMQ.js"
+    },
+    "chunk-T7RKEGOE": {
+      "file": "chunk-T7RKEGOE.js"
+    },
+    "chunk-ASLTLD6L": {
+      "file": "chunk-ASLTLD6L.js"
+    }
+  }
+}
