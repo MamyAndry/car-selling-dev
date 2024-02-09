@@ -38,11 +38,15 @@
             ],
             "scripts": [
               "src/assets/js/jquery.min.js",
+
               "src/assets/js/popper.min.js",
               "src/assets/js/bootstrap.min.js",
+              "src/assets/js/bootsnav.js",
+              "src/assets/js/owl.carousel.min.js",
               "src/assets/js/pace.min.js",
               "src/assets/js/sidebar-menu.js",
-              "src/assets/js/app-script.js"
+              "src/assets/js/app-script.js",
+              "src/assets/js/custom.js"
             ],
             "server": "src/main.server.ts",
             "prerender": true,
