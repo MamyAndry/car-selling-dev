@@ -61,7 +61,7 @@ public class Car {
 
 	public Car(){}
 
-	
+
 	public Integer getDoorNumber(){
 		return this.doorNumber;
 	}

@@ -3,7 +3,6 @@ package carselling.selling.controller;
 
 import carselling.selling.repository.ModelFuelTypeRepository;
 import carselling.selling.response.ApiResponse;
-import carselling.selling.entity.Brand;
 import carselling.selling.entity.Model;
 import carselling.selling.entity.ModelFuelType;
 import org.springframework.http.*;
@@ -66,6 +65,17 @@ public class ModelFuelTypeController
 			response.addData("data", repository.findAll());
 			return ResponseEntity.ok(response);
 		}catch(Exception e){
+			response.addError("error", e.getCause().getMessage());
+			return ResponseEntity.ok(response);
+		}
+	}
+	@GetMapping("model")
+	public ResponseEntity<?> getModelFuelType(@RequestBody Model model) {
+		ApiResponse response = new ApiResponse();
+		try {
+			response.addData("data", repository.findByModel(model));
+			return ResponseEntity.ok(response);
+		} catch (Exception e) {
 			response.addError("error", e.getCause().getMessage());
 			return ResponseEntity.ok(response);
 		}
