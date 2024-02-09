@@ -24,13 +24,17 @@ export class AppComponent{
   constructor(private loginService : LoginService, private router : Router){
     this.user.email = "dianarakoto9@gmail.com"
     this.user.password = "1234567huit"
-    localStorage.removeItem("session_user")
+    //localStorage.removeItem("session_user")
 
     this.router.events.pipe(
       filter((event): event is NavigationEnd => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
       this.isLoginPage = event.urlAfterRedirects === '/login';
     });
+  }
+
+  isLogged(){
+    return (localStorage.getItem("session_user") != undefined)
   }
 
   login(){
@@ -45,8 +49,8 @@ export class AppComponent{
           let temp = data.data
 
           localStorage.setItem("session_user", JSON.stringify(temp))
-          console.log(localStorage.getItem("session_user"))
           this.router.navigate(["/announcement"])
+          window.location.reload();
         }else{
           this.error = data.error
         }
@@ -57,6 +61,6 @@ export class AppComponent{
 
   logout(){
     localStorage.removeItem("session_user")
-    this.router.navigate(["/login"])
+    this.router.navigate(["/announcement"])
   }
 }
