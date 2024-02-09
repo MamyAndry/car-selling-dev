@@ -3,6 +3,7 @@ package carselling.selling.controller;
 
 import carselling.selling.repository.ModelRepository;
 import carselling.selling.response.ApiResponse;
+import carselling.selling.entity.Brand;
 import carselling.selling.entity.Model;
 import org.springframework.http.*;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -61,6 +62,17 @@ public class ModelController{
 		ApiResponse response = new ApiResponse();
 		try{
 			response.addData("data", repository.findAll());
+			return ResponseEntity.ok(response);
+		}catch(Exception e){
+			response.addError("error", e.getCause().getMessage());
+			return ResponseEntity.ok(response);
+		}
+	}
+	@GetMapping("brand")
+	public ResponseEntity<?> getListModel(@RequestBody Brand brand){
+		ApiResponse response = new ApiResponse();
+		try{
+			response.addData("data", repository.findByBrand(brand));
 			return ResponseEntity.ok(response);
 		}catch(Exception e){
 			response.addError("error", e.getCause().getMessage());
