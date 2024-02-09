@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss',
     imports: [FormsModule,RouterOutlet, RouterLink, RouterLinkActive, AnnouncementListComponent]
+
 })
 
 export class AppComponent{

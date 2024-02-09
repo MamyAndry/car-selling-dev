@@ -104,7 +104,15 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/jquery.min.js",
+              "src/assets/js/popper.min.js",
+              "src/assets/js/bootstrap.min.js",
+              "src/assets/plugins/simplebar/js/simplebar.js",
+              "src/assets/js/pace.min.js",
+              "src/assets/js/sidebar-menu.js",
+              "src/assets/js/app-script.js"
+            ]
           }
         }
       }

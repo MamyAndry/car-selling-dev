@@ -10,17 +10,17 @@
 }
 .featured-cars-details{
     max-width: 30%;
-
 }
 
 .featured-cars-search{
     /* background-color: #4E4FFA; */
-    min-width: 50px;
-    height: 50px;
+    width: 80px;
+    min-width: 80px;
+    height: 80px;
     border-radius: 100%;
     box-shadow:0 10px 40px 0px rgba(38,40,64,.2);
     /* position: absolute; */
-    color: black;
+    color: white;
     justify-items: center;
 }
 .search-btn{
@@ -47,6 +47,17 @@
         justify-content: center;
         padding: 10px;
     }
+    .featured-cars-search{
+      /* background-color: #4E4FFA; */
+      width: 80px;
+      min-width: 80px;
+      height: 80px;
+      border-radius: 100%;
+      box-shadow:0 10px 40px 0px rgba(38,40,64,.2);
+      /* position: absolute; */
+      color: white;
+      justify-items: center;
+  }
 
     .featured-cars-grid {
         padding: 5%;
@@ -59,7 +70,7 @@
         max-height: 1000px;
     }
     .featured-cars-details{
-        max-width: 100%;
+        min-width: 100%;
     }
     .featured-cars-search{
         /* background-color: #4E4FFA; */
