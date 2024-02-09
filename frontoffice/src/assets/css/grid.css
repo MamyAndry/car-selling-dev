@@ -47,10 +47,6 @@
       padding: 10px;
   }
 
-  .model-search-content{
-    display: none;
-  }
-
   .featured-cars-grid {
       gap: 1%; /* Espacement uniforme */
       padding: 5%; /* Ajustement du padding */

@@ -6,11 +6,11 @@ import { ModelGearBox } from '../../../mapping/CarParameters/ModelGearBox';
 import { ModelMotor } from '../../../mapping/CarParameters/ModelMotor';
 import { User } from '../../../mapping/login/User';
 import { Model } from '../../../mapping/Model';
-import { BrandService } from '../../service/cars/brand.service';
-import { ModelFuelTypeService } from '../../service/cars/model-fuel-type.service';
-import { ModelGearBoxService } from '../../service/cars/model-gear-box.service';
-import { ModelMotorService } from '../../service/cars/model-motor.service';
-import { ModelService } from '../../service/cars/model.service';
+import { BrandService } from '../../services/cars/brand.service';
+import { ModelFuelTypeService } from '../../services/cars/model-fuel-type.service';
+import { ModelGearBoxService } from '../../services/cars/model-gear-box.service';
+import { ModelMotorService } from '../../services/cars/model-motor.service';
+import { ModelService } from '../../services/cars/model.service';
 import { Car } from '../../../mapping/Car';
 
 @Component({
